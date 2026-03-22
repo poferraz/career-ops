@@ -90,6 +90,7 @@ Match the user's request to the right reference file. Load ONLY what's needed.
 | Career change, pivot, long-term plan, coaching, frameworks | `references/career-strategy.md` |
 | Market data, salary ranges, industry trends, remote work stats | `references/market-data.md` |
 | Quality check, AI detection, rewrite, de-slop | `references/anti-slop.md` |
+| Specific company research, unfamiliar industry, niche salary, non-US market | `references/research-scout.md` |
 
 When a request spans multiple areas (e.g., "help me apply to this job"), load the relevant files in sequence: research pre-flight → resume → cover letter.
 
