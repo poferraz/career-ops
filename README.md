@@ -1,4 +1,4 @@
-<!-- TODO: Insert Hero Image (e.g., <img src="docs/assets/hero-banner.png" alt="career-ops hero banner" width="100%">) -->
+<img src="docs/assets/readme-hero.jpeg" alt="career-ops hero banner" width="100%">
 # career-ops
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
