@@ -17,7 +17,7 @@ Gemini Deep Research performs multi-step web research with source tracking. Each
 | R1 | Resume mechanics, ATS architecture, LinkedIn algorithm, AI detection | Eye-tracking data, ATS semantic matching, stop-slop patterns |
 | R2 | Labor market data, hiring funnel, remote work, career gaps, job hopping | Diminishing returns curve, cross-industry mobility, mental health data |
 | R3 | AI interview systems, negotiation frameworks, accomplishment mining, writing quality | HireVue/Pymetrics strategies, Voss/Sethi techniques, RISE method |
-| R4 | LinkedIn content strategy, engagement mechanics, connection requests, tooling ecosystem | Golden Hour, engagement hierarchy, connection acceptance rates |
+| R4 | LinkedIn content strategy, engagement mechanics, connection requests, tooling landscape | Golden Hour, engagement hierarchy, connection acceptance rates |
 | R5 | Gap closure — trades/creative/government hiring, cover letter experiments, coaching RCTs | T1 callback data, coaching employment rates, industry-specific conversion |
 
 ### Cross-Referencing
