@@ -1,4 +1,9 @@
+<!-- TODO: Insert Hero Image (e.g., <img src="docs/assets/hero-banner.png" alt="career-ops hero banner" width="100%">) -->
 # career-ops
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-blueviolet)](https://claude.ai)
 
 An agent skill for Claude Code, Codex, Gemini CLI, Cursor, and more — that turns AI into a research-backed career coach, not a generic resume filler.
 
@@ -17,13 +22,23 @@ career-ops interviews you like a real coach, surfaces achievements you don't rec
 - **Research scout** — live web search with mandatory `[UNVERIFIED]` tagging, source quality ranking, and an honest "I don't have that data" fallback
 - **Trust-tiered knowledge base** — every claim tagged T1 (peer-reviewed) through T4 (excluded), so you know what to trust
 
+## The Anti-Slop Difference
+
+See the difference between generic AI output and what `career-ops` generates after passing through its 5-dimension quality gate:
+
+| Generic AI ("Slop") | `career-ops` Output (Specific & Verifiable) |
+|---------------------|---------------------------------------------|
+| "Streamlined operational processes to improve team efficiency." | "Cut weekly inventory count from 6 hours to 90 minutes by switching to cycle counting." |
+| "Dynamic leader with a demonstrated history of delivering innovative solutions." | "Ran the kitchen remodel with 3 contractors while keeping lunch service running — zero missed days." |
+| "Leveraged data-driven insights to optimize performance and drive results." | "Built a Google Sheet that tracked peak hours; shifted one closer's shift 2 hours later, which dropped overtime 40%." |
+
 ## Quick Start
 
 ### Claude Code
 
 ```bash
 # Clone into your custom skills directory
-git clone https://github.com/poferraz/career-ops.git ~/.claude/skills/career-ops
+git clone https://github.com/poferraz/career-ops.git ~/.claude/skills/career-ops && echo "Installed ✓"
 
 # Start a session
 claude
