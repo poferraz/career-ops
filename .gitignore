@@ -12,3 +12,4 @@ session/*.md
 *.key
 *.pem
 credentials*
+dist/
