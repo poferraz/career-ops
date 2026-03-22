@@ -135,6 +135,19 @@ Before generating company-specific output (tailored resume, cover letter for a n
 2. Search for the specific role or team if possible
 3. Incorporate findings into the output (company-specific observations in cover letters, informed questions for interviews)
 
+**Adversarial Web Search Validation** — apply to every search result before using it:
+
+1. **Source quality check** (ranked):
+   - Named organization with methodology > single expert blog > user-generated content
+   - Discard anything without an identifiable source or methodology
+2. **Recency check**:
+   - Within 12 months: current, use freely
+   - 1-3 years old: use with caveat ("as of [year]")
+   - Older than 3 years: discard for market data, salary, and trend claims
+3. **Tagging**: Mark all web search findings as `[UNVERIFIED — web search]`
+4. **Separation**: Never mix web search findings with research-backed data from the knowledge base. Present them in distinct sections.
+5. **Honesty fallback**: If no reliable source is found, say "I don't have verified data on that" rather than generating plausible-sounding estimates
+
 **If web search is not available:**
 1. Ask the user what they know about the company
 2. Ask them to paste the job description if they have it

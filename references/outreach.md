@@ -42,15 +42,19 @@ If your request hasn't been accepted within a week, move on. Don't send a follow
 
 ### Banned Trigger Words
 
-These words cut acceptance rates in half [T2]. Never use them in connection requests:
+These words cut acceptance rates in half. Never use them in connection requests.
+
+**Tier 2 — Measured** (directly tested in the 16,000-request dataset):
 - "help"
 - "solution"
 - "provide"
+
+**Tier 3 — Conventional wisdom** (widely cited as harmful, not directly measured in that dataset):
 - "opportunity"
 - "synergy"
 - "leverage"
 
-These signal that you want something from them, not that you have something in common with them.
+The first three are measured; the rest are conventional wisdom. All six signal that you want something from them, not that you have something in common with them.
 
 ---
 
@@ -152,7 +156,7 @@ InMail is 5-15x more effective. Worth LinkedIn Premium for active job seekers ta
 Before delivering outreach messages:
 - [ ] Under 80 words
 - [ ] References something specific about the recipient
-- [ ] No banned trigger words (help, solution, provide, opportunity)
+- [ ] No banned trigger words (help, solution, provide, opportunity, synergy, leverage)
 - [ ] Ends with a specific, low-effort ask
 - [ ] Could not be sent to anyone else without rewriting
 - [ ] Matches the relationship stage (cold vs warm vs referral)

@@ -2,4 +2,13 @@
 *.swp
 *.swo
 *~
-session/user-profile.md
+
+# Session data (user-specific, not committed)
+session/*.md
+!session/user-profile-template.md
+
+# Secrets and credentials
+.env*
+*.key
+*.pem
+credentials*

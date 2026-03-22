@@ -114,7 +114,7 @@ Reframe prior activities in the target industry's language:
 | Taught classes | Teaching, instruction | Training, enablement, curriculum development |
 | Ran a retail store | Store management | Revenue ownership, inventory optimization, team development |
 
-The skill should automatically translate when it knows both the source and target industries.
+The skill should propose translations to the user for confirmation before using them.
 
 ### The 30-Day Skill Sprint [T3]
 
