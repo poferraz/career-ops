@@ -1,51 +1,65 @@
-# Security Policy
+<div align="center">
 
-## Scope
+![Security Policy](https://img.shields.io/badge/SECURITY-POLICY-1414b8?style=for-the-badge)
 
-career-ops is a prompt-based skill — it contains no executable server code, no API endpoints, and no authentication flows. The security surface is limited to:
+</div>
 
-1. **Data integrity** — the knowledge base must not contain fabricated statistics
-2. **User data** — session profiles (`session/user-profile.md`) contain personal career information
-3. **convert.sh** — the only executable script, which reads local files and writes to `dist/`
+# SECURITY POLICY
 
-## Reporting a Vulnerability
-
-If you discover a security issue:
-
-1. **Do not open a public issue**
-2. Email the maintainer directly (see GitHub profile for contact)
-3. Include: what the vulnerability is, how to reproduce it, and potential impact
-4. You will receive a response within 72 hours
-
-## What Counts as a Security Issue
-
-- `convert.sh` executing unintended commands or accessing files outside the project directory
-- Session profile data being committed to git (the `.gitignore` should prevent this)
-- Prompt injection patterns in reference files that could cause the host agent to take unintended actions
-- Research data that has been tampered with to mislead users
-
-## What Does Not Count
-
-- The skill producing generic or unhelpful advice (that's a bug, not a security issue)
-- Disagreement with research methodology or trust tier assignments (open a research update issue)
-- Issues with third-party tools referenced in `docs/integrations.md`
-
-## Supported Versions
+## SUPPORTED VERSIONS
 
 | Version | Supported |
-|---------|-----------|
-| 1.x     | Yes       |
+|---|---|
+| 1.0.x | ✓ Active |
 
-## Session Data Protection
+---
 
-The `.gitignore` excludes `session/*.md` to prevent accidental commits of user profile data. If you fork this repo for personal use, verify that your session files are not being tracked:
+## WHAT COUNTS
 
+career-ops is a knowledge base skill — it has no servers, no authentication, and no databases. Security scope is narrow but real:
+
+**In scope:**
+- Fabricated or manipulated research data in reference files
+- Shell injection vulnerabilities in `scripts/convert.sh`
+- Session data leakage (user profile written outside `session/` directory)
+- Prompt injection patterns embedded in reference content
+
+**Out of scope:**
+- General career advice disagreements
+- Platform-specific behavior (Claude Code, Cursor, etc.) outside this repo
+- Third-party MCP server vulnerabilities
+
+---
+
+## REPORTING A VULNERABILITY
+
+Do **not** open a public issue for security vulnerabilities.
+
+**Report privately via GitHub Security Advisories:**
+[github.com/poferraz/career-ops/security/advisories/new](https://github.com/poferraz/career-ops/security/advisories/new)
+
+Include:
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Suggested fix (optional)
+
+**Response time:** Acknowledgment within 72 hours. Fix or mitigation plan within 14 days for confirmed issues.
+
+---
+
+## SESSION DATA PROTECTION
+
+The `session/user-profile.md` file stores personal career data. It is gitignored by default.
+
+**Verify it stays gitignored:**
 ```bash
-git status --short session/
+git check-ignore -v session/user-profile.md
 ```
 
-If any session files appear as tracked, remove them from git tracking:
-
+If this file has been committed accidentally, remove it from history:
 ```bash
-git rm --cached "session/*.md"
+git filter-repo --path 'session/user-profile.md' --invert-paths
 ```
+
+Never commit personal session data. The template (`session/user-profile-template.md`) is safe to commit — it contains no personal information.

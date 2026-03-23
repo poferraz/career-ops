@@ -1,39 +1,44 @@
 ---
 name: Bug Report
-about: Report a problem with the career-ops skill
-title: "[BUG] "
+about: Found something broken? Tell us exactly what happened.
+title: '[BUG] '
 labels: bug
 assignees: ''
 ---
 
-## Describe the bug
+<!-- Found something broken? Tell us exactly what happened. No vague reports. -->
 
-A clear description of what went wrong.
+## DESCRIPTION
 
-## To reproduce
+<!-- What went wrong? Be specific. -->
 
-1. What command or prompt did you use?
-2. What agent are you using? (Claude Code, Codex, Cursor, etc.)
-3. What reference file was loaded? (if known)
+## STEPS TO REPRODUCE
 
-## Expected behavior
+1.
+2.
+3.
 
-What should have happened instead.
+## WHAT YOU EXPECTED
 
-## Actual output
+<!-- What should have happened? -->
 
-Paste the problematic output here. Remove any personal information.
+## WHAT ACTUALLY HAPPENED
 
-```
-[paste here]
-```
+<!-- Paste the exact output. -->
 
-## Environment
+## ANTI-SLOP SCORE
 
-- Agent: [e.g., Claude Code v1.x]
-- OS: [e.g., macOS 15.x]
-- Install method: [e.g., slash command, .claude/commands/]
+<!-- If the output scored low on the quality gate, paste the score here. -->
+<!-- Format: Directness X/10, Rhythm X/10, Trust X/10, Authenticity X/10, Density X/10, Total XX/50 -->
 
-## Additional context
+## ENVIRONMENT
 
-Any other details that might help debug.
+| Field | Value |
+|---|---|
+| Platform | <!-- Claude Code / Codex / Gemini CLI / Cursor / Other --> |
+| Version | <!-- career-ops version (see CHANGELOG.md) --> |
+| Web search available | <!-- Yes / No --> |
+
+## ADDITIONAL CONTEXT
+
+<!-- Anything else? Paste relevant parts of your session/user-profile.md if safe to share. -->
