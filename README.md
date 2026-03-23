@@ -122,6 +122,8 @@ career-ops runs on evidence, not vibes. Every contribution must clear the same a
 [![Contributing](https://img.shields.io/badge/CONTRIBUTING-READ-1414b8?style=for-the-badge)](CONTRIBUTING.md)
 [![Changelog](https://img.shields.io/badge/CHANGELOG-VIEW-1414b8?style=for-the-badge)](CHANGELOG.md)
 [![Security](https://img.shields.io/badge/SECURITY-POLICY-1414b8?style=for-the-badge)](SECURITY.md)
+[![Code of Conduct](https://img.shields.io/badge/CODE_OF_CONDUCT-READ-1414b8?style=for-the-badge)](CODE_OF_CONDUCT.md)
+[![Support](https://img.shields.io/badge/SUPPORT-GET_HELP-111111?style=for-the-badge)](SUPPORT.md)
 
 MIT License — open for all platforms and all workers.
 

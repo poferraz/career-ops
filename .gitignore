@@ -13,3 +13,10 @@ session/*.md
 *.pem
 credentials*
 dist/
+
+# OS files
+Thumbs.db
+
+# IDE configs
+.idea/
+.vscode/
