@@ -17,6 +17,8 @@ An open-source AI career coaching skill for Claude Code, Codex, Gemini CLI, Curs
 
 </div>
 
+<img src="docs/assets/readme-hero.png" alt="career-ops four-stage engine: interviewer mode, smart routing, anti-slop gate, and session memory — brutalist UI on blueprint grid" width="100%">
+
 ---
 
 ## ── FOUR-STAGE ENGINE
