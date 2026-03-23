@@ -4,6 +4,7 @@
 # Supported: codex, gemini, cursor, antigravity, windsurf, opencode
 
 set -euo pipefail
+shopt -s nullglob
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
@@ -32,49 +33,32 @@ fi
 
 PLATFORM="$1"
 
-# Collect all reference content into a single block
-collect_references() {
-    local refs=""
+# Stream all reference content directly to stdout
+stream_references() {
     for ref in "$PROJECT_DIR"/references/*.md; do
         [[ "$(basename "$ref")" == ".gitkeep" ]] && continue
-        refs+="$(cat "$ref")"
-        refs+=$'\n\n---\n\n'
+        cat "$ref"
+        printf "\n\n---\n\n"
     done
-    echo "$refs"
 }
 
-# Read SKILL.md content
-read_skill() {
-    cat "$PROJECT_DIR/SKILL.md"
-}
-
-# Strip YAML frontmatter from SKILL.md
-strip_frontmatter() {
-    local content
-    content="$(read_skill)"
-    if [[ "$content" == ---* ]]; then
-        echo "$content" | sed '1,/^---$/{ /^---$/!d; /^---$/d; }' | sed '1{ /^---$/d; }'
+# Stream SKILL.md body (stripping YAML frontmatter) to stdout
+stream_skill_body() {
+    local skill_file="$PROJECT_DIR/SKILL.md"
+    # Check if file starts with frontmatter
+    if head -n 1 "$skill_file" | grep -q "^---$"; then
+        # Skip everything between the first and second '---'
+        sed '1,/^---$/d' "$skill_file" | sed '1,/^---$/d'
     else
-        echo "$content"
+        cat "$skill_file"
     fi
 }
 
-# Build a single consolidated file from SKILL.md + all references
+# Consolidate SKILL.md body and all references
 build_consolidated() {
-    local skill_body
-    skill_body="$(strip_frontmatter)"
-
-    cat <<CONSOLIDATED
-${skill_body}
-
----
-
-# Reference Files
-
-The following reference modules are loaded on demand based on the routing table above.
-
-$(collect_references)
-CONSOLIDATED
+    stream_skill_body
+    printf "\n---\n\n# Reference Files\n\nThe following reference modules are loaded on demand based on the routing table above.\n\n"
+    stream_references
 }
 
 convert_codex() {
@@ -82,10 +66,8 @@ convert_codex() {
     mkdir -p "$out"
     echo "Converting for Codex..."
 
-    # Codex uses AGENTS.md at repo root
     {
-        echo "# career-ops"
-        echo ""
+        printf "# career-ops\n\n"
         build_consolidated
     } > "$out/AGENTS.md"
 
@@ -98,10 +80,8 @@ convert_gemini() {
     mkdir -p "$out"
     echo "Converting for Gemini CLI..."
 
-    # Gemini CLI uses GEMINI.md
     {
-        echo "# career-ops"
-        echo ""
+        printf "# career-ops\n\n"
         build_consolidated
     } > "$out/GEMINI.md"
 
@@ -114,16 +94,11 @@ convert_cursor() {
     mkdir -p "$out"
     echo "Converting for Cursor..."
 
-    # Cursor uses .cursor/rules/ with individual .md files
-    # Write the main skill as the primary rule
-    strip_frontmatter > "$out/career-ops.md"
+    stream_skill_body > "$out/career-ops.md"
 
-    # Write each reference as a separate rule file
     for ref in "$PROJECT_DIR"/references/*.md; do
         [[ "$(basename "$ref")" == ".gitkeep" ]] && continue
-        local basename
-        basename="$(basename "$ref")"
-        cp "$ref" "$out/career-ops-${basename}"
+        cp "$ref" "$out/career-ops-$(basename "$ref")"
     done
 
     echo "Output: $out/"
@@ -135,10 +110,8 @@ convert_antigravity() {
     mkdir -p "$out"
     echo "Converting for Antigravity..."
 
-    # Antigravity uses a prompts directory with a single system prompt
     {
-        echo "# career-ops"
-        echo ""
+        printf "# career-ops\n\n"
         build_consolidated
     } > "$out/career-ops.md"
 
@@ -151,10 +124,8 @@ convert_windsurf() {
     mkdir -p "$out"
     echo "Converting for Windsurf..."
 
-    # Windsurf uses .windsurfrules at project root
     {
-        echo "# career-ops"
-        echo ""
+        printf "# career-ops\n\n"
         build_consolidated
     } > "$out/.windsurfrules"
 
@@ -167,10 +138,8 @@ convert_opencode() {
     mkdir -p "$out"
     echo "Converting for OpenCode..."
 
-    # OpenCode uses AGENTS.md
     {
-        echo "# career-ops"
-        echo ""
+        printf "# career-ops\n\n"
         build_consolidated
     } > "$out/AGENTS.md"
 
