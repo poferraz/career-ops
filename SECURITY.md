@@ -47,5 +47,5 @@ git status --short session/
 If any session files appear as tracked, remove them from git tracking:
 
 ```bash
-git rm --cached session/*.md
+git rm --cached "session/*.md"
 ```
