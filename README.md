@@ -1,6 +1,6 @@
 <div align="center">
 
-![career-ops](https://img.shields.io/badge/CAREER--OPS-V1.0.1-1414b8?style=for-the-badge)
+![career-ops](https://img.shields.io/badge/CAREER--OPS-V1.0.2-1414b8?style=for-the-badge)
 ![License](https://img.shields.io/badge/LICENSE-MIT-1414b8?style=for-the-badge)
 ![Platforms](https://img.shields.io/badge/PLATFORMS-7-1414b8?style=for-the-badge)
 ![Modules](https://img.shields.io/badge/MODULES-10-111111?style=for-the-badge)
@@ -12,8 +12,8 @@
 An open-source AI career coaching skill for Claude Code, Codex, Gemini CLI, Cursor, and more. Resume optimization, interview prep, job search strategy, and anti-slop quality gates — backed by peer-reviewed research.
 
 [![View on GitHub](https://img.shields.io/badge/VIEW_ON_GITHUB-1414b8?style=for-the-badge&logo=github&logoColor=white)](https://github.com/poferraz/career-ops)
-[![Read the Docs](https://img.shields.io/badge/READ_THE_DOCS-111111?style=for-the-badge)](https://github.com/poferraz/career-ops#readme)
-[![Changelog](https://img.shields.io/badge/CHANGELOG-v1.0.1-1414b8?style=for-the-badge)](CHANGELOG.md)
+[![Visit Website](https://img.shields.io/badge/VISIT_WEBSITE-111111?style=for-the-badge)](https://carrer-ops.vercel.app/)
+[![Changelog](https://img.shields.io/badge/CHANGELOG-v1.0.2-1414b8?style=for-the-badge)](CHANGELOG.md)
 
 </div>
 
