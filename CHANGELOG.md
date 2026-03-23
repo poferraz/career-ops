@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-03-22
+
+### Changed
+- **README**: Full rewrite to match companion website brand — brutalist design system, Architect Blue (`#1414b8`), `## ──` section headers, shields.io `for-the-badge` badges, and 7-section structure mirroring the site (Hero, Four-Stage Engine, Install, Anti-Slop Gate, Reference Modules, Research-Backed, Contribute).
+- **Brand images**: Replaced dark neon assets with optimized PNG images matching the website's blueprint grid aesthetic. `social-preview.png` is exactly 1280×640 (GitHub OG spec). `readme-hero.png` displays the four-stage engine and terminal install in brutalist style. Both under 250KB.
+- **CONTRIBUTING.md**: Refreshed tone to match brand voice; added `## QUALITY BAR` section enforcing trust tier and anti-slop standards for contributors.
+- **SECURITY.md**: Added brand badge, version support table, explicit in/out-of-scope definitions, and uppercase section headers.
+- **PR template**: Renamed quality checklist to `## QUALITY GATE`; added docs-update checkbox.
+- **Issue templates**: Direct-voice rewrites — bug report adds anti-slop score field; feature request requires evidence section; research update enforces T4 rejection notice.
+
 ## [1.0.1] - 2026-03-22
 
 ### Fixed
