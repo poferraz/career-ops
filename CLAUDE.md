@@ -18,16 +18,3 @@ At the END of every session:
 2. Update tracking/tasks.md to reflect current state
 3. Verify any new decisions are in decisions.csv
 
-## Project Structure Awareness
-
-This skill repo is ONE part of a larger project:
-
-career-ops-project/          — Parent folder (not a git repo)
-├── career-ops/              — THIS REPO (pushes to GitHub)
-├── career-ops-site/         — Website (separate git repo)
-└── research/                — Research vault (private, not published)
-
-- Never commit website code or research materials to this repo
-- The tracking/ directory is gitignored
-- Research files live at ../research/
-- Website files live at ../career-ops-site/
