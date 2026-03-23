@@ -21,9 +21,6 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Agent instructions (local only)
-CLAUDE.md
-
 # Personal tracking
 tracking/state.md
 tracking/tasks.md
