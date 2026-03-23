@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-03-22
+
+### Fixed
+- **Critical**: Escaped the git wildcard in `SECURITY.md` remediation command to prevent accidental deletion of tracked session templates.
+- **High**: Refactored `scripts/convert.sh` to use streaming `cat`/`printf` instead of `echo`, preventing potential Markdown text corruption during build.
+- **Medium**: Enabled `nullglob` in bash script to avoid crashes if reference directories are empty.
+- Corrected badge URL in `README.md` for consistent rendering.
+
 ## [1.0.0] - 2026-03-22
 
 ### Added
