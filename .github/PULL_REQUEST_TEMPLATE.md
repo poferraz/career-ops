@@ -1,26 +1,27 @@
-## Summary
+<!-- CAREER-OPS PULL REQUEST — NO SLOP. JUST STRATEGY. -->
 
-What does this PR change and why?
+## WHAT CHANGED AND WHY
 
-## Type
+<!-- One sentence: what changed. One sentence: why it matters. -->
 
-- [ ] New reference data
-- [ ] Research update (new findings or corrections)
-- [ ] Skill logic change
-- [ ] Bug fix
-- [ ] Documentation
-- [ ] Other
+## TYPE
 
-## Quality checklist
+- [ ] Research update (new data, updated trust tier)
+- [ ] Reference improvement (better framing, more accurate claim)
+- [ ] New feature (new module, new capability)
+- [ ] Bug fix (routing error, anti-slop gate failure)
+- [ ] Tooling / scripts
 
-- [ ] Every statistic includes a trust tier tag ([T1], [T2], [T3])
-- [ ] No data was invented — all claims trace to the knowledge base or a cited source
-- [ ] Text passes the anti-slop rubric (35/50 minimum)
-- [ ] No generic advice — every recommendation is specific and actionable
-- [ ] Reference files stay under 300 lines
-- [ ] SKILL.md stays under 400 lines
-- [ ] Works without external dependencies (no required API keys or MCP servers)
+## QUALITY GATE
 
-## Testing
+- [ ] All new claims have a trust tier tag (T1–T3)
+- [ ] No invented statistics or unverified numbers
+- [ ] Anti-slop rubric: writing scores 35/50 minimum
+- [ ] No banned phrases (see [`references/anti-slop.md`](../references/anti-slop.md))
+- [ ] File sizes within limits (reference files max 800 lines)
+- [ ] `scripts/convert.sh` still works if SKILL.md changed
+- [ ] README or docs updated if behavior changed
 
-How did you verify this change works correctly?
+## TESTING
+
+<!-- How did you verify this works? Paste a sample session prompt + output if applicable. -->

@@ -1,60 +1,73 @@
-# Contributing to career-ops
+<div align="center">
 
-Thank you for considering a contribution. This project exists to give job seekers research-backed support, and every improvement helps real people.
+![Contributing](https://img.shields.io/badge/CONTRIBUTING-GUIDE-1414b8?style=for-the-badge)
 
-## How to Contribute
+</div>
 
-### Research Updates
+# CONTRIBUTING TO CAREER-OPS
 
-The most valuable contribution is new research. If you find a peer-reviewed study, large-sample survey, or controlled experiment relevant to job seeking:
+career-ops runs on evidence, not vibes. Every contribution must clear the same anti-slop bar as the skill itself. If you're submitting research, it needs a source. If you're submitting a feature, it needs a rationale.
 
-1. Open an issue using the [Research Update template](.github/ISSUE_TEMPLATE/research_update.md)
-2. Include: source name, sample size, methodology, key findings, and publication date
-3. Tag with the appropriate trust tier (see [docs/trust-tiers.md](docs/trust-tiers.md))
+## QUALITY BAR
 
-We will evaluate against the trust tier system before inclusion. T4 (single-source, no methodology, vendor marketing) will not be added.
+All contributions must meet:
 
-### Reference File Improvements
+- **Trust tier tagged** — Every claim uses T1–T3 evidence. No invented statistics.
+- **No slop** — Writing must score 35/50 minimum on the anti-slop rubric (see [`anti-slop.md`](references/anti-slop.md))
+- **No T4 submissions** — Claims contradicted by evidence or of unknown origin will not be merged
 
-To improve an existing reference file:
+---
 
-1. Fork the repository
-2. Make your changes in a feature branch
-3. Ensure all claims include their trust tier tag
-4. Submit a pull request using the [PR template](.github/PULL_REQUEST_TEMPLATE.md)
+## RESEARCH UPDATES
 
-### New Features
+The knowledge base grows through new evidence. To submit a research update:
 
-For new capabilities:
+- Open a [Research Update issue](.github/ISSUE_TEMPLATE/research_update.md) with source metadata and trust tier
+- Include raw data or direct quotes — paraphrasing introduces slop
+- Cross-reference against existing claims in the relevant reference file
 
-1. Open a feature request issue first to discuss the approach
-2. Keep the scope focused — one feature per PR
-3. Follow the existing file structure (reference files in `references/`, docs in `docs/`)
-4. Update the routing table in `SKILL.md` if adding a new reference file
+**Target files:** Any file in [`references/`](references/)
 
-### Bug Reports
+---
 
-If the skill produces incorrect data, hallucinated statistics, or misattributed research:
+## REFERENCE IMPROVEMENTS
 
-1. Open a bug report with the specific claim and what's wrong
-2. Include the correct data with source if you have it
-3. These are treated as high priority — data integrity is the core value proposition
+Found a framing that's more accurate, direct, or better supported?
 
-## Quality Standards
+- Open a PR with the specific change and the evidence behind it
+- Do not rewrite sections wholesale — make surgical, justified edits
+- Update the trust tier tag if the evidence level changes
 
-- Every factual claim must have a trust tier tag (T1-T4)
-- No invented statistics, estimates, or plausible-sounding numbers
-- Preserve the anti-slop quality standards in your writing
-- Keep files under 400 lines where possible
-- Use the existing formatting conventions (tables for data, headers for sections)
+---
 
-## What We Don't Accept
+## NEW FEATURES
 
-- Vendor marketing disguised as research
-- Affiliate links or product placements
-- Claims without methodology or sample size
-- Content that could only apply to one country without being labeled as such
+Before building anything new:
 
-## Code of Conduct
+- Open a [Feature Request issue](.github/ISSUE_TEMPLATE/feature_request.md) describing the problem, not the solution
+- Wait for discussion — new modules require significant research investment
+- The skill must remain zero-dependency: no paid APIs, no mandatory MCP servers
 
-Be respectful. Many contributors and users are actively job searching, which is stressful. Keep discussions constructive and focused on making the tool better.
+---
+
+## BUG REPORTS
+
+If the skill gives advice that contradicts its own reference data, or routes incorrectly:
+
+- Open a [Bug Report issue](.github/ISSUE_TEMPLATE/bug_report.md)
+- Include the exact prompt, the output received, and what the correct behavior should be
+- Anti-slop gate failures (output scored below 35) are treated as bugs
+
+---
+
+## CONDUCT
+
+Be direct. Disagree on evidence, not personality. This is a career tools repo for workers — keep it useful and keep it honest.
+
+---
+
+<div align="center">
+
+[![Open an Issue](https://img.shields.io/badge/OPEN_AN_ISSUE-1414b8?style=for-the-badge&logo=github&logoColor=white)](https://github.com/poferraz/career-ops/issues/new/choose)
+
+</div>

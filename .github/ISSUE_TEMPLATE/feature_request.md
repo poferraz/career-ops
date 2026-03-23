@@ -1,33 +1,42 @@
 ---
 name: Feature Request
-about: Suggest a new capability for the career-ops skill
-title: "[FEATURE] "
+about: Propose a specific, research-backed improvement.
+title: '[FEATURE] '
 labels: enhancement
 assignees: ''
 ---
 
-## What problem does this solve?
+<!-- No wish lists. Propose a specific, research-backed improvement. -->
 
-Describe the career scenario where this feature would help.
+## THE PROBLEM
 
-## Proposed solution
+<!-- What does a user currently not get that they need? Be specific. -->
 
-How should the skill handle this? Be specific about inputs and expected outputs.
+## THE SOLUTION
 
-## Which reference file would this affect?
+<!-- What exactly would change? Which file(s) would be affected? -->
 
-- [ ] SKILL.md (orchestrator)
-- [ ] references/resume.md
-- [ ] references/cover-letter.md
-- [ ] references/linkedin.md
-- [ ] references/interview.md
-- [ ] references/outreach.md
-- [ ] references/job-search.md
-- [ ] references/career-strategy.md
-- [ ] references/market-data.md
-- [ ] references/anti-slop.md
-- [ ] New reference file needed
+## WHICH REFERENCE FILE
 
-## Is there research to support this?
+- [ ] `resume.md`
+- [ ] `cover-letter.md`
+- [ ] `linkedin.md`
+- [ ] `interview.md`
+- [ ] `outreach.md`
+- [ ] `job-search.md`
+- [ ] `career-strategy.md`
+- [ ] `market-data.md`
+- [ ] `anti-slop.md`
+- [ ] `research-scout.md`
+- [ ] `SKILL.md` (orchestrator)
+- [ ] New module (explain why existing modules don't cover this)
 
-Link to studies, surveys, or data that back up this feature. We prioritize evidence-backed additions.
+## EVIDENCE
+
+<!-- Link to research, data, or examples that support this. No anecdotes. -->
+<!-- Trust tier of your evidence: T1 / T2 / T3 -->
+
+## DESIGN CONSTRAINTS
+
+<!-- Remember: no paid APIs, no mandatory MCP servers, no external databases. -->
+<!-- How does this fit within those constraints? -->

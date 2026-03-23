@@ -1,45 +1,46 @@
 ---
 name: Research Update
-about: Submit new data to improve or correct the knowledge base
-title: "[RESEARCH] "
+about: Submit new evidence to update the knowledge base.
+title: '[RESEARCH] '
 labels: research
 assignees: ''
 ---
 
-## What data are you submitting?
+<!-- Must clear T1–T3 tier standards. T4 submissions will not be merged. -->
 
-Describe the finding and which topic area it covers.
+## WHAT THIS UPDATES
 
-## Source
+<!-- Which claim in which reference file does this affect? -->
+<!-- File: references/________.md -->
+<!-- Current claim: "..." -->
+<!-- Proposed update: "..." -->
 
-- Study/survey name:
-- Author(s) or organization:
-- Publication date:
-- Sample size (if applicable):
-- URL or DOI:
+## SOURCE METADATA
 
-## Proposed trust tier
+| Field | Value |
+|---|---|
+| Source title | |
+| Authors / organization | |
+| Publication date | |
+| URL or DOI | |
+| Study type | <!-- RCT / Survey / Platform study / Expert consensus / Other --> |
 
-- [ ] T1 VERIFIED — Multiple independent sources, peer-reviewed, government data, or inspectable code
-- [ ] T2 REPORTED — Named industry survey, platform analytics, single controlled experiment
-- [ ] T3 CONVENTIONAL — Expert opinion, anecdotal consensus, logically sound but unproven
+## TRUST TIER
 
-## Does this contradict existing data?
+- [ ] **T1 — Verified:** Peer-reviewed, RCT, or meta-analysis
+- [ ] **T2 — Reported:** Controlled experiment, platform-reported study
+- [ ] **T3 — Expert:** Practitioner consensus, widely cited framework
 
-If yes, describe what it contradicts and why the new data should take priority.
+## CONTRADICTION CHECK
 
-## Which reference file would this update?
+<!-- Does this contradict any existing claim in the knowledge base? -->
+<!-- If yes: which claim, and why should this supersede it? -->
 
-- [ ] references/resume.md
-- [ ] references/cover-letter.md
-- [ ] references/linkedin.md
-- [ ] references/interview.md
-- [ ] references/outreach.md
-- [ ] references/job-search.md
-- [ ] references/career-strategy.md
-- [ ] references/market-data.md
-- [ ] references/anti-slop.md
+## RAW DATA
 
-## Raw data or key quotes
+<!-- Paste the key quote, statistic, or finding directly from the source. -->
+<!-- Do not paraphrase — paraphrasing introduces slop. -->
 
-Paste the relevant data, tables, or quotes from the source.
+---
+
+*See [trust-tiers.md](../../docs/trust-tiers.md) for full tier definitions.*

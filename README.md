@@ -1,167 +1,126 @@
-<img src="docs/assets/readme-hero.jpeg" alt="career-ops hero banner" width="100%">
-# career-ops
+<div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-blueviolet.svg)](https://claude.ai)
+![career-ops](https://img.shields.io/badge/CAREER--OPS-V1.0.1-1414b8?style=for-the-badge)
+![License](https://img.shields.io/badge/LICENSE-MIT-1414b8?style=for-the-badge)
+![Platforms](https://img.shields.io/badge/PLATFORMS-7-1414b8?style=for-the-badge)
+![Modules](https://img.shields.io/badge/MODULES-10-111111?style=for-the-badge)
 
-An agent skill for Claude Code, Codex, Gemini CLI, Cursor, and more — that turns AI into a research-backed career coach, not a generic resume filler.
+# CAREER-OPS
 
-career-ops interviews you like a real coach, surfaces achievements you don't recognize, then generates ready-to-use career materials grounded in peer-reviewed data. Every output passes an anti-slop gate before you see it.
+## NO SLOP. JUST STRATEGY.
 
-## Why This Exists
+An open-source AI career coaching skill for Claude Code, Codex, Gemini CLI, Cursor, and more. Resume optimization, interview prep, job search strategy, and anti-slop quality gates — backed by peer-reviewed research.
 
-75% of resumes are auto-rejected before a human sees them. 67% of hiring managers claim they can spot AI-generated applications. Most career advice online is recycled opinion without data. This skill was built on 5 rounds of verified research to give individual job seekers the same caliber of support that executives pay $500/hour for.
+[![View on GitHub](https://img.shields.io/badge/VIEW_ON_GITHUB-1414b8?style=for-the-badge&logo=github&logoColor=white)](https://github.com/poferraz/career-ops)
+[![Read the Docs](https://img.shields.io/badge/READ_THE_DOCS-111111?style=for-the-badge)](https://github.com/poferraz/career-ops#readme)
+[![Changelog](https://img.shields.io/badge/CHANGELOG-v1.0.1-1414b8?style=for-the-badge)](CHANGELOG.md)
 
-## Features
+</div>
 
-- **Interviewer mode** — Motivational Interviewing framework that mines accomplishments through structured questioning, not self-assessment
-- **10 reference modules** — resume, cover letter, LinkedIn, interview prep, outreach, job search strategy, career pivoting, market data, anti-slop, and live research
-- **Anti-slop quality gate** — every output scored on 5 dimensions (directness, rhythm, trust, authenticity, density); minimum 35/50 or it gets rewritten
-- **Session memory** — learns your background, skills, and preferences across conversations
-- **Research scout** — live web search with mandatory `[UNVERIFIED]` tagging, source quality ranking, and an honest "I don't have that data" fallback
-- **Trust-tiered knowledge base** — every claim tagged T1 (peer-reviewed) through T4 (excluded), so you know what to trust
+---
 
-## The Anti-Slop Difference
+## ── FOUR-STAGE ENGINE
 
-See the difference between generic AI output and what `career-ops` generates after passing through its 5-dimension quality gate:
+Every session follows the same pipeline: **interview first** → route to the right module → score the output → learn for next time.
 
-| Generic AI ("Slop") | `career-ops` Output (Specific & Verifiable) |
-|---------------------|---------------------------------------------|
-| "Streamlined operational processes to improve team efficiency." | "Cut weekly inventory count from 6 hours to 90 minutes by switching to cycle counting." |
-| "Dynamic leader with a demonstrated history of delivering innovative solutions." | "Ran the kitchen remodel with 3 contractors while keeping lunch service running — zero missed days." |
-| "Leveraged data-driven insights to optimize performance and drive results." | "Built a Google Sheet that tracked peak hours; shifted one closer's shift 2 hours later, which dropped overtime 40%." |
+| # | STAGE | DESCRIPTION | TAGS |
+|---|---|---|---|
+| **01** | **INTERVIEWER MODE** | Motivational Interviewing framework that mines accomplishments through structured questioning — not self-assessment. | `MI Framework` · `5 Phases` |
+| **02** | **SMART ROUTING** | Your request is matched to the right reference module. "Tailor my resume" auto-loads `resume.md`. | `10 Modules` · `Auto-Load` |
+| **03** | **ANTI-SLOP GATE** | Output scored on 5 dimensions before delivery. Below 35/50, it gets rewritten automatically. | `35/50 Min` · `5 Dimensions` |
+| **04** | **SESSION MEMORY** | Profile updates after every session — skills discovered, achievements surfaced, preferences saved. | `Persistent` · `Profile` |
 
-## Quick Start
+---
 
-### Claude Code
+## ── INSTALL IN 30 SECONDS
 
-```bash
-# Clone into your custom skills directory
-git clone https://github.com/poferraz/career-ops.git ~/.claude/skills/career-ops && echo "Installed ✓"
-
-# Start a session
-claude
-# Then just say: "Help me with my resume" — the skill activates automatically
-```
-
-### Codex
+> Start a session and say **"Help me with my resume."** The skill activates automatically on any career-related prompt.
 
 ```bash
-git clone https://github.com/poferraz/career-ops.git
-cd career-ops && bash scripts/convert.sh codex
-# Copy output to your Codex instructions directory
+git clone https://github.com/poferraz/career-ops.git ~/.claude/skills/career-ops
 ```
 
-### Gemini CLI
+No API keys required. No MCP servers. No cloud services. Everything runs locally in your agent's context.
 
-```bash
-git clone https://github.com/poferraz/career-ops.git
-cd career-ops && bash scripts/convert.sh gemini
-# Copy output to your GEMINI.md or context file
-```
+| PLATFORM | METHOD | STATUS |
+|---|---|---|
+| Claude Code | `git clone` into `~/.claude/skills/` | ✓ Native |
+| Codex | `bash scripts/convert.sh codex` | ✓ Supported |
+| Gemini CLI | `bash scripts/convert.sh gemini` | ✓ Supported |
+| Cursor | `bash scripts/convert.sh cursor` | ✓ Supported |
+| Antigravity | `bash scripts/convert.sh antigravity` | ✓ Supported |
+| Windsurf | `bash scripts/convert.sh windsurf` | ✓ Supported |
+| OpenCode | `bash scripts/convert.sh opencode` | ✓ Supported |
 
-### Cursor
+> **Other platforms:** The convert script outputs platform-specific formats. See [integrations.md](docs/integrations.md) for setup details.
 
-```bash
-git clone https://github.com/poferraz/career-ops.git
-cd career-ops && bash scripts/convert.sh cursor
-# Copy output to your .cursor/rules/ directory
-```
+---
 
-### Antigravity
+## ── ANTI-SLOP QUALITY GATE
 
-```bash
-git clone https://github.com/poferraz/career-ops.git
-cd career-ops && bash scripts/convert.sh antigravity
-# Copy output to your Antigravity prompts directory
-```
+> Every response is scored on 5 dimensions before you see it. Below **35/50**, it gets rewritten automatically. No exceptions.
 
-## How It Works
+| DIMENSION | SCORE | WHAT IT CATCHES |
+|---|---|---|
+| Directness | 9/10 | Hedging, filler, passive voice |
+| Rhythm | 8/10 | Monotonous sentence structure |
+| Trust | 9/10 | Unsupported claims, invented statistics |
+| Authenticity | 8/10 | Chatbot tone, buzzword density |
+| Density | 8/10 | Sentences that earn no place |
+| **TOTAL** | **42/50** | Minimum passing threshold: **35** |
 
-### 1. Interviewer Mode
+| | BEFORE | AFTER |
+|---|---|---|
+| **Resume bullet** | "Responsible for managing team projects and improving efficiency" | "Led 4-person team delivering $2M platform migration 3 weeks early" |
+| **Interview answer** | "I'm a great communicator and team player" | "Cut stakeholder meeting time 40% by switching to async Loom updates" |
+| **LinkedIn headline** | "Passionate marketing professional driving brand growth" | "Grew SEM revenue $1.4M in 11 months — B2B SaaS, Series A" |
 
-Every session starts with structured interviewing, not a blank prompt. The skill uses Motivational Interviewing (MI) principles — resist the urge to jump to solutions, understand motivations first, listen with empathy, empower the user. A 5-phase intake surfaces your emotional map, identifies gaps, mines accomplishments, extracts transferable skills, and calibrates targets.
+---
 
-### 2. Routing
+## ── REFERENCE MODULES
 
-Your request is matched to the right reference module. "Tailor my resume to this JD" loads `resume.md`. "Help me negotiate" loads `interview.md`. Multi-area requests chain modules in sequence. Only what's needed gets loaded.
+Ten evidence-backed modules covering every stage of the multi-agent career coaching workflow.
 
-### 3. Anti-Slop Gate
+| MODULE | COVERS |
+|---|---|
+| [`resume.md`](references/resume.md) | Eye-tracking data, ATS mechanics, achievement reframing via RISE method |
+| [`cover-letter.md`](references/cover-letter.md) | Gap framing, AI detection reality, Hook → Match → Bridge → Ask structure |
+| [`linkedin.md`](references/linkedin.md) | Profile optimization, headline strategy, posting cadence, engagement hierarchy |
+| [`interview.md`](references/interview.md) | STAR validation, predicted questions from JD, negotiation frameworks (ZOPA/BATNA) |
+| [`outreach.md`](references/outreach.md) | Connection request acceptance rates, cold message frameworks, InMail vs email |
+| [`job-search.md`](references/job-search.md) | Channel effectiveness data, diminishing returns curve, industry-specific duration |
+| [`career-strategy.md`](references/career-strategy.md) | GROW/OSCAR/CLEAR coaching frameworks, cross-industry mobility mapping |
+| [`market-data.md`](references/market-data.md) | Hiring funnel conversion rates, salary research sources, remote work snapshot |
+| [`anti-slop.md`](references/anti-slop.md) | Scoring rubric, banned phrase list, familiarity problem detection |
+| [`research-scout.md`](references/research-scout.md) | Live web search protocol, recency checks, mandatory `[UNVERIFIED]` tagging |
 
-Before any text reaches you, it's checked against banned patterns (throat-clearing openers, filler phrases, Generic Specificity) and scored on 5 dimensions. Below 35/50, it gets rewritten. This is why career-ops output sounds like a human wrote it — because the gate catches everything that sounds like a template.
+---
 
-### 4. Session Learning
+## ── RESEARCH-BACKED
 
-After each session, your profile is updated: skills discovered, achievements surfaced, preferences noted. The next session picks up where you left off.
+> Every claim is tagged T1–T4. No invented statistics. No plausible-sounding numbers. T4 claims are excluded entirely.
 
-## Research Methodology
+| TIER | LABEL | SOURCE TYPE |
+|---|---|---|
+| **T1** | Verified | Peer-reviewed studies, RCTs, meta-analyses |
+| **T2** | Reported | Controlled callback experiments, platform studies |
+| **T3** | Expert | Conventional wisdom from recognized practitioners |
+| **T4** | Excluded | Contradicted by evidence, origin unknown |
 
-The knowledge base was built through 5 rounds of goal-blind deep research, then cross-referenced, contradiction-checked, and tagged by evidence quality using a 4-tier trust system.
+Built through 5 rounds of deep research with goal-blind prompting and contradiction checking. See [research-methodology.md](docs/research-methodology.md) for full methodology.
 
-### Key Studies
+---
 
-| Study | Sample | Finding |
-|-------|--------|---------|
-| Resume callback experiment | 7,712 mock resumes | Two-page resumes get 2.3-2.9x more callbacks for 10+ year candidates |
-| LinkedIn eye-tracking | 4,812 profile reviews (Tobii Pro Fusion) | 19.3s average review; first 3.2s determine interest |
-| Job satisfaction meta-analysis | 38,000+ employees across 113 studies | Significant positive correlation between satisfaction and performance |
-| Career coaching RCT | Randomized controlled trial | Coaching group: 95% employment vs 83% control; +$703/month earnings |
-| Connection request analysis | 16,000+ requests | Personalized messages: 65% acceptance vs 31% blank vs 18% sales language |
-| Hiring funnel data | 242 applicants per opening average | Optimal band: 21-80 applications; 81+ causes quality collapse |
+## ── CONTRIBUTE
 
-Full methodology: [docs/research-methodology.md](docs/research-methodology.md) · Trust tiers: [docs/trust-tiers.md](docs/trust-tiers.md)
+career-ops runs on evidence, not vibes. Every contribution must clear the same anti-slop bar as the skill itself.
 
-## File Structure
+<div align="center">
 
-```
-career-ops/
-├── SKILL.md                          # Main orchestrator — interviewer mode, routing, anti-slop gate
-├── references/
-│   ├── resume.md                     # Eye-tracking data, ATS mechanics, format decisions
-│   ├── cover-letter.md               # Gap framing, AI detection, one-short-story principle
-│   ├── linkedin.md                   # Profile optimization, content strategy, engagement data
-│   ├── interview.md                  # STAR validation, negotiation frameworks, AI interview prep
-│   ├── outreach.md                   # Connection requests, cold messages, organic networking
-│   ├── job-search.md                 # Diminishing returns, channel effectiveness, remote work
-│   ├── career-strategy.md            # Coaching frameworks, cross-industry mobility, RCT evidence
-│   ├── market-data.md                # Funnel conversion, salary sources, mental health data
-│   ├── anti-slop.md                  # Scoring rubric, banned phrases, ESL bias warnings
-│   └── research-scout.md             # Live web search with verification protocol
-├── session/
-│   └── user-profile-template.md      # Template for session persistence
-├── docs/
-│   ├── research-methodology.md       # How the knowledge base was built
-│   ├── trust-tiers.md                # T1-T4 evidence classification system
-│   └── integrations.md               # Multi-agent platform setup guide
-├── scripts/
-│   └── convert.sh                    # Multi-agent compatibility converter
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   ├── feature_request.md
-│   │   └── research_update.md
-│   └── PULL_REQUEST_TEMPLATE.md
-├── LICENSE                           # MIT
-└── .gitignore
-```
+[![Contributing](https://img.shields.io/badge/CONTRIBUTING-READ-1414b8?style=for-the-badge)](CONTRIBUTING.md)
+[![Changelog](https://img.shields.io/badge/CHANGELOG-VIEW-1414b8?style=for-the-badge)](CHANGELOG.md)
+[![Security](https://img.shields.io/badge/SECURITY-POLICY-1414b8?style=for-the-badge)](SECURITY.md)
 
-## Compatibility
+MIT License — open for all platforms and all workers.
 
-| Platform | Status | Method |
-|----------|--------|--------|
-| Claude Code | Native | Install as skill — auto-activates on career-related prompts |
-| Codex | Supported | `scripts/convert.sh codex` — converts to Codex instructions format |
-| Gemini CLI | Supported | `scripts/convert.sh gemini` — converts to GEMINI.md context format |
-| Cursor | Supported | `scripts/convert.sh cursor` — converts to .cursor/rules/ format |
-| Antigravity | Supported | `scripts/convert.sh antigravity` — converts to prompts directory format |
-| Windsurf | Supported | `scripts/convert.sh windsurf` — converts to Windsurf rules format |
-| OpenCode | Supported | `scripts/convert.sh opencode` — converts to OpenCode context format |
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting research updates, reference improvements, and new features.
-
-## License
-
-[MIT](LICENSE)
+</div>
