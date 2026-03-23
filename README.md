@@ -12,7 +12,7 @@
 An open-source AI career coaching skill for Claude Code, Codex, Gemini CLI, Cursor, and more. Resume optimization, interview prep, job search strategy, and anti-slop quality gates — backed by peer-reviewed research.
 
 [![View on GitHub](https://img.shields.io/badge/VIEW_ON_GITHUB-1414b8?style=for-the-badge&logo=github&logoColor=white)](https://github.com/poferraz/career-ops)
-[![Visit Website](https://img.shields.io/badge/VISIT_WEBSITE-111111?style=for-the-badge)](https://carrer-ops.vercel.app/)
+[![Visit Website](https://img.shields.io/badge/VISIT_WEBSITE-111111?style=for-the-badge)](https://career-skill.vercel.app/)
 [![Changelog](https://img.shields.io/badge/CHANGELOG-v1.0.2-1414b8?style=for-the-badge)](CHANGELOG.md)
 
 </div>
