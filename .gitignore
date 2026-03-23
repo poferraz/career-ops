@@ -20,3 +20,8 @@ Thumbs.db
 # IDE configs
 .idea/
 .vscode/
+
+# Personal tracking
+tracking/state.md
+tracking/tasks.md
+tracking/decisions.csv
