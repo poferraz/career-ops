@@ -322,7 +322,7 @@ git commit -m "feat(knowledge): scaffold package and define core heuristic schem
 - Consumes: `TrustTier` from `../types.js`
 - Produces: `classifyTrustTier(url: string, authorOrOrg: string): { tier: TrustTier; weight: number; allowed: boolean; reason: string }`
 
-- [ ] **Step 1: Write the failing classifier test**
+- [x] **Step 1: Write the failing classifier test**
 
 Create `packages/knowledge/tests/trust-classifier.test.ts`:
 ```typescript
@@ -360,12 +360,12 @@ describe('Trust Classifier', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/knowledge/tests/trust-classifier.test.ts`
 Expected: FAIL with "Cannot find module '../src/classifier/trust-classifier.js'".
 
-- [ ] **Step 3: Implement `packages/knowledge/src/classifier/trust-classifier.ts`**
+- [x] **Step 3: Implement `packages/knowledge/src/classifier/trust-classifier.ts`**
 
 ```typescript
 import type { TrustTier } from '../types.js';
@@ -467,12 +467,12 @@ export function classifyTrustTier(url: string, authorOrOrg: string): TrustClassi
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `pnpm test packages/knowledge/tests/trust-classifier.test.ts`
 Expected: PASS (4 tests passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/knowledge/src/classifier/trust-classifier.ts packages/knowledge/tests/trust-classifier.test.ts
