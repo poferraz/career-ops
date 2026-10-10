@@ -53,10 +53,10 @@ export function classifyTrustTier(url: string, authorOrOrg: string): TrustClassi
 
   // T4 rejection checks
   if (
-    T4_DOMAINS.some(d => hostname.includes(d)) ||
+    T4_DOMAINS.some(d => hostname === d || hostname.endsWith('.' + d)) ||
     fullUrlLower.includes('linkedin.com/posts') ||
-    hostname.includes('twitter.com') ||
-    hostname.includes('x.com')
+    hostname === 'twitter.com' || hostname.endsWith('.twitter.com') ||
+    hostname === 'x.com' || hostname.endsWith('.x.com')
   ) {
     return {
       tier: 'T4',
@@ -68,7 +68,7 @@ export function classifyTrustTier(url: string, authorOrOrg: string): TrustClassi
 
   // T1 verification
   if (
-    T1_DOMAINS.some(d => hostname.endsWith(d)) ||
+    T1_DOMAINS.some(d => hostname === d || hostname.endsWith('.' + d)) ||
     authorOrOrg.toLowerCase().includes('bureau of labor statistics') ||
     authorOrOrg.toLowerCase().includes('nber')
   ) {
@@ -81,7 +81,7 @@ export function classifyTrustTier(url: string, authorOrOrg: string): TrustClassi
   }
 
   // T2 verification
-  if (T2_DOMAINS.some(d => hostname.includes(d))) {
+  if (T2_DOMAINS.some(d => hostname === d || hostname.endsWith('.' + d))) {
     return {
       tier: 'T2',
       weight: 0.85,
@@ -91,7 +91,10 @@ export function classifyTrustTier(url: string, authorOrOrg: string): TrustClassi
   }
 
   // T3 verification
-  if (T3_DOMAINS.some(d => hostname.includes(d)) || authorOrOrg.toLowerCase().includes('shrm')) {
+  if (
+    T3_DOMAINS.some(d => hostname === d || hostname.endsWith('.' + d)) ||
+    authorOrOrg.toLowerCase().includes('shrm')
+  ) {
     return {
       tier: 'T3',
       weight: 0.65,

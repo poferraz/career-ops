@@ -23,4 +23,23 @@ describe('RSS Feed Connector', () => {
     expect(docs[0]?.sourceUrl).toBe('https://www.bls.gov/news.release/empsit.nr0.htm');
     expect(docs[0]?.rawText).toContain('150,000');
   });
+
+  it('parses Atom XML feed format (ArXiv style) into RawIngestionDocument objects', () => {
+    const atomXml = `<?xml version="1.0" encoding="UTF-8"?>
+      <feed xmlns="http://www.w3.org/2005/Atom">
+        <title>ArXiv CS.CL Recent Papers</title>
+        <entry>
+          <title>Evaluating Resume Screening with Semantic Encoders</title>
+          <link href="http://arxiv.org/abs/2501.99999v1" rel="alternate" type="text/html"/>
+          <updated>2025-01-20T12:00:00Z</updated>
+          <summary>We analyze ATS embedding representations against human recruiter evaluations.</summary>
+        </entry>
+      </feed>`;
+
+    const docs = parseRssFeedXml(atomXml, 'http://export.arxiv.org/rss/cs.cl');
+    expect(docs.length).toBe(1);
+    expect(docs[0]?.sourceTitle).toBe('Evaluating Resume Screening with Semantic Encoders');
+    expect(docs[0]?.sourceUrl).toBe('http://arxiv.org/abs/2501.99999v1');
+    expect(docs[0]?.rawText).toContain('ATS embedding representations');
+  });
 });

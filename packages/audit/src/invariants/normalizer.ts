@@ -93,70 +93,199 @@ export function canonicalizeDate(raw: string): string {
 
 export function canonicalizeNumber(raw: string): string {
   const clean = raw.trim().replace(/,/g, '');
+
+  // Multipliers: 10x, 2.5X
+  const multMatch = /^([\d.]+)\s*x$/i.exec(clean);
+  if (multMatch && multMatch[1]) {
+    return `${multMatch[1]}x`;
+  }
+
+  // Latencies: 35ms, 450ms, sub-10ms
+  const latMatch = /^(?:sub-)?([\d.]+)\s*ms$/i.exec(clean);
+  if (latMatch && latMatch[1]) {
+    return `${latMatch[1]}ms`;
+  }
+
+  // Billions / Millions / Thousands: 2.5B, 500k
   const bMatch = /^([\d.]+)\s*B$/i.exec(clean);
   if (bMatch && bMatch[1]) return String(Math.round(parseFloat(bMatch[1]) * 1e9));
   const mMatch = /^([\d.]+)\s*M$/i.exec(clean);
   if (mMatch && mMatch[1]) return String(Math.round(parseFloat(mMatch[1]) * 1e6));
   const kMatch = /^([\d.]+)\s*K$/i.exec(clean);
   if (kMatch && kMatch[1]) return String(Math.round(parseFloat(kMatch[1]) * 1e3));
+
+  // Count with unit: "50 nodes" -> "50 nodes"
+  const countUnitMatch = /^([\d.]+)\s+([a-z/]+)$/i.exec(clean);
+  if (countUnitMatch && countUnitMatch[1] && countUnitMatch[2]) {
+    return `${countUnitMatch[1]} ${countUnitMatch[2].toLowerCase()}`;
+  }
+
   return clean;
 }
 
-const COMMON_TECH_TOOLS = [
-  'Kubernetes', 'Docker', 'AWS', 'GCP', 'Azure', 'Kafka', 'PostgreSQL',
-  'MySQL', 'Redis', 'TypeScript', 'Python', 'Go', 'Rust', 'Java', 'C++',
-  'GraphQL', 'React', 'Next.js', 'PyTorch', 'TensorFlow', 'Snowflake',
-  'Databricks', 'Spark', 'Terraform', 'Ollama', 'Elasticsearch'
+export const COMMON_TECH_TOOLS: string[] = [
+  // Languages
+  'TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'Java', 'C++', 'C#',
+  'Ruby', 'PHP', 'Swift', 'Kotlin', 'Scala', 'Elixir', 'Haskell', 'Solidity',
+  'SQL', 'Bash', 'PowerShell',
+  // Frameworks & Runtimes
+  'React', 'Next.js', 'Vue', 'Nuxt', 'Angular', 'Svelte', 'Node.js', 'Express',
+  'NestJS', 'FastAPI', 'Django', 'Flask', 'Spring Boot', 'Ruby on Rails',
+  '.NET', 'GraphQL', 'gRPC', 'Tailwind',
+  // Cloud & Infrastructure
+  'AWS', 'GCP', 'Azure', 'Kubernetes', 'Docker', 'Terraform', 'Ansible',
+  'Helm', 'Linux', 'Unix',
+  // Data & Streaming
+  'Kafka', 'RabbitMQ', 'PostgreSQL', 'MySQL', 'Redis', 'MongoDB', 'Cassandra',
+  'DynamoDB', 'Elasticsearch', 'OpenSearch', 'Snowflake', 'BigQuery', 'Redshift',
+  'Databricks', 'Spark', 'Flink', 'Hadoop', 'Airflow', 'dbt', 'ClickHouse',
+  // AI & ML
+  'PyTorch', 'TensorFlow', 'Keras', 'scikit-learn', 'Hugging Face', 'Ollama',
+  'vLLM', 'LangChain', 'LlamaIndex',
+  // Observability & Security
+  'Prometheus', 'Grafana', 'Datadog', 'OpenTelemetry', 'New Relic', 'Splunk',
+  'Vault', 'OAuth', 'OIDC', 'JWT',
+  // CI/CD & Developer Tools
+  'Git', 'GitHub Actions', 'GitLab CI', 'Jenkins', 'ArgoCD', 'CircleCI'
 ];
 
-export function extractInvariants(text: string): InvariantEntity[] {
+function makeToolRegex(tool: string): RegExp {
+  const escaped = tool.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const startBound = /^\w/.test(tool) ? '\\b' : '(?<=^|\\s)';
+  const endBound = /\w$/.test(tool) ? '\\b' : '(?=$|\\s|[.,;!?:])';
+  return new RegExp(`${startBound}${escaped}${endBound}`, 'i');
+}
+
+export interface ExtractInvariantsOptions {
+  customTools?: string[];
+}
+
+export function extractInvariants(text: string, options: ExtractInvariantsOptions = {}): InvariantEntity[] {
   const entities: InvariantEntity[] = [];
+  const spans: Array<[number, number]> = [];
   let idCounter = 1;
 
-  // Currencies: $1.4M, $250,000, 1.4 million dollars
+  function overlaps(start: number, end: number): boolean {
+    return spans.some(([s, e]) => (start >= s && start < e) || (end > s && end <= e) || (start <= s && end >= e));
+  }
+
+  function addSpan(start: number, end: number): void {
+    spans.push([start, end]);
+  }
+
+  // 1. Currencies: $1.4M, $250,000, 1.4 million dollars
   const currencyRegex = /\$\s*[\d,.]+(?:\s*[kKmMbB]|\s*million|\s*billion|\s*thousand)?(?:\s*dollars)?|\b[\d.]+\s*(?:million|billion|thousand)\s*dollars/gi;
   let match: RegExpExecArray | null;
   while ((match = currencyRegex.exec(text)) !== null) {
     const raw = match[0].trim();
-    entities.push({
-      id: `inv-curr-${idCounter++}`,
-      rawText: raw,
-      classification: 'semantic',
-      normalizedValue: canonicalizeCurrency(raw),
-      category: 'currency'
-    });
+    const start = match.index;
+    const end = start + match[0].length;
+    if (!overlaps(start, end)) {
+      addSpan(start, end);
+      entities.push({
+        id: `inv-curr-${idCounter++}`,
+        rawText: raw,
+        classification: 'semantic',
+        normalizedValue: canonicalizeCurrency(raw),
+        category: 'currency'
+      });
+    }
   }
 
-  // Percentages: 40%, 40.5 percent
+  // 2. Percentages: 40%, 40.5 percent
   const percentRegex = /(?:\b[\d.]+\s*(?:%|percent\b|percentage points\b))/gi;
   while ((match = percentRegex.exec(text)) !== null) {
     const raw = match[0].trim();
-    entities.push({
-      id: `inv-pct-${idCounter++}`,
-      rawText: raw,
-      classification: 'semantic',
-      normalizedValue: canonicalizePercentage(raw),
-      category: 'percentage'
-    });
+    const start = match.index;
+    const end = start + match[0].length;
+    if (!overlaps(start, end)) {
+      addSpan(start, end);
+      entities.push({
+        id: `inv-pct-${idCounter++}`,
+        rawText: raw,
+        classification: 'semantic',
+        normalizedValue: canonicalizePercentage(raw),
+        category: 'percentage'
+      });
+    }
   }
 
-  // Dates: Q3 2024, July 2024, 07/2024
+  // 3. Dates: Q3 2024, July 2024, 07/2024
   const dateRegex = /\b(?:Q[1-4]\s*\d{4}|(?:first|second|third|fourth)\s+quarter\s+of\s+\d{4}|\d{1,2}\/\d{4}|(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})\b/gi;
   while ((match = dateRegex.exec(text)) !== null) {
     const raw = match[0].trim();
-    entities.push({
-      id: `inv-date-${idCounter++}`,
-      rawText: raw,
-      classification: 'semantic',
-      normalizedValue: canonicalizeDate(raw),
-      category: 'date'
-    });
+    const start = match.index;
+    const end = start + match[0].length;
+    if (!overlaps(start, end)) {
+      addSpan(start, end);
+      entities.push({
+        id: `inv-date-${idCounter++}`,
+        rawText: raw,
+        classification: 'semantic',
+        normalizedValue: canonicalizeDate(raw),
+        category: 'date'
+      });
+    }
   }
 
-  // Verbatim technical tools
-  for (const tool of COMMON_TECH_TOOLS) {
-    const escaped = tool.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const toolRegex = new RegExp(`\\b${escaped}\\b`, 'i');
+  // 4. Latencies, multipliers, and throughput rates: 10ms, 450ms, 10x, 250,000 events/sec, 50K QPS
+  const metricRegex = /\b(?:sub-)?[\d,.]+\s*(?:x\b|ms\b|qps\b|rps\b|tps\b|events(?:\/sec)?\b)/gi;
+  while ((match = metricRegex.exec(text)) !== null) {
+    const raw = match[0].trim();
+    const start = match.index;
+    const end = start + match[0].length;
+    if (!overlaps(start, end)) {
+      addSpan(start, end);
+      entities.push({
+        id: `inv-num-${idCounter++}`,
+        rawText: raw,
+        classification: 'semantic',
+        normalizedValue: canonicalizeNumber(raw),
+        category: 'number'
+      });
+    }
+  }
+
+  // 5. Quantified counts with infrastructure units: 50 nodes, 12 microservices, 8 engineers
+  const countRegex = /\b\d+(?:,\d{3})*(?:\.\d+)?(?:\s*[kKmMbB])?\s*(?:nodes|microservices|servers|engineers|users|services|clusters|cores|gpus|vms)\b/gi;
+  while ((match = countRegex.exec(text)) !== null) {
+    const raw = match[0].trim();
+    const start = match.index;
+    const end = start + match[0].length;
+    if (!overlaps(start, end)) {
+      addSpan(start, end);
+      entities.push({
+        id: `inv-num-${idCounter++}`,
+        rawText: raw,
+        classification: 'semantic',
+        normalizedValue: canonicalizeNumber(raw),
+        category: 'number'
+      });
+    }
+  }
+
+  // 6. Standalone engineering figures: 500k, 250,000 (excluding 1-digit trivial numbers)
+  const standaloneNumRegex = /\b\d+(?:,\d{3})+(?:\.\d+)?\b|\b\d+(?:\.\d+)?\s*[kKmMbB]\b/gi;
+  while ((match = standaloneNumRegex.exec(text)) !== null) {
+    const raw = match[0].trim();
+    const start = match.index;
+    const end = start + match[0].length;
+    if (!overlaps(start, end)) {
+      addSpan(start, end);
+      entities.push({
+        id: `inv-num-${idCounter++}`,
+        rawText: raw,
+        classification: 'semantic',
+        normalizedValue: canonicalizeNumber(raw),
+        category: 'number'
+      });
+    }
+  }
+
+  // 7. Verbatim technical tools (built-in + custom)
+  const toolsToScan = [...(options.customTools ?? []), ...COMMON_TECH_TOOLS];
+  for (const tool of toolsToScan) {
+    const toolRegex = makeToolRegex(tool);
     if (toolRegex.test(text)) {
       entities.push({
         id: `inv-tool-${idCounter++}`,
@@ -171,17 +300,38 @@ export function extractInvariants(text: string): InvariantEntity[] {
   return entities;
 }
 
+export interface CheckInvariantOptions {
+  knownEntities?: InvariantEntity[];
+  customTools?: string[];
+}
+
 export function checkInvariantPreservation(
   originalText: string,
   candidateText: string,
-  knownEntities?: InvariantEntity[]
+  optionsOrEntities?: InvariantEntity[] | CheckInvariantOptions | string[]
 ): {
   preserved: boolean;
   missing: InvariantEntity[];
   altered: Array<{ original: InvariantEntity; found?: string }>;
+  originalInvariants: InvariantEntity[];
+  candidateInvariants: InvariantEntity[];
 } {
-  const targets = knownEntities ?? extractInvariants(originalText);
-  const candidateEntities = extractInvariants(candidateText);
+  let knownEntities: InvariantEntity[] | undefined;
+  let customTools: string[] | undefined;
+
+  if (Array.isArray(optionsOrEntities)) {
+    if (optionsOrEntities.length > 0 && typeof optionsOrEntities[0] === 'string') {
+      customTools = optionsOrEntities as string[];
+    } else {
+      knownEntities = optionsOrEntities as InvariantEntity[];
+    }
+  } else if (optionsOrEntities && typeof optionsOrEntities === 'object') {
+    knownEntities = optionsOrEntities.knownEntities;
+    customTools = optionsOrEntities.customTools;
+  }
+
+  const targets = knownEntities ?? extractInvariants(originalText, { customTools });
+  const candidateEntities = extractInvariants(candidateText, { customTools });
 
   const missing: InvariantEntity[] = [];
   const altered: Array<{ original: InvariantEntity; found?: string }> = [];
@@ -203,8 +353,8 @@ export function checkInvariantPreservation(
       }
     }
 
-    if (!matched) {
-      // Also check fallback raw text regex containment
+    if (!matched && target?.rawText) {
+      // Fallback check: character-aware regex match in candidate text
       const escaped = target.rawText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       if (new RegExp(escaped, 'i').test(candidateText)) {
         matched = true;
@@ -219,6 +369,9 @@ export function checkInvariantPreservation(
   return {
     preserved: missing.length === 0,
     missing,
-    altered
+    altered,
+    originalInvariants: targets,
+    candidateInvariants: candidateEntities
   };
 }
+

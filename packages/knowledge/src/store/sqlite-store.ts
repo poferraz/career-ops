@@ -101,9 +101,9 @@ export class KnowledgeStore {
 
     queryStr += ` ORDER BY tier_level DESC, relevance_weight DESC`;
 
-    if (options.limit) {
+    if (options.limit && options.limit > 0) {
       queryStr += ` LIMIT ?`;
-      params.push(options.limit);
+      params.push(Math.floor(options.limit));
     }
 
     const rows = this.db.prepare(queryStr).all(...params) as Array<{

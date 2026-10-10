@@ -52,4 +52,39 @@ describe('Two-Class Invariant Normalizer', () => {
     expect(check.preserved).toBe(false);
     expect(check.missing.some(m => m.rawText === '35%')).toBe(true);
   });
+
+  it('extracts symbol-bearing tech tools correctly (C++, C#, .NET, Node.js)', () => {
+    const text = 'Architected high-performance systems in C++, C#, and .NET Core, migrating legacy Node.js services.';
+    const invariants = extractInvariants(text);
+    const tools = invariants.filter(i => i.classification === 'verbatim' && i.category === 'tool').map(i => i.rawText);
+    
+    expect(tools).toContain('C++');
+    expect(tools).toContain('C#');
+    expect(tools).toContain('.NET');
+    expect(tools).toContain('Node.js');
+  });
+
+  it('extracts latencies, rates, multipliers, and quantified counts', () => {
+    const text = 'Reduced p99 latency from 450ms to 35ms, achieved a 10x throughput gain across 50 nodes at 250,000 events/sec.';
+    const invariants = extractInvariants(text);
+    const metrics = invariants.filter(i => i.category === 'number').map(i => i.normalizedValue);
+
+    expect(metrics).toContain('450ms');
+    expect(metrics).toContain('35ms');
+    expect(metrics).toContain('10x');
+    expect(metrics).toContain('50 nodes');
+    expect(metrics).toContain('250000 events/sec');
+  });
+
+  it('supports custom tool dictionaries for domain-specific technologies', () => {
+    const original = 'Implemented vector search using Milvus and Qdrant clusters.';
+    const rewritten = 'Deployed semantic search using Milvus and Qdrant clusters.';
+    
+    // Milvus and Qdrant can be supplied via customTools
+    const check = checkInvariantPreservation(original, rewritten, ['Milvus', 'Qdrant']);
+    expect(check.preserved).toBe(true);
+    expect(check.originalInvariants.some(i => i.rawText === 'Milvus')).toBe(true);
+    expect(check.originalInvariants.some(i => i.rawText === 'Qdrant')).toBe(true);
+  });
 });
+

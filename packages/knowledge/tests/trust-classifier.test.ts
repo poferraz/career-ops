@@ -29,4 +29,11 @@ describe('Trust Classifier', () => {
     expect(res.weight).toBe(0.0);
     expect(res.allowed).toBe(false);
   });
+
+  it('rejects spoofed domains like fakebls.gov into T4 quarantine', () => {
+    const res = classifyTrustTier('https://fakebls.gov/data', 'Unknown Publisher');
+    expect(res.tier).toBe('T4');
+    expect(res.weight).toBe(0.0);
+    expect(res.allowed).toBe(false);
+  });
 });
