@@ -237,25 +237,27 @@ Starts local Vite server, binds to `localhost:3000`, and opens default browser i
 
 ![Career Studio Desktop UI Reference](../../assets/career-studio-mockup.jpg)
 
-### 6.1 Layout Architecture (Three-Pane Studio)
-The Web Studio is a local-first desktop-style web application (Vite + React + Tailwind) combining the side-by-side diff workflow of `jialinyyzz/humanizer` with the brutalist blueprint aesthetic of `career-ops`:
+### 6.1 Layout Architecture & Neo-Brutalist Design System
+The Web Studio is a local-first desktop-style web application (Vite + React + Tailwind) combining the side-by-side diff workflow of `jialinyyzz/humanizer` with the exact neo-brutalist architectural blueprint identity of `career-skill.vercel.app`:
+* **Design System & Canvas**:
+  * **Background**: Warm light zinc-50 paper canvas (`#fafafa` / `#fbfbfa`) with subtle blue blueprint grid lines.
+  * **Architectural Borders & Shadows**: Bold 3px solid cobalt blue borders (`border-[3px] border-[#1414b8]`) with sharp 6px hard drop shadows (`box-shadow: 6px 6px 0px #1414b8`).
+  * **Typography**: Heavy uppercase display headings (`font-display font-black uppercase text-black`), clean body prose, and monospace technical labels for numbers and tags.
+  * **Highlight Palette**: Bright lime/chartreuse pills (`#d9f99d` / `#ccff00`) for humanized text; coral red strikethrough (`#e11d48`) for deleted corporate filler.
 * **App Bar**:
-  * Workspace Module Switcher: `[Resume Optimizer]` · `[Cover Letter Studio]` · `[LinkedIn Forge]`.
-  * Runtime Status Pill: `Ollama: Hemmingway-1 (27B) + Humanizer (12B) [ACTIVE]` (or Cloud Fallback).
-  * Global Actions: Export menu (PDF, DOCX, Markdown), Settings modal.
-* **Left Pane (25% - Context & Invariant Registry)**:
-  * Drag-and-drop file uploader (PDF/DOCX/MD).
-  * Target Job Description text area with auto-extraction of high-priority semantic keywords.
-  * Locked Entities Chips: visual badges with lock icons for extracted metrics (`$1.4M 🔒`, `40% 🔒`, `Kubernetes 🔒`).
-* **Center Pane (50% - Dual-Engine Transformation Studio)**:
-  * Interactive Side-by-Side Diff Cards for each resume section and bullet.
-  * Red strikethrough for deleted corporate fluff; green bold highlights for active verbs and high-density metrics.
-  * 3-Way Inspection Switch per bullet: `[Original]` vs. `[Hemmingway]` vs. `[Humanized]`.
-  * Inline editable text with real-time metric invariant warnings.
-* **Right Pane (25% - Intelligence & Anti-Slop Radar)**:
-  * **Anti-Slop Radar Chart**: Live SVG spider chart tracking Directness (9/10), Rhythm (8/10), Trust (9/10), Authenticity (8/10), and Density (8/10). Passing threshold marked at 42/50.
-  * **ATS Keyword Match Matrix**: Real-time coverage chips showing matches and gaps from the target JD.
-  * **AI Detection Risk Gauge**: Evaluates burstiness and token perplexity, indicating simulated human authenticity percentage.
+  * Branding: `CAREER-OPS` in bold uppercase black with a cobalt `V1.0 STABLE` tag.
+  * Workspace Tabs: `[Resume Optimizer]` (active) · `[Cover Letter]` · `[LinkedIn]`.
+  * Runtime Status Pill: `Ollama: Hemmingway-1 + Humanizer [LOCAL]` with green active indicator.
+* **Main Transformation Studio (Dual-Card Diff Layout)**:
+  * **Left Card (`01 Draft: what the candidate wrote`)**: Crisp white card with 3px blue border and hard drop-shadow. Renders the original resume text with red strikethroughs across corporate filler phrases.
+  * **Right Card (`02 Rewrite: reads like a person · dense & active`)**: Crisp white card with 3px blue border. Highlights concise action verbs and outcomes with lime-green pills.
+  * **Bottom Invariant Strip (`✓ FACTS KEPT`)**: Horizontal capsule bar displaying protected factual entities with lock icons (`$1.4M 🔒`, `40% overtime 🔒`, `6 hrs to 90 min 🔒`, `Kubernetes 🔒`).
+* **Right Panel (Anti-Slop Quality Gate & ATS Intelligence)**:
+  * White card with 3px blue border and 6px hard drop shadow.
+  * **Score Display**: Large bold cobalt `42/50` score badge with passing threshold indicated.
+  * **5 Scoring Dimensions**: Directness (9/10), Rhythm (8/10), Trust (10/10), Authenticity (8/10), Density (8/10).
+  * **ATS Keywords Match**: Interactive chips showing verified vs. missing job description skill vectors.
+  * **AI Detection Risk Gauge**: Real-time simulated human authenticity rating (e.g. 8% AI Risk / 92% Human Authentic).
 
 ### 6.2 The Three Product Workspaces
 1. **Resume Optimizer**: Bullet-by-bullet AST transformation, keyword injection, single-column ATS verification.
