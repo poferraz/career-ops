@@ -4,7 +4,7 @@ const ACTION_VERBS = [
   'built', 'engineered', 'architected', 'developed', 'designed', 'scaled',
   'optimized', 'reduced', 'increased', 'boosted', 'implemented', 'slashed',
   'automated', 'orchestrated', 'authored', 'deployed', 'migrated', 'configured',
-  'refactored', 'streamlined', 'cut', 'delivered', 'led'
+  'refactored', 'streamlined', 'cut', 'delivered', 'led', 'improved'
 ];
 
 export function evaluateDensity(bulletsOrText: string[] | string): AuditDimensionScore {
