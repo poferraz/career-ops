@@ -19,6 +19,12 @@ node_modules/
 # OS files
 Thumbs.db
 
+# Do not ignore project packages (e.g. authenticity)
+!packages/**
+packages/**/dist/
+packages/**/node_modules/
+packages/**/*.tsbuildinfo
+
 # IDE configs
 .idea/
 .vscode/
