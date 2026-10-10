@@ -162,7 +162,7 @@ git commit -m "chore: scaffold monorepo root with pnpm workspaces, typescript an
 - Consumes: `zod` for runtime schema validation
 - Produces: `KnowledgeHeuristic`, `TrustTier`, `HeuristicDomain`, `IngestionEntry` schemas and types
 
-- [ ] **Step 1: Create `packages/knowledge/package.json`**
+- [x] **Step 1: Create `packages/knowledge/package.json`**
 
 ```json
 {
@@ -185,7 +185,7 @@ git commit -m "chore: scaffold monorepo root with pnpm workspaces, typescript an
 }
 ```
 
-- [ ] **Step 2: Create `packages/knowledge/tsconfig.json`**
+- [x] **Step 2: Create `packages/knowledge/tsconfig.json`**
 
 ```json
 {
@@ -198,7 +198,7 @@ git commit -m "chore: scaffold monorepo root with pnpm workspaces, typescript an
 }
 ```
 
-- [ ] **Step 3: Write the failing type schema test**
+- [x] **Step 3: Write the failing type schema test**
 
 Create `packages/knowledge/tests/types.test.ts`:
 ```typescript
@@ -249,12 +249,12 @@ describe('Knowledge Types & Schema', () => {
 });
 ```
 
-- [ ] **Step 4: Run test to verify it fails**
+- [x] **Step 4: Run test to verify it fails**
 
 Run: `pnpm test`
 Expected: FAIL with "Cannot find module '../src/types.js'".
 
-- [ ] **Step 5: Implement `packages/knowledge/src/types.ts`**
+- [x] **Step 5: Implement `packages/knowledge/src/types.ts`**
 
 ```typescript
 import { z } from 'zod';
@@ -298,12 +298,12 @@ export interface RawIngestionDocument {
 }
 ```
 
-- [ ] **Step 6: Run test to verify it passes**
+- [x] **Step 6: Run test to verify it passes**
 
 Run: `pnpm test packages/knowledge/tests/types.test.ts`
 Expected: PASS (2 tests passed).
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add packages/knowledge/
