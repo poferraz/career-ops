@@ -25,11 +25,12 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 - Completed Task 6: Feed Connectors & Dynamic Ingestion (`parseRssFeedXml` deterministic regex-based XML extraction for BLS and research feeds).
 - Completed Task 7: Package Public API & End-to-End Integration (`packages/knowledge/src/index.ts`, passing all 12 Vitest tests, clean `tsc` build).
 - Completed Task 1 of Phase 1: Package Scaffold & Core Schemas (`@career-ops/audit`, Zod schemas for `InvariantEntity`, `AuditReport`, `AuditDimensionScore`, `ThreeBandGateStatus`, `AtsScanResult`).
-- Pushed all Phase 0 and Phase 1 Task 1 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
+- Completed Task 2 of Phase 1: Two-Class Invariant Normalizer & Entity Matcher (`canonicalizeCurrency`, `canonicalizePercentage`, `canonicalizeDate`, `canonicalizeNumber`, `extractInvariants`, `checkInvariantPreservation` with 100% metric preservation across format restylings).
+- Pushed all Phase 0 and Phase 1 Tasks 1-2 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
 
 ## In Progress
 
-- Phase 1 Task 2: Two-Class Invariant Normalizer & Entity Matcher (`@career-ops/audit`).
+- Phase 1 Task 3: Invariant Sentinel & 4-Step Fallback State Machine (`packages/audit/src/invariants/sentinel.ts`).
 
 ## Blocked
 
@@ -37,8 +38,8 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 
 ## Next
 
-- Execute Task 2: Implement `canonicalizeCurrency`, `canonicalizePercentage`, `canonicalizeDate`, `canonicalizeNumber`, `extractInvariants`, and `checkInvariantPreservation` in `packages/audit/src/invariants/normalizer.ts`.
-- Execute Task 3: Invariant Sentinel & 4-Step Fallback State Machine (`packages/audit/src/invariants/sentinel.ts`).
+- Execute Task 3: Invariant Sentinel & 4-Step Fallback State Machine (`reconcileBullet`).
+- Execute Task 4: Authenticity & Fuzzy Banned Phrase Matcher (`evaluateAuthenticity`).
 
 ## Decisions Made
 
