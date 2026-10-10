@@ -231,3 +231,45 @@ Starts local Vite server, binds to `localhost:3000`, and opens default browser i
 * **Gap 2.4 (Orphaned Inference on Cancellation)**: User cancels mid-run with `Ctrl+C`.  
   * *Resolution*: Trap `SIGINT`, cancel active HTTP request streams, clean up temporary files, and cleanly restore terminal cursor.
 
+---
+
+## 6. Section 3: Desktop-Grade Web Studio UI & UX (`@career-ops/web`)
+
+![Career Studio Desktop UI Reference](../../assets/career-studio-mockup.jpg)
+
+### 6.1 Layout Architecture (Three-Pane Studio)
+The Web Studio is a local-first desktop-style web application (Vite + React + Tailwind) combining the side-by-side diff workflow of `jialinyyzz/humanizer` with the brutalist blueprint aesthetic of `career-ops`:
+* **App Bar**:
+  * Workspace Module Switcher: `[Resume Optimizer]` · `[Cover Letter Studio]` · `[LinkedIn Forge]`.
+  * Runtime Status Pill: `Ollama: Hemmingway-1 (27B) + Humanizer (12B) [ACTIVE]` (or Cloud Fallback).
+  * Global Actions: Export menu (PDF, DOCX, Markdown), Settings modal.
+* **Left Pane (25% - Context & Invariant Registry)**:
+  * Drag-and-drop file uploader (PDF/DOCX/MD).
+  * Target Job Description text area with auto-extraction of high-priority semantic keywords.
+  * Locked Entities Chips: visual badges with lock icons for extracted metrics (`$1.4M 🔒`, `40% 🔒`, `Kubernetes 🔒`).
+* **Center Pane (50% - Dual-Engine Transformation Studio)**:
+  * Interactive Side-by-Side Diff Cards for each resume section and bullet.
+  * Red strikethrough for deleted corporate fluff; green bold highlights for active verbs and high-density metrics.
+  * 3-Way Inspection Switch per bullet: `[Original]` vs. `[Hemmingway]` vs. `[Humanized]`.
+  * Inline editable text with real-time metric invariant warnings.
+* **Right Pane (25% - Intelligence & Anti-Slop Radar)**:
+  * **Anti-Slop Radar Chart**: Live SVG spider chart tracking Directness (9/10), Rhythm (8/10), Trust (9/10), Authenticity (8/10), and Density (8/10). Passing threshold marked at 42/50.
+  * **ATS Keyword Match Matrix**: Real-time coverage chips showing matches and gaps from the target JD.
+  * **AI Detection Risk Gauge**: Evaluates burstiness and token perplexity, indicating simulated human authenticity percentage.
+
+### 6.2 The Three Product Workspaces
+1. **Resume Optimizer**: Bullet-by-bullet AST transformation, keyword injection, single-column ATS verification.
+2. **Cover Letter Studio**: Implements the Hook $\rightarrow$ Match $\rightarrow$ Close methodology with authentic human tone calibration.
+3. **LinkedIn Forge**: Generates search-optimized Headlines (220 char limit), 3-act narrative About sections, and scannable experience summaries.
+
+### 6.3 Section 3 Gap Review
+* **Gap 3.1 (Browser CORS with Local Ollama)**: Browser security blocks direct `fetch('http://localhost:11434')`.  
+  * *Resolution*: Vite dev server / Node local runner proxies `/api/*` requests directly to Ollama, eliminating all browser CORS issues.
+* **Gap 3.2 (Virtualization on Long Diffs)**: Heavy diff calculations cause frame stutter on 3-page resumes.  
+  * *Resolution*: Virtualized DOM list rendering (`@tanstack/react-virtual`) and offloading token diffing to a dedicated Web Worker (`diff.worker.ts`).
+* **Gap 3.3 (Accidental Manual Edit Metric Corruption)**: User manually edits a bullet and deletes or mistypes a metric.  
+  * *Resolution*: Inline Invariant Sentinel alerts the user immediately with a warning badge if any locked metric is missing.
+* **Gap 3.4 (Window Cramping on Narrow Screens)**: 3-pane layout becomes crowded under 1280px width.  
+  * *Resolution*: Responsive drawer design: Intelligence & Radar inspector collapses into a floating drawer on screens $<1280\text{px}$.
+
+
