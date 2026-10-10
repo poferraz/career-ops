@@ -15,6 +15,36 @@
 - **Local-First & Zero Leakage:** SQLite storage resides locally; no credentials or API keys committed to repository files.
 - **60/30/10 Architecture:** 60% traditional code (SQLite, feed parsers, Vitest), 30% deterministic rules (T1–T4 classifier, TTL checks, schema gates), 10% AI inference (ephemeral Qwen2.5-7B/3B JSON structuring).
 - **Test-Driven Development:** Failing test first, minimal passing code, 100% assertions verified before committing.
+- **No-Detector Law:** Never implement or advertise AI detector bypass mechanisms.
+
+---
+
+### Task 0: Knowledge Base Alignment & Doc-Hygiene
+
+**Files:**
+- Modify: `docs/trust-tiers.md`
+- Modify: `references/anti-slop.md`
+- Modify: `references/resume.md`
+
+**Interfaces:**
+- Consumes: Adjudicated findings from Audit 3 Adjudication
+- Produces: Clean, aligned knowledge files free of the 6-second myth, correct Robert Half 67% slowdown attribution, InterviewPal 312 sample size, and hybrid ATS vendor reality.
+
+- [ ] **Step 1: Update `docs/trust-tiers.md`**
+Align with adjudicated facts: InterviewPal 312 recruiters cursor telemetry, Robert Half 67% AI fatigue slowdown, Ladders 2018 7.4s skim, and hybrid ATS architecture (exact Boolean filters + semantic talent ranking).
+
+- [ ] **Step 2: Update `references/anti-slop.md`**
+Update statistics table with verified findings, clarify commercial AI detector unreliability and ATS lack of detectors, update scoring rubric to specify section-pooled sentence standard deviation for Rhythm, graded verifiability for Trust, and Three-Band Quality Gate (>= 42 Certified).
+
+- [ ] **Step 3: Update `references/resume.md`**
+Document enterprise ATS hybrid reality (exact Boolean strings + semantic ranking across Workday HiredScore, Greenhouse in-house parser, Lever AWS Bedrock Talent Fit, and Ashby), and cite 88% HBS/Accenture automated filter rate.
+
+- [ ] **Step 4: Commit doc-hygiene changes**
+
+```bash
+git add docs/trust-tiers.md references/anti-slop.md references/resume.md
+git commit -m "docs: align reference documents with audit adjudication findings"
+```
 
 ---
 
@@ -750,8 +780,8 @@ git commit -m "feat(knowledge): implement SQLite store with TTL expiration and t
     "publishedAt": "2025-01-10T00:00:00.000Z",
     "expiresAt": "2029-01-10T00:00:00.000Z",
     "ruleKey": "WORKDAY_SINGLE_COLUMN_REQUIRED",
-    "content": "Workday ATS parsers linearize multi-column templates by reading horizontally across columns, interleave text and corrupting candidate chronology.",
-    "actionableDirective": "Strictly enforce single-column layouts with standard semantic headings.",
+    "content": "Workday ATS parsers linearize multi-column templates by reading horizontally across columns, interleaving text and corrupting chronology. Ranking combines structural parsing with HiredScore machine intelligence.",
+    "actionableDirective": "Strictly enforce single-column layouts with standard semantic headings (Experience, Education, Skills).",
     "metadata": {
       "vendor": "workday",
       "relevanceWeight": 0.85
@@ -761,16 +791,80 @@ git commit -m "feat(knowledge): implement SQLite store with TTL expiration and t
     "id": "ats-greenhouse-001",
     "domain": "ats-parsing",
     "trustTier": "T2",
-    "sourceTitle": "Greenhouse Resume Parsing Heuristics",
+    "sourceTitle": "Greenhouse Resume Parsing Heuristics & Talent Matching",
     "sourceUrl": "https://greenhouse.io/docs/resume-parser",
     "publishedAt": "2025-01-15T00:00:00.000Z",
     "expiresAt": "2029-01-15T00:00:00.000Z",
-    "ruleKey": "GREENHOUSE_EXACT_SKILL_VECTOR_MATCH",
-    "content": "Greenhouse matches extracted skills against the requisition job description embedding space without penalizing authentic human phrasing.",
-    "actionableDirective": "Inject target skills into verifiable bullet context rather than isolated keyword stuffing blocks.",
+    "ruleKey": "GREENHOUSE_PATENTED_PARSER_MATCH",
+    "content": "Greenhouse utilizes a patented in-house resume parser coupled with exact-match Preferred/Required queries and semantic Talent Matching.",
+    "actionableDirective": "Inject target JD technical skills into verifiable bullet context rather than isolated keyword stuffing blocks.",
     "metadata": {
       "vendor": "greenhouse",
       "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "ats-lever-001",
+    "domain": "ats-parsing",
+    "trustTier": "T2",
+    "sourceTitle": "Lever Built-In Parser & Talent Fit Mechanics",
+    "sourceUrl": "https://lever.co/docs/talent-fit",
+    "publishedAt": "2025-01-20T00:00:00.000Z",
+    "expiresAt": "2029-01-20T00:00:00.000Z",
+    "ruleKey": "LEVER_TALENT_FIT_ALIGNMENT",
+    "content": "Lever employs an in-house extraction parser and opt-in Talent Fit scoring powered by AWS Bedrock foundation models with IBM watsonx.governance guardrails.",
+    "actionableDirective": "Ensure core technical requirements appear in recent job role descriptions with quantifiable context.",
+    "metadata": {
+      "vendor": "lever",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "recruiter-attention-001",
+    "domain": "resume-density",
+    "trustTier": "T2",
+    "sourceTitle": "InterviewPal Recruiter Telemetry (2025) & Ladders Eye-Tracking",
+    "sourceUrl": "https://interviewpal.com/research/recruiter-telemetry",
+    "publishedAt": "2025-01-15T00:00:00.000Z",
+    "expiresAt": "2029-01-15T00:00:00.000Z",
+    "ruleKey": "RECRUITER_11_SECOND_INITIAL_REVIEW",
+    "content": "Recruiters spend a median of 11.2 seconds on initial candidate reviews (InterviewPal telemetry across 312 recruiters) and 7.4 seconds skimming (Ladders 2018). Resumes that survive initial scan receive a median 1m 34s deep read.",
+    "actionableDirective": "Front-load metrics, tools, and quantified outcomes in the first third of each bullet point.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "recruiter-ai-fatigue-001",
+    "domain": "resume-density",
+    "trustTier": "T2",
+    "sourceTitle": "Robert Half HR Leadership Survey & TopResume AI Study",
+    "sourceUrl": "https://roberthalf.com/research/ai-hiring-impact-2026",
+    "publishedAt": "2026-01-10T00:00:00.000Z",
+    "expiresAt": "2030-01-10T00:00:00.000Z",
+    "ruleKey": "RECRUITER_AI_FATIGUE_SLOWDOWN",
+    "content": "67% of HR leaders report reviewing AI-generated applications has slowed down hiring (Robert Half 2026), and 33.5% spot generic AI writing within 20 seconds, with 19.6% rejecting outright (TopResume 2025).",
+    "actionableDirective": "Purge all corporate buzzwords ('spearheaded', 'proven track record') and inject human sentence burstiness.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "ats-boolean-gate-001",
+    "domain": "ats-parsing",
+    "trustTier": "T1",
+    "sourceTitle": "Harvard Business School & Accenture: Hidden Workers, Untapped Talent",
+    "sourceUrl": "https://www.hbs.edu/managing-the-future-of-work/research/Pages/hidden-workers.aspx",
+    "publishedAt": "2021-09-01T00:00:00.000Z",
+    "expiresAt": "2029-09-01T00:00:00.000Z",
+    "ruleKey": "ENTERPRISE_ATS_CRITERIA_FILTER",
+    "content": "88% of enterprise employers acknowledge that automated ATS filters disqualify qualified high-skills applicants who miss exact keyword criteria strings listed in job postings.",
+    "actionableDirective": "Dual-objective optimization is mandatory: preserve exact JD skill strings while maximizing semantic vector alignment.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 1.0
     }
   },
   {

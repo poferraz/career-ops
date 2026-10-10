@@ -15,7 +15,7 @@ Multiple independent sources, peer-reviewed research, government data, or inspec
 - Career coaching: 95% vs 83% employment (randomized controlled trial)
 - AI cover letter callback increase: +3.56 pp (difference-in-differences analysis)
 - GPTZero 15% false positive rate (Stanford research)
-- ATS semantic matching via SBERT/GloVe/Doc2Vec (verified from open-source code)
+- ATS semantic matching and hybrid filtering: exact-match Boolean filters disqualify 88% of qualified candidates (Harvard Business School & Accenture 2021) while semantic vectors rank talent fit
 - 514,000 discouraged workers (Bureau of Labor Statistics)
 - EU Pay Transparency Directive June 2026 (legislation)
 
@@ -26,14 +26,14 @@ Multiple independent sources, peer-reviewed research, government data, or inspec
 Named industry surveys, platform analytics, single controlled experiments.
 
 **Examples in this repo:**
-- 11.2-second resume scan time (InterviewPal, 847 hiring managers)
+- 11.2-second median initial resume review (InterviewPal 2025 telemetry, 312 recruiters across 4,289 reviews) and 7.4-second skim (Ladders 2018)
 - Two-page resume advantage 2.3-2.9x (ResumeGo, 7,712 resumes)
 - LinkedIn eye-tracking data (Tobii Pro Fusion, 4,812 profiles)
 - Connection request acceptance rates (16,000+ requests analyzed)
 - Diminishing returns curve for applications (named industry survey)
 - HireVue measures 25,000 data points per interview
 - Job changers get 14.8% salary increase vs 5.8% for loyalists
-- 67% of hiring managers claim they can detect AI content
+- 67% of HR leaders report AI-generated applications slow down hiring (Robert Half 2026); 33.5% spot generic AI writing within 20s (TopResume 2025)
 
 **What T2 means for the skill:** Present these as "research shows" or "data from [source] indicates." Include sample sizes when available. Acknowledge single-source limitations when relevant.
 
@@ -57,8 +57,9 @@ Single-source claims with no methodology, vendor marketing, or contradicted by s
 **What T4 means:** These claims were found during research but excluded from the knowledge base. They don't appear in any reference file.
 
 **Examples of what gets excluded:**
-- "6-7 second resume scan time" — contradicted by the 11.2-second eye-tracking study (T2)
-- "Keyword stuff your resume" — contradicted by ATS semantic matching evidence (T1)
+- "6-7 second resume scan time" — contradicted by verified attention tracking: median 11.2s review (InterviewPal 2025) and 7.4s skim (Ladders 2018)
+- "Keyword stuff your resume" — contradicted by ATS semantic matching and hybrid ranking evidence (T1)
+- "Pure semantic ATS without keywords" — contradicted by 88% enterprise criteria rejection rate (HBS/Accenture 2021)
 - Vendor claims without methodology or sample sizes
 - Advice from a single blog post with no supporting data
 

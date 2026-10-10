@@ -15,39 +15,39 @@ Before generating a resume, collect:
 
 ## How Recruiters Actually Read Resumes
 
-Eye-tracking data from 847 hiring managers reviewing 4,289 resumes:
+Attention tracking data from recruiter platform telemetry (InterviewPal 2025: 312 recruiters reviewing 4,289 resumes) and eye-tracking studies (Ladders 2018):
 
 | Finding | Tier |
 |---------|------|
-| Average initial scan time: 11.2 seconds (not 6-7 as commonly cited) | T2 |
-| F-pattern reading: top of page → left margin → first bullets | T2 |
-| 73% never read past the first third of page one | T2 |
-| If candidate survives scan: median 1 min 34 sec verification read | T2 |
+| Median initial review: 11.2 seconds (InterviewPal cursor telemetry across 312 recruiters) | T2 |
+| Recruiter initial skim: 7.4 seconds (Ladders 2018 eye-tracking) | T2 |
+| F-pattern scanning: top of page → left margin → first bullets | T2 |
+| 73% of reviewers never read past the first third of page one | T2 |
+| If candidate survives initial scan: median 1 min 34 sec deep verification read | T2 |
 
 **Implication**: The top third of page one is the entire resume for 73% of reviewers. Front-load the strongest content. Name, target title, and top 2-3 achievements must land in the F-pattern scan zone.
 
 ---
 
-## How ATS Actually Works
+## How ATS Actually Works: The Hybrid Gate Reality
 
-Forget everything you've heard about keyword stuffing. It's wrong.
+Enterprise ATS platforms (Workday, Greenhouse, Ashby, Lever) do not run automated AI detectors, nor are they purely semantic vector databases. They operate as **hybrid gates**:
 
-| Finding | Tier |
-|---------|------|
-| Modern ATS uses NLP semantic matching, not keyword frequency | T1 |
-| Models used: SBERT, GloVe, Doc2Vec (verified from open-source ATS code) | T1 |
-| Content earlier in a section gets higher relevance scores | T2 |
-| Multi-column layouts scramble in text extraction | T1 |
-| Legacy Taleo installations break on PDF parsing | T2 |
-| Chronological format preferred by both ATS and humans | T2 |
-| Functional resumes are highly vulnerable to ATS rejection | T3 |
+| Finding | Platform / Study | Tier |
+|---------|------------------|------|
+| 88% of enterprise employers filter out qualified candidates who miss exact criteria strings | Harvard Business School & Accenture (2021) | T1 |
+| Greenhouse uses patented in-house parsing + exact-match Preferred/Required queries + Talent Matching | Greenhouse Platform Architecture | T2 |
+| Workday combines structural document extraction with HiredScore machine intelligence ranking | Workday / HiredScore Engineering | T2 |
+| Lever combines in-house parsing with opt-in Talent Fit scoring powered by AWS Bedrock | Lever / IBM watsonx Architecture | T2 |
+| Multi-column layouts scramble in text extraction, corrupting chronology | Universal ATS Parser Heuristics | T1 |
+| Legacy Taleo installations break on complex PDF parsing | Taleo Vendor Documentation | T2 |
+| Chronological format preferred by both ATS parsers and human recruiters | Cross-Platform Recruiting Consensus | T2 |
 
-### Semantic Alignment (Not Keyword Stuffing)
-
-Modern ATS understands that "managed a team" and "led a team" mean the same thing. Instead of repeating exact keywords, align your language semantically with the job description:
-- Mirror the JD's framing of responsibilities (if they say "own," don't say "assisted with")
-- Use the same level of specificity (if the JD names tools, name the tools you've used)
-- Match the seniority language (if the JD says "drive strategy," don't say "help with planning")
+### The Dual-Objective Rule: Exact Match + Semantic Density
+Do not keyword stuff in isolated blocks (which fails recruiter verification), but do not rely on purely conceptual phrasing alone:
+- **Exact Skill Insertion**: Explicitly name required technologies, languages, and frameworks (`Kubernetes`, `Go`, `PostgreSQL`) verbatim as requested in the JD.
+- **Verifiable Operational Context**: Weave required terms directly into achievement bullets demonstrating scope and outcome (e.g., *"Orchestrated 14 Kubernetes microservices handling 2M+ QPS"*).
+- **Mirror Seniority Language**: Match the job post's scope verbs (e.g., if the JD seeks someone to "architect high-throughput consensus," align experience phrasing directly).
 
 ### Format Decision Tree
 
