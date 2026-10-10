@@ -16,11 +16,13 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 - Defined canonical Clief map (`docs/clief/INDEX.md`), brief (`docs/clief/BRIEF.md`), and agent charter (`docs/clief/AGENT-CHARTER.md`).
 - Approved canonical Clief PRD (`docs/clief/PRD.md`) with explicit 60/30/10 split, Four-Stage Pipeline, 4-Layer Hybrid Ingestion, and risk gates.
 - Updated Design Specification (`docs/superpowers/specs/2026-10-10-dual-engine-resume-product-design.md`) across all 10 sections.
+- Completed Task 0: Knowledge Base Alignment & Doc-Hygiene (`references/resume.md`, `references/anti-slop.md`, `docs/trust-tiers.md`).
+- Completed Task 1: Monorepo Root Scaffolding & Toolchain (`pnpm-workspace.yaml`, `package.json`, `tsconfig.base.json`, `tsconfig.json`, `vitest.config.ts`, `pnpm install`, and clean Vitest run).
+- Pushed all branches and commits to GitHub (`feat/dual-engine-resume-product`).
 
 ## In Progress
 
-- Updating Phase 0 implementation plan (`docs/superpowers/plans/2026-10-10-dual-engine-resume-product-phase-0.md`) to include Task 0 (Doc-Hygiene & References Alignment).
-- Preparing for Task 1 monorepo scaffolding.
+- Task 2: Package Scaffold & Core Types (`@career-ops/knowledge`).
 
 ## Blocked
 
@@ -28,9 +30,9 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 
 ## Next
 
-- Author and verify Task 0 in Phase 0 Implementation Plan.
-- Establish workspace scaffold: pnpm monorepo configuration (`pnpm-workspace.yaml`, `package.json`, `tsconfig.json`, `vitest.config.ts`).
-- Run Task 1 TDD steps: `pnpm install` and verify Vitest harness.
+- Execute Task 2: Scaffold `packages/knowledge` package (`package.json`, `tsconfig.json`, `src/types.ts`, `tests/types.test.ts`).
+- Execute Task 3: Deterministic T1–T4 Trust Classifier.
+- Execute Task 4: SQLite Knowledge Store & TTL Query Engine.
 
 ## Decisions Made
 

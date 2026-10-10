@@ -30,16 +30,16 @@
 - Consumes: Adjudicated findings from Audit 3 Adjudication
 - Produces: Clean, aligned knowledge files free of the 6-second myth, correct Robert Half 67% slowdown attribution, InterviewPal 312 sample size, and hybrid ATS vendor reality.
 
-- [ ] **Step 1: Update `docs/trust-tiers.md`**
+- [x] **Step 1: Update `docs/trust-tiers.md`**
 Align with adjudicated facts: InterviewPal 312 recruiters cursor telemetry, Robert Half 67% AI fatigue slowdown, Ladders 2018 7.4s skim, and hybrid ATS architecture (exact Boolean filters + semantic talent ranking).
 
-- [ ] **Step 2: Update `references/anti-slop.md`**
+- [x] **Step 2: Update `references/anti-slop.md`**
 Update statistics table with verified findings, clarify commercial AI detector unreliability and ATS lack of detectors, update scoring rubric to specify section-pooled sentence standard deviation for Rhythm, graded verifiability for Trust, and Three-Band Quality Gate (>= 42 Certified).
 
-- [ ] **Step 3: Update `references/resume.md`**
+- [x] **Step 3: Update `references/resume.md`**
 Document enterprise ATS hybrid reality (exact Boolean strings + semantic ranking across Workday HiredScore, Greenhouse in-house parser, Lever AWS Bedrock Talent Fit, and Ashby), and cite 88% HBS/Accenture automated filter rate.
 
-- [ ] **Step 4: Commit doc-hygiene changes**
+- [x] **Step 4: Commit doc-hygiene changes**
 
 ```bash
 git add docs/trust-tiers.md references/anti-slop.md references/resume.md
@@ -61,14 +61,14 @@ git commit -m "docs: align reference documents with audit adjudication findings"
 - Consumes: None (root configuration)
 - Produces: Monorepo workspace orchestration, root build and test scripts (`pnpm test`, `pnpm build`)
 
-- [ ] **Step 1: Create `pnpm-workspace.yaml`**
+- [x] **Step 1: Create `pnpm-workspace.yaml`**
 
 ```yaml
 packages:
   - 'packages/*'
 ```
 
-- [ ] **Step 2: Create root `package.json`**
+- [x] **Step 2: Create root `package.json`**
 
 ```json
 {
@@ -90,7 +90,7 @@ packages:
 }
 ```
 
-- [ ] **Step 3: Create `tsconfig.base.json`**
+- [x] **Step 3: Create `tsconfig.base.json`**
 
 ```json
 {
@@ -110,7 +110,7 @@ packages:
 }
 ```
 
-- [ ] **Step 4: Create root `tsconfig.json`**
+- [x] **Step 4: Create root `tsconfig.json`**
 
 ```json
 {
@@ -122,7 +122,7 @@ packages:
 }
 ```
 
-- [ ] **Step 5: Create root `vitest.config.ts`**
+- [x] **Step 5: Create root `vitest.config.ts`**
 
 ```typescript
 import { defineConfig } from 'vitest/config';
@@ -136,12 +136,12 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 6: Install dependencies & verify vitest execution**
+- [x] **Step 6: Install dependencies & verify vitest execution**
 
 Run: `pnpm install && pnpm test`
 Expected: `No test files found, exiting with code 0` (or Vitest reports 0 test files passed).
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add package.json pnpm-workspace.yaml tsconfig.base.json tsconfig.json vitest.config.ts pnpm-lock.yaml
