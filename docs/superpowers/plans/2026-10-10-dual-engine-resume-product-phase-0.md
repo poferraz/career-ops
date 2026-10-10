@@ -491,7 +491,7 @@ git commit -m "feat(knowledge): implement deterministic T1-T4 trust classificati
 - Consumes: `KnowledgeHeuristic`, `KnowledgeHeuristicSchema`, `HeuristicDomain` from `../types.js`
 - Produces: `KnowledgeStore` class with `insert(heuristic: KnowledgeHeuristic): void`, `query(domain: HeuristicDomain, options?: QueryOptions): KnowledgeHeuristic[]`, `close(): void`
 
-- [ ] **Step 1: Write the failing SQLite store test**
+- [x] **Step 1: Write the failing SQLite store test**
 
 Create `packages/knowledge/tests/sqlite-store.test.ts`:
 ```typescript
@@ -587,172 +587,10 @@ describe('SQLite Knowledge Store', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
-
-Run: `pnpm test packages/knowledge/tests/sqlite-store.test.ts`
-Expected: FAIL with "Cannot find module '../src/store/sqlite-store.js'".
-
-- [ ] **Step 3: Implement `packages/knowledge/src/store/sqlite-store.ts`**
-
-```typescript
-import Database, { type Database as SQLiteDatabase } from 'better-sqlite3';
-import {
-  KnowledgeHeuristicSchema,
-  type KnowledgeHeuristic,
-  type HeuristicDomain,
-  type TrustTier
-} from '../types.js';
-
-export interface QueryOptions {
-  vendor?: string;
-  minTier?: 'T1' | 'T2' | 'T3';
-  limit?: number;
-}
-
-const TIER_NUM_MAP: Record<TrustTier, number> = {
-  T1: 3,
-  T2: 2,
-  T3: 1,
-  T4: 0
-};
-
-export class KnowledgeStore {
-  private db: SQLiteDatabase;
-
-  constructor(dbPath: string = ':memory:') {
-    this.db = new Database(dbPath);
-    this.init();
-  }
-
-  private init(): void {
-    this.db.exec(`
-      CREATE TABLE IF NOT EXISTS heuristics (
-        id TEXT PRIMARY KEY,
-        domain TEXT NOT NULL,
-        trust_tier TEXT NOT NULL,
-        tier_level INTEGER NOT NULL,
-        source_title TEXT NOT NULL,
-        source_url TEXT NOT NULL,
-        published_at TEXT NOT NULL,
-        expires_at TEXT NOT NULL,
-        rule_key TEXT NOT NULL UNIQUE,
-        content TEXT NOT NULL,
-        actionable_directive TEXT NOT NULL,
-        vendor TEXT,
-        relevance_weight REAL NOT NULL
-      );
-
-      CREATE INDEX IF NOT EXISTS idx_heuristics_domain ON heuristics(domain);
-      CREATE INDEX IF NOT EXISTS idx_heuristics_expires ON heuristics(expires_at);
-      CREATE INDEX IF NOT EXISTS idx_heuristics_tier ON heuristics(tier_level);
-    `);
-  }
-
-  public insert(heuristic: KnowledgeHeuristic): void {
-    const validated = KnowledgeHeuristicSchema.parse(heuristic);
-    const tierLevel = TIER_NUM_MAP[validated.trustTier];
-
-    const stmt = this.db.prepare(`
-      INSERT OR REPLACE INTO heuristics (
-        id, domain, trust_tier, tier_level, source_title, source_url,
-        published_at, expires_at, rule_key, content, actionable_directive,
-        vendor, relevance_weight
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    stmt.run(
-      validated.id,
-      validated.domain,
-      validated.trustTier,
-      tierLevel,
-      validated.sourceTitle,
-      validated.sourceUrl,
-      validated.publishedAt,
-      validated.expiresAt,
-      validated.ruleKey,
-      validated.content,
-      validated.actionableDirective,
-      validated.metadata.vendor ?? null,
-      validated.metadata.relevanceWeight
-    );
-  }
-
-  public query(domain: HeuristicDomain, options: QueryOptions = {}): KnowledgeHeuristic[] {
-    const nowIso = new Date().toISOString();
-    let queryStr = `
-      SELECT * FROM heuristics
-      WHERE domain = ? AND expires_at > ?
-    `;
-    const params: (string | number)[] = [domain, nowIso];
-
-    if (options.minTier) {
-      const minLevel = TIER_NUM_MAP[options.minTier];
-      queryStr += ` AND tier_level >= ?`;
-      params.push(minLevel);
-    }
-
-    if (options.vendor) {
-      queryStr += ` AND vendor = ?`;
-      params.push(options.vendor);
-    }
-
-    queryStr += ` ORDER BY tier_level DESC, relevance_weight DESC`;
-
-    if (options.limit) {
-      queryStr += ` LIMIT ?`;
-      params.push(options.limit);
-    }
-
-    const rows = this.db.prepare(queryStr).all(...params) as Array<{
-      id: string;
-      domain: HeuristicDomain;
-      trust_tier: 'T1' | 'T2' | 'T3';
-      source_title: string;
-      source_url: string;
-      published_at: string;
-      expires_at: string;
-      rule_key: string;
-      content: string;
-      actionable_directive: string;
-      vendor: string | null;
-      relevance_weight: number;
-    }>;
-
-    return rows.map(r => ({
-      id: r.id,
-      domain: r.domain,
-      trustTier: r.trust_tier,
-      sourceTitle: r.source_title,
-      sourceUrl: r.source_url,
-      publishedAt: r.published_at,
-      expiresAt: r.expires_at,
-      ruleKey: r.rule_key,
-      content: r.content,
-      actionableDirective: r.actionable_directive,
-      metadata: {
-        vendor: r.vendor as any ?? undefined,
-        relevanceWeight: r.relevance_weight
-      }
-    }));
-  }
-
-  public close(): void {
-    this.db.close();
-  }
-}
-```
-
-- [ ] **Step 4: Run test to verify it passes**
-
-Run: `pnpm test packages/knowledge/tests/sqlite-store.test.ts`
-Expected: PASS (2 tests passed).
-
-- [ ] **Step 5: Commit**
-
-```bash
-git add packages/knowledge/src/store/sqlite-store.ts packages/knowledge/tests/sqlite-store.test.ts
-git commit -m "feat(knowledge): implement SQLite store with TTL expiration and trust tier indexing"
-```
+- [x] **Step 2: Run test to verify it fails**
+- [x] **Step 3: Implement `packages/knowledge/src/store/sqlite-store.ts`**
+- [x] **Step 4: Run test to verify it passes**
+- [x] **Step 5: Commit**
 
 ---
 
@@ -902,84 +740,11 @@ git commit -m "feat(knowledge): implement SQLite store with TTL expiration and t
 ]
 ```
 
-- [ ] **Step 2: Write the failing seed loader test**
-
-Create `packages/knowledge/tests/seed-loader.test.ts`:
-```typescript
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { KnowledgeStore } from '../src/store/sqlite-store.js';
-import { seedKnowledgeStore } from '../src/seed/seed-loader.js';
-
-describe('Canonical Seed Loader', () => {
-  let store: KnowledgeStore;
-
-  beforeEach(() => {
-    store = new KnowledgeStore(':memory:');
-  });
-
-  afterEach(() => {
-    store.close();
-  });
-
-  it('loads canonical T1-T3 heuristics into SQLite store', () => {
-    const count = seedKnowledgeStore(store);
-    expect(count).toBeGreaterThanOrEqual(4);
-
-    const atsRules = store.query('ats-parsing');
-    expect(atsRules.length).toBeGreaterThanOrEqual(2);
-    expect(atsRules.some(r => r.ruleKey === 'WORKDAY_SINGLE_COLUMN_REQUIRED')).toBe(true);
-
-    const linkedinRules = store.query('linkedin-seo');
-    expect(linkedinRules.length).toBe(1);
-    expect(linkedinRules[0]?.ruleKey).toBe('LINKEDIN_HEADLINE_BOOLEAN_PRIORITY');
-  });
-});
-```
-
-- [ ] **Step 3: Run test to verify it fails**
-
-Run: `pnpm test packages/knowledge/tests/seed-loader.test.ts`
-Expected: FAIL with "Cannot find module '../src/seed/seed-loader.js'".
-
-- [ ] **Step 4: Implement `packages/knowledge/src/seed/seed-loader.ts`**
-
-```typescript
-import { readFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import type { KnowledgeStore } from '../store/sqlite-store.js';
-import { KnowledgeHeuristicSchema, type KnowledgeHeuristic } from '../types.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export function seedKnowledgeStore(store: KnowledgeStore, customSeedPath?: string): number {
-  const seedPath = customSeedPath ?? resolve(__dirname, '../../seed/canonical-heuristics.json');
-  const rawData = readFileSync(seedPath, 'utf-8');
-  const items = JSON.parse(rawData) as unknown[];
-
-  let loaded = 0;
-  for (const item of items) {
-    const heuristic = KnowledgeHeuristicSchema.parse(item);
-    store.insert(heuristic);
-    loaded++;
-  }
-
-  return loaded;
-}
-```
-
-- [ ] **Step 5: Run test to verify it passes**
-
-Run: `pnpm test packages/knowledge/tests/seed-loader.test.ts`
-Expected: PASS (1 test passed).
-
-- [ ] **Step 6: Commit**
-
-```bash
-git add packages/knowledge/seed/ packages/knowledge/src/seed/ packages/knowledge/tests/seed-loader.test.ts
-git commit -m "feat(knowledge): add pre-baked canonical T1-T3 heuristics and seed loader"
-```
+- [x] **Step 2: Write the failing seed loader test**
+- [x] **Step 3: Run test to verify it fails**
+- [x] **Step 4: Implement `packages/knowledge/src/seed/seed-loader.ts`**
+- [x] **Step 5: Run test to verify it passes**
+- [x] **Step 6: Commit**
 
 ---
 
@@ -993,101 +758,11 @@ git commit -m "feat(knowledge): add pre-baked canonical T1-T3 heuristics and see
 - Consumes: `RawIngestionDocument` from `../types.js`
 - Produces: `parseRssFeedXml(xmlContent: string, fallbackSourceUrl: string): RawIngestionDocument[]`
 
-- [ ] **Step 1: Write the failing connector test**
-
-Create `packages/knowledge/tests/rss-connector.test.ts`:
-```typescript
-import { describe, it, expect } from 'vitest';
-import { parseRssFeedXml } from '../src/connectors/rss-connector.js';
-
-describe('RSS Feed Connector', () => {
-  it('parses XML feed into RawIngestionDocument objects', () => {
-    const sampleXml = `<?xml version="1.0" encoding="UTF-8" ?>
-      <rss version="2.0">
-        <channel>
-          <title>BLS Economic News</title>
-          <link>https://www.bls.gov</link>
-          <item>
-            <title>Employment Situation Summary</title>
-            <link>https://www.bls.gov/news.release/empsit.nr0.htm</link>
-            <pubDate>Fri, 07 Mar 2025 08:30:00 EST</pubDate>
-            <description>Total nonfarm payroll employment increased by 150,000.</description>
-          </item>
-        </channel>
-      </rss>`;
-
-    const docs = parseRssFeedXml(sampleXml, 'https://www.bls.gov/feed');
-    expect(docs.length).toBe(1);
-    expect(docs[0]?.sourceTitle).toBe('Employment Situation Summary');
-    expect(docs[0]?.sourceUrl).toBe('https://www.bls.gov/news.release/empsit.nr0.htm');
-    expect(docs[0]?.rawText).toContain('150,000');
-  });
-});
-```
-
-- [ ] **Step 2: Run test to verify it fails**
-
-Run: `pnpm test packages/knowledge/tests/rss-connector.test.ts`
-Expected: FAIL with "Cannot find module '../src/connectors/rss-connector.js'".
-
-- [ ] **Step 3: Implement `packages/knowledge/src/connectors/rss-connector.ts`**
-
-```typescript
-import type { RawIngestionDocument } from '../types.js';
-
-export function parseRssFeedXml(xmlContent: string, fallbackSourceUrl: string): RawIngestionDocument[] {
-  const documents: RawIngestionDocument[] = [];
-  
-  // Lightweight deterministic regex XML extraction (no native heavy dependencies)
-  const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
-  let match: RegExpExecArray | null;
-
-  while ((match = itemRegex.exec(xmlContent)) !== null) {
-    const itemBlock = match[1] ?? '';
-    
-    const titleMatch = /<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/i.exec(itemBlock);
-    const linkMatch = /<link>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/link>/i.exec(itemBlock);
-    const descMatch = /<description>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/i.exec(itemBlock);
-    const dateMatch = /<pubDate>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/pubDate>/i.exec(itemBlock);
-
-    const title = titleMatch ? titleMatch[1]?.trim() : 'Untitled Update';
-    const link = linkMatch ? linkMatch[1]?.trim() : fallbackSourceUrl;
-    const rawText = descMatch ? descMatch[1]?.trim() : '';
-    let publishedAt = new Date().toISOString();
-
-    if (dateMatch && dateMatch[1]) {
-      const parsedDate = new Date(dateMatch[1]);
-      if (!isNaN(parsedDate.getTime())) {
-        publishedAt = parsedDate.toISOString();
-      }
-    }
-
-    if (title && rawText) {
-      documents.push({
-        sourceUrl: link || fallbackSourceUrl,
-        sourceTitle: title,
-        authorOrOrg: new URL(fallbackSourceUrl).hostname,
-        publishedAt,
-        rawText
-      });
-    }
-  }
-
-  return documents;
-}
-```
-
-- [ ] **Step 4: Run test to verify it passes**
-
-Run: `pnpm test packages/knowledge/tests/rss-connector.test.ts`
-Expected: PASS (1 test passed).
-
-- [ ] **Step 5: Commit**
-
-```bash
-git add packages/knowledge/src/connectors/ packages/knowledge/tests/rss-connector.test.ts
-git commit -m "feat(knowledge): add deterministic RSS feed connector"
-```
+- [x] **Step 1: Write the failing connector test**
+- [x] **Step 2: Run test to verify it fails**
+- [x] **Step 3: Implement `packages/knowledge/src/connectors/rss-connector.ts`**
+- [x] **Step 4: Run test to verify it passes**
+- [x] **Step 5: Commit**
 
 ---
 
@@ -1108,66 +783,12 @@ git commit -m "feat(knowledge): add deterministic RSS feed connector"
   export * from './connectors/rss-connector.js';
   ```
 
-- [ ] **Step 1: Write the failing integration test**
-
-Create `packages/knowledge/tests/integration.test.ts`:
-```typescript
-import { describe, it, expect } from 'vitest';
-import {
-  KnowledgeStore,
-  seedKnowledgeStore,
-  classifyTrustTier
-} from '../src/index.js';
-
-describe('@career-ops/knowledge Integration', () => {
-  it('initializes store, seeds canonical rules, and queries active heuristics', () => {
-    const store = new KnowledgeStore(':memory:');
-    const seededCount = seedKnowledgeStore(store);
-    expect(seededCount).toBeGreaterThan(0);
-
-    const atsRules = store.query('ats-parsing', { minTier: 'T2' });
-    expect(atsRules.length).toBeGreaterThanOrEqual(2);
-
-    const classification = classifyTrustTier('https://www.bls.gov', 'Bureau of Labor Statistics');
-    expect(classification.tier).toBe('T1');
-    expect(classification.allowed).toBe(true);
-
-    store.close();
-  });
-});
-```
-
-- [ ] **Step 2: Run test to verify it fails**
-
-Run: `pnpm test packages/knowledge/tests/integration.test.ts`
-Expected: FAIL with "Cannot find module '../src/index.js'".
-
-- [ ] **Step 3: Implement `packages/knowledge/src/index.ts`**
-
-```typescript
-export * from './types.js';
-export * from './classifier/trust-classifier.js';
-export * from './store/sqlite-store.js';
-export * from './seed/seed-loader.js';
-export * from './connectors/rss-connector.js';
-```
-
-- [ ] **Step 4: Run all package tests and verify build**
-
-Run: `pnpm test`
-Expected: All tests pass across all test suites (types, classifier, store, seed, connector, integration).
-
-- [ ] **Step 5: Run package build**
-
-Run: `pnpm --filter @career-ops/knowledge build`
-Expected: TypeScript compile succeeds, generating `./dist/index.js` and `./dist/index.d.ts`.
-
-- [ ] **Step 6: Commit**
-
-```bash
-git add packages/knowledge/src/index.ts packages/knowledge/tests/integration.test.ts
-git commit -m "feat(knowledge): expose public API and verify end-to-end integration"
-```
+- [x] **Step 1: Write the failing integration test**
+- [x] **Step 2: Run test to verify it fails**
+- [x] **Step 3: Implement `packages/knowledge/src/index.ts`**
+- [x] **Step 4: Run all package tests and verify build**
+- [x] **Step 5: Run package build**
+- [x] **Step 6: Commit**
 
 ---
 

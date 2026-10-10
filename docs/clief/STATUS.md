@@ -18,11 +18,17 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 - Updated Design Specification (`docs/superpowers/specs/2026-10-10-dual-engine-resume-product-design.md`) across all 10 sections.
 - Completed Task 0: Knowledge Base Alignment & Doc-Hygiene (`references/resume.md`, `references/anti-slop.md`, `docs/trust-tiers.md`).
 - Completed Task 1: Monorepo Root Scaffolding & Toolchain (`pnpm-workspace.yaml`, `package.json`, `tsconfig.base.json`, `tsconfig.json`, `vitest.config.ts`, `pnpm install`, and clean Vitest run).
-- Pushed all branches and commits to GitHub (`feat/dual-engine-resume-product`).
+- Completed Task 2: Package Scaffold & Core Schemas (`@career-ops/knowledge`, Zod schemas for `TrustTier`, `HeuristicDomain`, `KnowledgeHeuristic`, `RawIngestionDocument`).
+- Completed Task 3: Deterministic T1–T4 Trust Classification Engine (`classifyTrustTier` with automated domain filtering, T1 1.0, T2 0.85, T3 0.65, T4 0.0 quarantine).
+- Completed Task 4: SQLite Knowledge Store & TTL Query Engine (`node:sqlite` native `DatabaseSync`, indexed domains, TTL expiration filtering, vendor and tier filtering, relevance ordering).
+- Completed Task 5: Pre-Baked Canonical Research Seed Corpus (`canonical-heuristics.json` containing verified ATS vendor heuristics for Workday, Greenhouse, Lever, plus InterviewPal recruiter telemetry, Robert Half AI fatigue study, and HBS criteria gate, loaded via `seedKnowledgeStore`).
+- Completed Task 6: Feed Connectors & Dynamic Ingestion (`parseRssFeedXml` deterministic regex-based XML extraction for BLS and research feeds).
+- Completed Task 7: Package Public API & End-to-End Integration (`packages/knowledge/src/index.ts`, passing all 12 Vitest tests, clean `tsc` build).
+- Pushed all Phase 0 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
 
 ## In Progress
 
-- Task 2: Package Scaffold & Core Types (`@career-ops/knowledge`).
+- Planning Phase 1: Deterministic Audit & Invariant Gate Package (`@career-ops/audit` - Stage 4).
 
 ## Blocked
 
@@ -30,9 +36,8 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 
 ## Next
 
-- Execute Task 2: Scaffold `packages/knowledge` package (`package.json`, `tsconfig.json`, `src/types.ts`, `tests/types.test.ts`).
-- Execute Task 3: Deterministic T1–T4 Trust Classifier.
-- Execute Task 4: SQLite Knowledge Store & TTL Query Engine.
+- Generate Phase 1 implementation plan for `@career-ops/audit`: Two-Class Invariant Normalizer, Pooled Section Rhythm calculation, Graded Trust scoring, and Three-Band Gate.
+- Execute Phase 1 implementation following the TDD protocol.
 
 ## Decisions Made
 
