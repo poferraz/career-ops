@@ -13,6 +13,8 @@ session/*.md
 *.pem
 credentials*
 dist/
+node_modules/
+*.tsbuildinfo
 
 # OS files
 Thumbs.db
