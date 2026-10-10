@@ -155,3 +155,79 @@ sequenceDiagram
   * *Resolution*: Semantic alias map matching non-standard titles (*"Where I've Been"*) to canonical AST nodes.
 * **Gap 1.4 (Ollama / Runtime Outages)**: Local runtime offline or model not pulled.  
   * *Resolution*: Pre-flight health probe with actionable terminal guidance and automatic toggle to remote OpenAI-compatible endpoints.
+
+---
+
+## 5. Section 2: CLI Architecture & Commands (`@career-ops/cli`)
+
+### 5.1 Command Surface
+```mermaid
+flowchart TD
+    CLI["career-ops CLI Entrypoint"]
+    
+    CLI --> CMD_DOCTOR["career-ops doctor<br/>Environment & Model Pre-flight Check"]
+    CLI --> CMD_OPTIMIZE["career-ops optimize<br/>End-to-End Dual-Engine Rewrite & Export"]
+    CLI --> CMD_AUDIT["career-ops audit<br/>Deterministic Anti-Slop Scoring (CI / Git Hook)"]
+    CLI --> CMD_STUDIO["career-ops studio<br/>Launch Desktop-Grade Web UI (--open)"]
+    CLI --> CMD_COVER["career-ops cover-letter<br/>Targeted Narrative Hook & Naturalizer"]
+    CLI --> CMD_LINKEDIN["career-ops linkedin<br/>Headline & About Section Optimization"]
+```
+
+#### 1. `career-ops doctor`
+Probes local runtime health: verifies Ollama (`http://localhost:11434`), checks presence of `richardyoung/hemmingway-1` and `jialinyyzz/humanizer`, profiles system memory/VRAM, and verifies fallback API keys. Flag `--fix` triggers automatic model pulls.
+
+#### 2. `career-ops optimize`
+```bash
+career-ops optimize --resume resume.pdf --jd job-spec.txt --output ./dist/ --format pdf,docx,md
+```
+* **Flags**: `--resume <path>`, `--jd <path>`, `--output <dir>`, `--format <pdf,docx,md,json>`, `--strategy <fast|balanced|deep>`, `--remote <url>`.
+* **UX**: Streams live section-by-section terminal diffs with colored additions/deletions, followed by an interactive summary table of the 5-dimension Anti-Slop score.
+
+#### 3. `career-ops audit`
+```bash
+career-ops audit --resume resume.pdf [--jd jd.txt] [--threshold 42] [--json]
+```
+Non-destructive quality gate designed for pre-commit hooks and CI/CD pipelines. Returns exit code `0` on pass ($\ge 42$), `1` on fail. Outputs parser health, banned phrase occurrences, missing ATS keyword vectors, and rubric breakdown.
+
+#### 4. `career-ops studio`
+Starts local Vite server, binds to `localhost:3000`, and opens default browser into the Career Studio web application.
+
+#### 5. `career-ops cover-letter` & `career-ops linkedin`
+* `cover-letter`: Generates tailored Hook $\rightarrow$ Match $\rightarrow$ Close letters, filtered through Humanizer.
+* `linkedin`: Optimizes Headline, About section, and Experience snippets for recruiter search algorithms.
+
+### 5.2 Configuration Architecture (`.career-opsrc.json`)
+```json
+{
+  "$schema": "https://career-ops.dev/schema.json",
+  "runtime": {
+    "defaultProvider": "ollama",
+    "ollamaHost": "http://localhost:11434",
+    "hemingwayModel": "richardyoung/hemmingway-1:latest",
+    "humanizerModel": "jialinyyzz/humanizer:latest",
+    "remoteEndpoint": null,
+    "vramSafetyMode": "sequential-swap"
+  },
+  "rubric": {
+    "minPassingScore": 42,
+    "bannedPhraseEnforcement": "strict",
+    "factualLock": true
+  },
+  "export": {
+    "defaultFormats": ["pdf", "md"],
+    "pdfTemplate": "single-column-ats",
+    "outputDir": "./career-materials"
+  }
+}
+```
+
+### 5.3 Section 2 Gap Review
+* **Gap 2.1 (Unix Pipeline & Stdio Support)**: Non-interactive scripts calling the CLI must not emit terminal escape sequences or spinners.  
+  * *Resolution*: Automatic `process.stdout.isTTY` detection. Suppress all formatting and output pure JSON or raw text when piped.
+* **Gap 2.2 (Scanned / Image PDFs)**: Scanned PDFs without OCR return empty text strings to standard extractors.  
+  * *Resolution*: Density check on parsed character count. If near zero, emit clear diagnostic error warning the user of ATS parser failure.
+* **Gap 2.3 (Secret Leakage in Config Files)**: Accidental commit of remote API keys in `.career-opsrc.json`.  
+  * *Resolution*: Never serialize plaintext keys in project config. Read exclusively from environment variables (`CAREER_OPS_API_KEY`) or system keychain.
+* **Gap 2.4 (Orphaned Inference on Cancellation)**: User cancels mid-run with `Ctrl+C`.  
+  * *Resolution*: Trap `SIGINT`, cancel active HTTP request streams, clean up temporary files, and cleanly restore terminal cursor.
+
