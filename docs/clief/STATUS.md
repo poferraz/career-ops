@@ -24,11 +24,12 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 - Completed Task 5: Pre-Baked Canonical Research Seed Corpus (`canonical-heuristics.json` containing verified ATS vendor heuristics for Workday, Greenhouse, Lever, plus InterviewPal recruiter telemetry, Robert Half AI fatigue study, and HBS criteria gate, loaded via `seedKnowledgeStore`).
 - Completed Task 6: Feed Connectors & Dynamic Ingestion (`parseRssFeedXml` deterministic regex-based XML extraction for BLS and research feeds).
 - Completed Task 7: Package Public API & End-to-End Integration (`packages/knowledge/src/index.ts`, passing all 12 Vitest tests, clean `tsc` build).
-- Pushed all Phase 0 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
+- Completed Task 1 of Phase 1: Package Scaffold & Core Schemas (`@career-ops/audit`, Zod schemas for `InvariantEntity`, `AuditReport`, `AuditDimensionScore`, `ThreeBandGateStatus`, `AtsScanResult`).
+- Pushed all Phase 0 and Phase 1 Task 1 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
 
 ## In Progress
 
-- Planning Phase 1: Deterministic Audit & Invariant Gate Package (`@career-ops/audit` - Stage 4).
+- Phase 1 Task 2: Two-Class Invariant Normalizer & Entity Matcher (`@career-ops/audit`).
 
 ## Blocked
 
@@ -36,8 +37,8 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
 
 ## Next
 
-- Generate Phase 1 implementation plan for `@career-ops/audit`: Two-Class Invariant Normalizer, Pooled Section Rhythm calculation, Graded Trust scoring, and Three-Band Gate.
-- Execute Phase 1 implementation following the TDD protocol.
+- Execute Task 2: Implement `canonicalizeCurrency`, `canonicalizePercentage`, `canonicalizeDate`, `canonicalizeNumber`, `extractInvariants`, and `checkInvariantPreservation` in `packages/audit/src/invariants/normalizer.ts`.
+- Execute Task 3: Invariant Sentinel & 4-Step Fallback State Machine (`packages/audit/src/invariants/sentinel.ts`).
 
 ## Decisions Made
 
