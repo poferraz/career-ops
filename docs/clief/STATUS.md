@@ -2,11 +2,11 @@
 
 ## Current Status
 
-Planning phase complete. Clief/ICM operating system created, PRD drafted (`docs/clief/PRD.md`), and awaiting formal user review gate prior to Phase 0/Phase 1 implementation.
+PRD approved (`docs/clief/PRD.md`). Clief/ICM planning phase complete. Transitioning to implementation plan generation (`writing-plans`) for Phase 0 and Phase 1.
 
 ## Last Session
 
-2026-10-10: Designed Three-Act Web Studio interactive prototype, completed Impeccable design system tokens (`PRODUCT.md`, `DESIGN.md`), developed the continuous data ingestion harness strategy, and established the Clief/ICM planning structure.
+2026-10-10: Completed deep research on 2025/2026 document ingestion benchmarks (*ResumeBench*, *LLMStructBench*). Established the 4-Layer Hybrid Ingestion Architecture (`Qwen2.5-7B` ephemeral local with GBNF grammar constraints + `Qwen2.5-3B` fallback + cloud remote endpoint) and the Teacher-Student pre-baked knowledge seed strategy. User formally approved PRD.
 
 ## Completed
 
@@ -14,12 +14,11 @@ Planning phase complete. Clief/ICM operating system created, PRD drafted (`docs/
 - Established durable Impeccable product and design authorities (`PRODUCT.md`, `DESIGN.md`, `.impeccable/design.json`).
 - Built and verified interactive Web Studio prototype with pure inline diff wrapping (`docs/assets/studio-prototype.html`).
 - Defined canonical Clief map (`docs/clief/INDEX.md`), brief (`docs/clief/BRIEF.md`), and agent charter (`docs/clief/AGENT-CHARTER.md`).
-- Drafted comprehensive Clief PRD (`docs/clief/PRD.md`) with explicit 60/30/10 split and risk gates.
+- Approved canonical Clief PRD (`docs/clief/PRD.md`) with explicit 60/30/10 split, 4-Layer Hybrid Ingestion, and risk gates.
 
 ## In Progress
 
-- PRD review gate: Presenting draft PRD and Clief structure for user approval.
-- Finalizing system specification document (`docs/superpowers/specs/2026-10-10-dual-engine-resume-product-design.md`).
+- Generating comprehensive Phase 0 & Phase 1 Implementation Plan via `writing-plans`.
 
 ## Blocked
 
@@ -27,18 +26,20 @@ Planning phase complete. Clief/ICM operating system created, PRD drafted (`docs/
 
 ## Next
 
-- User approval of `docs/clief/PRD.md`.
-- Generate detailed phase implementation plan using `writing-plans`.
-- Begin Phase 0 (`packages/knowledge`) and Phase 1 (`packages/core`).
+- Author Phase 0 (`@career-ops/knowledge`) and Phase 1 (`@career-ops/core`) implementation plan.
+- Establish workspace scaffold: pnpm monorepo configuration (`pnpm-workspace.yaml`, `package.json`, `tsconfig.json`).
+- Implement Phase 0 knowledge connectors and seed corpus.
 
 ## Decisions Made
 
 - Adopted pnpm monorepo structure with `@career-ops/knowledge`, `@career-ops/core`, `@career-ops/agents`, `@career-ops/audit`, `@career-ops/cli`, and `@career-ops/web`.
 - Adopted Dual-Track optimization: Resumes and cover letters anchored to specific JDs; LinkedIn profiles anchored to defined career paths.
+- Adopted 4-Layer Hybrid Ingestion: Layer 1 Deterministic AST, Layer 2 Ground Truth Invariant Mask, Layer 3 Ephemeral `Qwen2.5-7B/3B` with GBNF grammar decoding, Layer 4 Invariant Reconciliation Gate.
+- Offline Canonical Distillation (pre-baked T1–T3 SQLite seed) + Runtime Dynamic Ingestion for custom feeds.
 - Sequential VRAM swapper with explicit `keep_alive: 0` eviction to prevent VRAM overflows on consumer GPUs.
 - Strict Invariant Sentinel: 100% preservation of numbers, percentages, dates, and technical tooling.
 - Neo-Brutalist architectural UI with pure inline highlight spans (`box-decoration-break: clone;`).
 
 ## Open Questions
 
-- SQLite with `sqlite-vec` extension vs zero-dependency flat JSON vector index for local knowledge retrieval.
+- None blocking implementation.

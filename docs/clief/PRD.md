@@ -1,7 +1,7 @@
 ---
 schema: clief-prd/1
-status: draft
-digest: [filled at approval]
+status: approved
+digest: f36b59817525fd725fe6dabfc648e2c96e9d94918315a7ce74075127ae6c150f
 scope:
   - packages/knowledge
   - packages/core
@@ -11,8 +11,18 @@ scope:
   - packages/web
 runtimes:
   - node-20
-  - ollama
-approval: null
+  - ollama (richardyoung/hemmingway-1:27b, jialinyyzz/humanizer:12b, qwen2.5:7b-instruct / qwen2.5:3b-instruct)
+  - openai-compatible-remote (optional batch ingestion endpoint)
+approval:
+  approver: user
+  timestamp: 2026-10-10T13:48:00-07:00
+  scope:
+    - packages/knowledge
+    - packages/core
+    - packages/agents
+    - packages/audit
+    - packages/cli
+    - packages/web
 ---
 
 # PRD — career-ops
@@ -29,7 +39,7 @@ Job candidates face an asymmetric hiring environment where automated ATS filters
 
 The project is structured as a TypeScript pnpm monorepo:
 
-- `packages/knowledge/`: Continuous research ingestion harness, T1–T4 trust classification engine, feed connectors (BLS, ArXiv, ATS vendor notes), and vector-indexed knowledge repository.
+- `packages/knowledge/`: Continuous research ingestion harness, T1–T4 trust classification engine, feed connectors (BLS, ArXiv, ATS vendor notes), seed knowledge store, and vector-indexed knowledge repository.
 - `packages/core/`: Markdown/DOCX/PDF document AST parsers, Hemmingway & Humanizer LLM runtime drivers, sequential VRAM swapper, and AST entity lock sentinels.
 - `packages/agents/`: Specialized agent personas (Resume Tailor, Cover Letter Architect, LinkedIn Strategist, Research Scout) with structured prompts and temperature bounds.
 - `packages/audit/`: Deterministic 5-dimension Anti-Slop scoring rubric (Directness, Rhythm, Trust, Authenticity, Density), fuzzy banned phrase matcher, and ATS layout validator.
@@ -42,30 +52,37 @@ The project is structured as a TypeScript pnpm monorepo:
 1. **Dual-Track Specialization**:
    - Resumes & Cover Letters are anchored to an exact Job Description (maximizing semantic skill vectors and human hook-match-close resonance).
    - LinkedIn Profiles are anchored to a Target Career Path / Professional Focus (maximizing Boolean recruiter search visibility and establishing a cohesive 3-act narrative).
-2. **Sequential VRAM Memory Swapping**:
-   - To fit within consumer hardware (16GB–24GB VRAM), `Altworld/Hemmingway-1` (27B) and `jialinyyzz/humanizer` (12B) are never run concurrently. Stage 1 executes all sections, explicitly evicts the KV cache via `keep_alive: 0`, and Stage 2 executes the humanizer pass.
-3. **Impeccable Architectural UI**:
-   - Adopts the Neo-Brutalist blueprint design system (`PRODUCT.md` and `DESIGN.md`): Zinc-50 paper canvas, 3px solid cobalt `#1414b8` borders, 6px hard drop shadows, and pure inline diff highlight spans with `box-decoration-break: clone`.
-4. **Local-First with Remote Fallback**:
-   - Default provider is Ollama; seamless switch to any OpenAI-compatible API endpoint via configuration or flag.
+2. **4-Layer Hybrid Ingestion Architecture**:
+   - **Layer 1 (Deterministic Layout AST)**: Extracts document flow and bullet blocks without AI ($0\text{ms}$, $0\text{ GB}$ VRAM).
+   - **Layer 2 (Deterministic Grounding Mask)**: Regex/NLP extracts $100\%$ of numbers, percentages, dates, and tools.
+   - **Layer 3 (Semantic Schema Structuring)**: Ephemeral `Qwen2.5-7B` (or `Qwen2.5-3B` fallback) with GBNF grammar constrained decoding for zero syntax errors.
+   - **Layer 4 (Invariant Reconciliation Gate)**: Deterministic code verifies output against Layer 2's Ground Truth Mask, re-injecting any omitted or modified metrics.
+3. **Sequential VRAM Memory Swapping**:
+   - To fit within consumer hardware (16GB–24GB VRAM), models are never run concurrently. Ingestion models (`Qwen2.5-7B/3B`) run ephemerally with `keep_alive: 0`, vacating VRAM before Stage 1 (`Hemmingway-1`, 27B) loads. Stage 1 completes, evicts KV cache (`keep_alive: 0`), and Stage 2 (`Humanizer`, 12B) executes.
+4. **Pre-Baked Canonical Research Seed vs Dynamic Ingestion**:
+   - Repository ships with pre-compiled, human-verified T1–T3 heuristics in `packages/knowledge/seed/` distilled offline using frontier models.
+   - Runtime dynamic ingestion allows candidates to ingest custom company specs or articles via local `Qwen2.5-7B` or optional remote OpenAI-compatible endpoint.
+5. **Impeccable Architectural UI**:
+   - Adopts Neo-Brutalist blueprint design tokens (`PRODUCT.md` and `DESIGN.md`): Zinc-50 paper canvas, 3px solid cobalt `#1414b8` borders, 6px hard drop shadows, and pure inline diff highlight spans with `box-decoration-break: clone`.
 
 ## 60/30/10
 
-- **60% Traditional Software**:
+- **60% Traditional Software (Deterministic Foundation)**:
   - Document AST parser (PDF, DOCX, Markdown) and AST reconstructor.
   - Token-level text diff engine (`diff` / Web Worker).
   - Single-column ATS PDF generator and `.docx` builder.
   - Vite + React desktop UI and `@tanstack/react-virtual` virtualization.
   - Terminal CLI, argument parsing (`commander`), stdio streaming, and exit codes.
   - File I/O, SQLite research storage, and vector cosine similarity.
-- **30% Deterministic Rules & Guardrails**:
+- **30% Deterministic Rules & Guardrails (The Quality Gate)**:
+  - Layer 2 Ground Truth Mask and Layer 4 Invariant Reconciliation Sentinel (100% preservation check on metrics, dates, tools).
   - T1–T4 research hierarchy classification and source weighting.
-  - Factual Invariant Diff Sentinel: 100% verification of numbers, %, dates, and tech stack tokens.
   - 5-Dimension Anti-Slop mathematical scoring algorithm ($\ge 42/50$ pass gate).
   - Banned corporate phrase fuzzy matcher (30+ tells).
   - Single-column ATS layout rule compliance engine.
   - Sequential VRAM swapper state machine.
-- **10% Language Model Inference**:
+- **10% Language Model Inference (Semantic Operators)**:
+  - Ingestion / Semantic Structuring: Ephemeral `Qwen2.5-7B-Instruct` (or `Qwen2.5-3B` fallback / remote endpoint) with GBNF grammar constraints.
   - Stage 1: `Altworld/Hemmingway-1` (ChatML, $T=1.0$) for active voice, concise density, and fluff elimination.
   - Stage 2: `jialinyyzz/humanizer` (Raw Completion, exact template, $T=1.0$) for cadence burstiness, authentic human rhythm, and corporate tell eradication.
 - **Human Judgment**:
@@ -92,9 +109,9 @@ The project is structured as a TypeScript pnpm monorepo:
 ## Phases
 
 - **Phase 0: Architecture & Research Ingestion (`@career-ops/knowledge`)**
-  - T1–T4 source classification engine, ingestion connectors, and embedded knowledge store.
+  - T1–T4 source classification engine, ingestion connectors, pre-baked seed corpus, and embedded knowledge store.
 - **Phase 1: Foundation & Core Engine (`@career-ops/core`)**
-  - AST parsers (Markdown, DOCX, PDF), Hemmingway/Humanizer drivers, sequential VRAM swapper, and invariant sentinel.
+  - AST parsers (Markdown, DOCX, PDF), 4-layer hybrid ingestion, Hemmingway/Humanizer drivers, sequential VRAM swapper, and invariant sentinel.
 - **Phase 2: Audit Engine & Scoring Gate (`@career-ops/audit`)**
   - Deterministic 5-dimension Anti-Slop algorithm, banned phrase matcher, and ATS layout validator.
 - **Phase 3: Specialized Agent System (`@career-ops/agents`)**
@@ -111,7 +128,7 @@ The project is structured as a TypeScript pnpm monorepo:
 | Risk | Consequence | Gate / Mitigation |
 |---|---|---|
 | Concurrent VRAM allocation crashes local GPU | High | Hardcoded sequential VRAM swapper with explicit `keep_alive: 0` before switching models. |
-| Model modifies or hallucinates numbers/dates | Critical | Deterministic Invariant Sentinel runs AST diff; any mismatch triggers automatic fallback to original text. |
+| Model modifies or hallucinates numbers/dates | Critical | Layer 2 Ground Truth Mask + Layer 4 Invariant Reconciliation Sentinel guarantees 100% metric preservation. |
 | Ingestion of unverified career advice (LinkedIn influencers) | Medium | Strict T1–T4 trust gate: influencer/forum advice (T4) discarded or flagged; only T1–T3 ingested. |
 | ATS parser chokes on exported layout | High | Single-column plain semantic structure enforced in PDF/DOCX templates; layout validator in CI. |
 | Web Studio diff text wraps jaggedly or orphans punctuation | Low | Pure inline highlight spans with `box-decoration-break: clone`; `inline-block` strictly forbidden. |
