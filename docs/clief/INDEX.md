@@ -1,0 +1,36 @@
+# Clief Index — career-ops
+
+This is the canonical map for this project. Read this file first on every new task.
+
+## Identity
+
+**career-ops** — Evidence-based career operations platform: ATS-certified resume optimization, high-impact cover letters, and LinkedIn career positioning powered by a dual-model LLM pipeline (`Hemmingway-1` + `Humanizer`), a deep continuous research ingestion harness, and deterministic AST invariant gates.
+
+## Folder Structure
+
+- `docs/clief/` — Canonical context, PRD, status, brief, and agent charters.
+- `packages/knowledge/` — Continuous research ingestion harness, T1–T4 trust classifier, and verified hiring/ATS knowledge base.
+- `packages/core/` — AST document parser, Hemmingway & Humanizer model drivers, sequential VRAM swapper, and factual invariant locking engine.
+- `packages/agents/` — Specialized prompt personas (Resume, Cover Letter, LinkedIn, Research Scout) guided by the knowledge harness.
+- `packages/audit/` — Deterministic 5-dimension Anti-Slop scoring rubric, fuzzy phrase scanner, and ATS layout validator.
+- `packages/cli/` — Headless terminal commands (`doctor`, `ingest`, `optimize`, `audit`, `studio`).
+- `packages/web/` — Desktop-grade Three-Act Web Studio (Vite + React + Tailwind + Impeccable Neo-Brutalist Design System).
+
+## Routing Table
+
+| Task | Go to | Read |
+|---|---|---|
+| Ingest hiring/ATS research, manage trust tiers | `packages/knowledge/` | `docs/clief/workspaces/knowledge/CONTEXT.md` |
+| Parser, LLM drivers, VRAM swapping, invariant lock | `packages/core/` | `docs/clief/workspaces/core/CONTEXT.md` |
+| Agent personas, prompting strategies, dual-track flow | `packages/agents/` | `docs/clief/workspaces/agents/CONTEXT.md` |
+| Anti-Slop scoring, banned phrase dictionary, ATS rules | `packages/audit/` | `docs/clief/workspaces/audit/CONTEXT.md` |
+| Terminal commands, stdio streaming, CI exit codes | `packages/cli/` | `docs/clief/workspaces/cli/CONTEXT.md` |
+| UI components, Three-Act pipeline, Diff canvas | `packages/web/` | `docs/clief/workspaces/web/CONTEXT.md` |
+
+## Rules
+
+- **One fact, one location**: `docs/clief/` is the single source of truth for architectural planning.
+- **60/30/10 Architecture**: 60% traditional software, 30% deterministic rules, 10% AI. AI is a pipeline component, not the whole system.
+- **Invariants are law**: No number, percentage, currency, date, or technical tooling may be altered, rounded, or hallucinated.
+- **Load on demand**: Load only the workspace context required for the current task.
+- **Update status**: Update `docs/clief/STATUS.md` at every meaningful phase transition.
