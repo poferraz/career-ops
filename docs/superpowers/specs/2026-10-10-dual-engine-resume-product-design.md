@@ -296,3 +296,119 @@ flowchart LR
   * *Resolution*: Responsive drawer design: Intelligence & Radar inspector collapses into a floating drawer on screens $<1280\text{px}$.
 
 
+
+
+---
+
+## 7. Section 4: Anti-Slop Scoring Engine & Verification Gate (`@career-ops/audit`)
+
+### 7.1 Deterministic Rubric Metrics & Mathematical Formulations
+To ensure objective, reproducible evaluations that eliminate recruiter AI flags, the audit engine computes deterministic scores across 5 dimensions:
+
+```mermaid
+flowchart TD
+    INPUT["Resume Text / AST + Target JD"] --> PARSER_AUDIT["Layer 1: ATS Parser & Layout Sanity<br/>- Single-column flow validation<br/>- Machine text extractability check<br/>- Date & Heading standard normalization"]
+    
+    PARSER_AUDIT --> SCORER["Layer 2: Deterministic 5-Dimension Scorer<br/>(Target: >= 42/50 | Minimum: 35/50)"]
+    
+    SCORER --> D1["1. Directness (10 pts)<br/>- Passive voice penalty<br/>- Hedging & throat-clearing ratio"]
+    SCORER --> D2["2. Rhythm (10 pts)<br/>- Burstiness & sentence length std-dev<br/>- Monotony penalty (18-22 word clumping)"]
+    SCORER --> D3["3. Trust & Invariants (10 pts)<br/>- 100% verification of numbers, %, dates<br/>- Hallucination / rounding detection"]
+    SCORER --> D4["4. Authenticity (10 pts)<br/>- Banned phrase list (30+ corporate tells)<br/>- Machine handwriting probability"]
+    SCORER --> D5["5. Density (10 pts)<br/>- Action-verb + Scope + Metric formula<br/>- Fluff-to-substance ratio"]
+    
+    D1 & D2 & D3 & D4 & D5 --> GATE["Pass / Fail Decision Gate<br/>- Score >= 42: Green / Certified<br/>- Score 35-41: Warning / Re-Humanize<br/>- Score < 35: Rejection / Trigger Stage 1"]
+```
+
+#### 1. Directness (10 points)
+Penalizes passive voice constructions (`was promoted to lead`, `was responsible for`) and hedging tokens (`helped to`, `participated in`, `assisted with`).
+$$\text{Directness} = 10 - 2 \times (\text{PassiveConstructions}) - 1.5 \times (\text{HedgingPhrases})$$
+
+#### 2. Rhythm (10 points)
+Measures sentence length variance (**burstiness**). Standard AI text clumps rigidly around $20 \pm 2$ words per sentence. Human writing has high standard deviation ($\sigma \ge 6.5$).
+$$\text{Rhythm} = \min\left(10, \; \text{round}\left(4 + 0.8 \times \sigma_{\text{sentence\_length}}\right)\right)$$
+
+#### 3. Trust & Factual Invariance (10 points)
+Binary requirement: The output must contain $100\%$ of the original bullet's metrics, currency amounts, percentages, and dates.
+$$\text{Trust} = \begin{cases} 10 & \text{if all original metrics match verbatim} \\ 0 & \text{if any metric was modified or dropped} \end{cases}$$
+
+#### 4. Authenticity (10 points)
+Scans for the 30+ banned phrases defined in `references/anti-slop.md` (*"spearheaded cross-functional initiatives"*, *"proven track record"*, *"leveraging insights"*, *"results-driven"*).
+$$\text{Authenticity} = \max\left(0, \; 10 - 3 \times (\text{BannedPhrasesFound})\right)$$
+
+#### 5. Density (10 points)
+Verifies the presence of the three essential components in every experience bullet:
+$$\text{Density} = \text{ActionVerbPresent (3 pts)} + \text{VerifiableContext (3 pts)} + \text{QuantifiedMetric (4 pts)}$$
+
+### 7.2 ATS Parser Sanity Scanner
+* **Single-Column Compliance**: Flags multi-column grids or sidebars that cause Taleo and Workday to interleave text horizontally.
+* **Date Normalization**: Flags ambiguous dates (*"Spring 2023"*, *"recent"*) and enforces standard machine-readable formats (`MM/YYYY – MM/YYYY` or `YYYY – YYYY`).
+* **Heading Standard**: Guarantees canonical section names (*Experience*, *Education*, *Skills*) so ATS taxonomy mappers correctly assign experience history.
+
+### 7.3 Section 4 Gap Review
+* **Gap 4.1 (False Positives on Protocol / Version Numbers)**: Technical terms like `OAuth 2.0` or `HTTP 404` misclassified as performance metrics.  
+  * *Resolution*: Context-aware regex treats protocol versions and hardware names as **TechStack tokens**, excluding them from metrics calculations.
+* **Gap 4.2 (Banned Phrase Evasion)**: Model rewords phrases slightly (e.g., *"demonstrated track record"* instead of *"proven track record"*).  
+  * *Resolution*: Levenshtein fuzzy matching and synonym-stemming against the banned phrase dictionary.
+* **Gap 4.3 (Non-Standard Action Verbs)**: Valid domain verbs (*"Orchestrated"*, *"Arbitrated"*) flagged by strict whitelists.  
+  * *Resolution*: Comprehensive 250-word canonical action verb dictionary categorized by functional discipline.
+
+---
+
+## 8. Section 5: Repository Monorepo Structure & Implementation Roadmap
+
+### 8.1 Monorepo Layout
+```text
+career-ops/
+├── PRODUCT.md                                  # Durable product authority (Impeccable)
+├── DESIGN.md                                   # Durable design authority (Tokens & Rules)
+├── .impeccable/
+│   └── design.json                             # Impeccable component sidecar
+├── packages/
+│   ├── core/                                   # Shared engine & model adapters
+│   │   ├── src/
+│   │   │   ├── ast/                            # Resume parser & AST normalizer
+│   │   │   ├── models/                         # Hemmingway & Humanizer drivers
+│   │   │   ├── pipeline/                       # Two-stage sequential orchestrator
+│   │   │   └── audit/                          # Deterministic 5-dimension scorer
+│   │   └── package.json
+│   ├── cli/                                    # Terminal command center
+│   │   ├── src/
+│   │   │   ├── commands/                       # doctor, optimize, audit, studio
+│   │   │   └── index.ts
+│   │   └── package.json
+│   └── web/                                    # Vite + React Desktop-grade Web Studio
+│       ├── src/
+│       │   ├── components/                     # Diff cards, pill bars, scorecard
+│       │   ├── hooks/                          # Streaming pipeline hook
+│       │   └── App.tsx
+│       └── package.json
+├── docs/
+│   ├── assets/
+│   │   └── studio-prototype.html               # Approved reference prototype
+│   └── superpowers/specs/                      # Living specifications
+└── references/                                 # Domain knowledge & anti-slop rules
+```
+
+### 8.2 Phased Implementation Roadmap
+1. **Phase 1: Foundation & Core Engine (`@career-ops/core`)**
+   * AST parsers for Markdown, DOCX, and PDF.
+   * Model drivers for `Altworld/Hemmingway-1` (ChatML) and `jialinyyzz/humanizer` (Raw Completion).
+   * Sequential VRAM memory swapper (`keep_alive: 0` eviction).
+   * Deterministic Invariant Diff Validator.
+2. **Phase 2: Audit Engine & Scoring Gate (`@career-ops/audit`)**
+   * 5-dimension mathematical scoring algorithm.
+   * Banned phrase fuzzy matcher.
+   * ATS layout and single-column syntax parser.
+3. **Phase 3: CLI Command Center (`@career-ops/cli`)**
+   * Commands: `doctor`, `optimize`, `audit`, `studio`.
+   * Stdio streaming, color diffs, and exit codes for CI.
+4. **Phase 4: Web Studio Application (`@career-ops/web`)**
+   * Vite + React + Tailwind desktop-like UI.
+   * Three-Act Pipeline (Intake -> Studio Canvas -> Audit & Export).
+   * Dual-card diff with pure inline wrapping and `✓ FACTS KEPT` capsule bar.
+   * Real-time ATS match matrix and Anti-Slop radar.
+5. **Phase 5: Certified Exporters & Release**
+   * Single-column ATS PDF generator.
+   * Native Word `.docx` exporter.
+   * Documentation update and launch.
