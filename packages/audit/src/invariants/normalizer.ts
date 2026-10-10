@@ -114,10 +114,14 @@ export function canonicalizeNumber(raw: string): string {
   const kMatch = /^([\d.]+)\s*K$/i.exec(clean);
   if (kMatch && kMatch[1]) return String(Math.round(parseFloat(kMatch[1]) * 1e3));
 
-  // Count with unit: "50 nodes" -> "50 nodes"
-  const countUnitMatch = /^([\d.]+)\s+([a-z/]+)$/i.exec(clean);
+  // Count with unit: "50 nodes" or "50-node" -> "50 nodes"
+  const countUnitMatch = /^([\d.]+)[-\s]+([a-z/]+)$/i.exec(clean);
   if (countUnitMatch && countUnitMatch[1] && countUnitMatch[2]) {
-    return `${countUnitMatch[1]} ${countUnitMatch[2].toLowerCase()}`;
+    let unit = countUnitMatch[2].toLowerCase();
+    if (!unit.endsWith('s') && !unit.includes('/')) {
+      unit = `${unit}s`;
+    }
+    return `${countUnitMatch[1]} ${unit}`;
   }
 
   return clean;
@@ -246,8 +250,8 @@ export function extractInvariants(text: string, options: ExtractInvariantsOption
     }
   }
 
-  // 5. Quantified counts with infrastructure units: 50 nodes, 12 microservices, 8 engineers
-  const countRegex = /\b\d+(?:,\d{3})*(?:\.\d+)?(?:\s*[kKmMbB])?\s*(?:nodes|microservices|servers|engineers|users|services|clusters|cores|gpus|vms)\b/gi;
+  // 5. Quantified counts with infrastructure units: 50 nodes, 50-node, 12 microservices, 8 engineers
+  const countRegex = /\b\d+(?:,\d{3})*(?:\.\d+)?(?:\s*[kKmMbB])?[-\s]+(?:nodes?|microservices?|servers?|engineers?|users?|services?|clusters?|cores?|gpus?|vms?)\b/gi;
   while ((match = countRegex.exec(text)) !== null) {
     const raw = match[0].trim();
     const start = match.index;
