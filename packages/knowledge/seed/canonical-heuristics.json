@@ -1,0 +1,130 @@
+[
+  {
+    "id": "ats-workday-001",
+    "domain": "ats-parsing",
+    "trustTier": "T2",
+    "sourceTitle": "Workday Integration & Document Parsing Guidelines",
+    "sourceUrl": "https://workday.com/docs/parsing",
+    "publishedAt": "2025-01-10T00:00:00.000Z",
+    "expiresAt": "2029-01-10T00:00:00.000Z",
+    "ruleKey": "WORKDAY_SINGLE_COLUMN_REQUIRED",
+    "content": "Workday ATS parsers linearize multi-column templates by reading horizontally across columns, interleaving text and corrupting chronology. Ranking combines structural parsing with HiredScore machine intelligence.",
+    "actionableDirective": "Strictly enforce single-column layouts with standard semantic headings (Experience, Education, Skills).",
+    "metadata": {
+      "vendor": "workday",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "ats-greenhouse-001",
+    "domain": "ats-parsing",
+    "trustTier": "T2",
+    "sourceTitle": "Greenhouse Resume Parsing Heuristics & Talent Matching",
+    "sourceUrl": "https://greenhouse.io/docs/resume-parser",
+    "publishedAt": "2025-01-15T00:00:00.000Z",
+    "expiresAt": "2029-01-15T00:00:00.000Z",
+    "ruleKey": "GREENHOUSE_PATENTED_PARSER_MATCH",
+    "content": "Greenhouse utilizes a patented in-house resume parser coupled with exact-match Preferred/Required queries and semantic Talent Matching.",
+    "actionableDirective": "Inject target JD technical skills into verifiable bullet context rather than isolated keyword stuffing blocks.",
+    "metadata": {
+      "vendor": "greenhouse",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "ats-lever-001",
+    "domain": "ats-parsing",
+    "trustTier": "T2",
+    "sourceTitle": "Lever Built-In Parser & Talent Fit Mechanics",
+    "sourceUrl": "https://lever.co/docs/talent-fit",
+    "publishedAt": "2025-01-20T00:00:00.000Z",
+    "expiresAt": "2029-01-20T00:00:00.000Z",
+    "ruleKey": "LEVER_TALENT_FIT_ALIGNMENT",
+    "content": "Lever employs an in-house extraction parser and opt-in Talent Fit scoring powered by AWS Bedrock foundation models with IBM watsonx.governance guardrails.",
+    "actionableDirective": "Ensure core technical requirements appear in recent job role descriptions with quantifiable context.",
+    "metadata": {
+      "vendor": "lever",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "recruiter-attention-001",
+    "domain": "resume-density",
+    "trustTier": "T2",
+    "sourceTitle": "InterviewPal Recruiter Telemetry (2025) & Ladders Eye-Tracking",
+    "sourceUrl": "https://interviewpal.com/research/recruiter-telemetry",
+    "publishedAt": "2025-01-15T00:00:00.000Z",
+    "expiresAt": "2029-01-15T00:00:00.000Z",
+    "ruleKey": "RECRUITER_11_SECOND_INITIAL_REVIEW",
+    "content": "Recruiters spend a median of 11.2 seconds on initial candidate reviews (InterviewPal telemetry across 312 recruiters) and 7.4 seconds skimming (Ladders 2018). Resumes that survive initial scan receive a median 1m 34s deep read.",
+    "actionableDirective": "Front-load metrics, tools, and quantified outcomes in the first third of each bullet point.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "recruiter-ai-fatigue-001",
+    "domain": "resume-density",
+    "trustTier": "T2",
+    "sourceTitle": "Robert Half HR Leadership Survey & TopResume AI Study",
+    "sourceUrl": "https://roberthalf.com/research/ai-hiring-impact-2026",
+    "publishedAt": "2026-01-10T00:00:00.000Z",
+    "expiresAt": "2030-01-10T00:00:00.000Z",
+    "ruleKey": "RECRUITER_AI_FATIGUE_SLOWDOWN",
+    "content": "67% of HR leaders report reviewing AI-generated applications has slowed down hiring (Robert Half 2026), and 33.5% spot generic AI writing within 20 seconds, with 19.6% rejecting outright (TopResume 2025).",
+    "actionableDirective": "Purge all corporate buzzwords ('spearheaded', 'proven track record') and inject human sentence burstiness.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "ats-boolean-gate-001",
+    "domain": "ats-parsing",
+    "trustTier": "T1",
+    "sourceTitle": "Harvard Business School & Accenture: Hidden Workers, Untapped Talent",
+    "sourceUrl": "https://www.hbs.edu/managing-the-future-of-work/research/Pages/hidden-workers.aspx",
+    "publishedAt": "2021-09-01T00:00:00.000Z",
+    "expiresAt": "2029-09-01T00:00:00.000Z",
+    "ruleKey": "ENTERPRISE_ATS_CRITERIA_FILTER",
+    "content": "88% of enterprise employers acknowledge that automated ATS filters disqualify qualified high-skills applicants who miss exact keyword criteria strings listed in job postings.",
+    "actionableDirective": "Dual-objective optimization is mandatory: preserve exact JD skill strings while maximizing semantic vector alignment.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 1.0
+    }
+  },
+  {
+    "id": "linkedin-recruiter-001",
+    "domain": "linkedin-seo",
+    "trustTier": "T2",
+    "sourceTitle": "LinkedIn Engineering: Search & Discovery Indexing",
+    "sourceUrl": "https://engineering.linkedin.com/blog/2024/recruiter-search-relevance",
+    "publishedAt": "2024-11-20T00:00:00.000Z",
+    "expiresAt": "2028-11-20T00:00:00.000Z",
+    "ruleKey": "LINKEDIN_HEADLINE_BOOLEAN_PRIORITY",
+    "content": "The 220-character headline receives top ranking weight in recruiter Boolean search results, prioritized by exact role match and core skill clusters.",
+    "actionableDirective": "Structure headline: [Target Role] | [Domain Specialization] | [Key Tech Stack & Impact].",
+    "metadata": {
+      "vendor": "linkedin",
+      "relevanceWeight": 0.85
+    }
+  },
+  {
+    "id": "bls-software-eng-001",
+    "domain": "market-skills",
+    "trustTier": "T1",
+    "sourceTitle": "Bureau of Labor Statistics: Software Developers, Quality Assurance, and Testers",
+    "sourceUrl": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+    "publishedAt": "2025-02-01T00:00:00.000Z",
+    "expiresAt": "2029-02-01T00:00:00.000Z",
+    "ruleKey": "BLS_DISTRIBUTED_SYSTEMS_HIGH_GROWTH",
+    "content": "Distributed systems, AI infrastructure, and cloud data architecture occupations demonstrate sustained 17% growth over traditional web CRUD roles.",
+    "actionableDirective": "Frame technical contributions around scale, throughput, and system reliability metrics.",
+    "metadata": {
+      "vendor": "generic",
+      "relevanceWeight": 1.0
+    }
+  }
+]
