@@ -9,10 +9,6 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "better-sqlite3": "^11.3.0",
     "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@types/better-sqlite3": "^7.6.11"
   }
 }

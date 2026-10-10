@@ -10,8 +10,13 @@
     "lint": "pnpm -r run lint"
   },
   "devDependencies": {
+    "@types/node": "^22.20.5",
     "typescript": "^5.5.4",
-    "vitest": "^2.1.2",
-    "@types/node": "^20.14.10"
+    "vitest": "^2.1.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
