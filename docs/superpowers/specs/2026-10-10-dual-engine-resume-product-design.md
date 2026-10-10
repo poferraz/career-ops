@@ -235,80 +235,56 @@ Starts local Vite server, binds to `localhost:3000`, and opens default browser i
 
 ## 6. Section 3: Desktop-Grade Web Studio UI & UX (`@career-ops/web`)
 
-![Career Studio Desktop UI Reference](../../assets/career-studio-mockup.jpg)
+Interactive Prototype: [`docs/assets/studio-prototype.html`](file:///Users/poferraz/Documents/Development/active/career-ops/docs/assets/studio-prototype.html)
 
-### 6.1 Layout Architecture & Neo-Brutalist Design System (Direction 1: The Studio Canvas)
-The Web Studio adopts **Direction 1 (The 70/30 Studio Canvas)**, directly synthesizing the light architectural identity of `career-skill.vercel.app` with the proven functional diff craft of `jialinyyzz/humanizer`:
+### 6.1 The Three-Act Pipeline Model
+Rather than presenting an unguided screen, the Career-Ops Studio guides the candidate through a purposeful **Three-Act Pipeline**:
 
-* **Visual Tokens & Canvas**:
-  * **Background**: Warm light zinc-50 paper canvas (`#fafafa` / `#fbfbfa`) with subtle blue blueprint grid lines (`bg-blueprint`).
-  * **Architectural Borders & Hard Shadows**: Bold 3px solid cobalt blue borders (`border-[3px] border-[#1414b8]`) with sharp 6px geometric drop shadows (`box-shadow: 6px 6px 0px #1414b8`).
-  * **Typography**: Stark black uppercase display headings (`font-display font-black uppercase text-black`), clean readable body text, and monospace technical labels for metrics and tags.
-  * **Highlight Language**: Bright lime-green highlight pills (`#d9f99d` / `#ccff00`) for new humanized wording; coral red strikethrough (`#e11d48`) on purged corporate fluff.
+```mermaid
+flowchart LR
+    ACT1["Act 01: Intake & Lock<br/>- Ingest Resume (PDF/DOCX/MD)<br/>- Ingest Target Job Description<br/>- Extract & Register Invariant Facts"] 
+    --> ACT2["Act 02: Studio Canvas (70/30)<br/>- Dual-Card Diff (01 Draft vs 02 Rewrite)<br/>- Hemmingway + Humanizer Processing<br/>- Real-time Anti-Slop Gate (42/50)"]
+    --> ACT3["Act 03: Audit & Export<br/>- Full ATS-Certified PDF / DOCX Preview<br/>- 5-Dimension Diagnostic Report<br/>- 1-Click Submission Bundle"]
+```
 
-* **Top App Bar**:
-  * Branding: `CAREER-OPS` in bold uppercase black with a cobalt `V1.0 STABLE` tag.
-  * Workspace Tabs: `[Resume Optimizer]` (active) · `[Cover Letter]` · `[LinkedIn]`.
-  * Runtime Status Pill: `Ollama: Hemmingway-1 + Humanizer [LOCAL]` with active green dot.
-  * Global Actions: Export menu (ATS PDF, DOCX, Markdown), Settings modal.
+1. **Act 01: Intake & Entity Lock**:
+   * Drag-and-drop ingestion of resume files.
+   * Target Job Description semantic parser (extracts high-priority keywords).
+   * Fact registration: Automatically scans and highlights every number, metric, currency, date, and proper noun to lock.
+2. **Act 02: Studio Canvas (The Core Dual-Engine Diff Stage)**:
+   * **Left Stage (70% Width)**: The Humanizer-inspired Dual-Card Diff container.
+     * `01 Draft`: Shows raw uploaded text with red strikethroughs across corporate filler.
+     * `02 Rewrite`: Shows humanized text with bright lime-green highlight pills (`#d9f99d`) on punchy action verbs and outcomes.
+     * `✓ FACTS KEPT`: Capsule bar locking all invariant entities (`$1.4M 🔒`, `40% overtime 🔒`, `Kubernetes 🔒`).
+   * **Right Panel (30% Width)**: The Architectural Anti-Slop Quality Gate.
+     * Large bold cobalt `42/50` score badge (`PASSING`).
+     * 5 Dimension breakdown (Directness, Rhythm, Trust, Authenticity, Density).
+     * ATS Keyword Match Matrix.
+     * AI Detection Risk gauge (`8% AI Risk · 92% Human Authentic`).
+3. **Act 03: Certified Audit & Export**:
+   * Full single-column ATS PDF preview.
+   * Native Word `.docx` download.
+   * Diagnostic audit card for candidate records.
 
-* **The 70/30 Asymmetric Workspace**:
-  * **Left Stage (70% Width - The Dual-Card Diff Laboratory)**:
-    * Gives resume bullets generous horizontal reading room (~75ch line length).
-    * **Card 01 (`01 Draft: what the candidate wrote`)**: White card with 3px blue border. Strikethrough on corporate filler (*"~~Responsible for managing cross-functional teams to~~"*).
-    * **Card 02 (`02 Rewrite: reads like a person · dense & active`)**: White card with 3px blue border. Highlights punchy action verbs and metrics in lime-green pills (*"[Led 4-person team delivering microservice], [cutting p99 latency 40%]"*).
-    * **The Pinned `✓ FACTS KEPT` Bar**: Positioned directly underneath the diff cards, displaying capsule chips locking every metric, percentage, and tool (`$1.4M 🔒`, `40% overtime 🔒`, `6 hrs to 90 min 🔒`, `Kubernetes 🔒`).
-  * **Right Panel (30% Width - Career-Ops Quality Gate & ATS Intelligence)**:
-    * White architectural card with 3px cobalt border and 6px hard shadow.
-    * **Total Score**: Large bold cobalt `42/50` score badge (passing threshold: 35/50).
-    * **5-Dimension Rubric**: Interactive breakdown bars for Directness (9/10), Rhythm (8/10), Trust (10/10), Authenticity (8/10), Density (8/10).
-    * **ATS Keyword Match Matrix**: Chips highlighting covered vs. missing job description skill vectors.
-    * **1-Click Export Bar**: Pinned buttons for *Export ATS-Certified PDF* and *Export Clean DOCX*.
+### 6.2 Design System Tokens (career-skill.vercel.app × Humanizer)
+* **Canvas**: Warm light zinc-50 paper canvas (`#fafafa`) with a subtle 24px blueprint graph grid (`rgba(20, 20, 184, 0.05)`).
+* **Architectural Borders & Shadows**: 3px solid cobalt blue borders (`border: 3px solid #1414b8`) with 6px hard geometric drop shadows (`box-shadow: 6px 6px 0px #1414b8`).
+* **Typography**: Bold black uppercase display headings (`font-black uppercase text-black`), clean body prose, and monospace technical labels for numbers and tags.
+* **Diff Highlighting**: Bright lime pills (`#d9f99d` / `#ccff00`) for new humanized wording; coral red strikethrough (`#e11d48`) for deleted corporate filler.
 
-### 6.2 The Three Product Workspaces
+### 6.3 The Three Workspace Modules
 1. **Resume Optimizer**: Bullet-by-bullet AST transformation, keyword injection, single-column ATS verification.
 2. **Cover Letter Studio**: Implements the Hook $\rightarrow$ Match $\rightarrow$ Close methodology with authentic human tone calibration.
 3. **LinkedIn Forge**: Generates search-optimized Headlines (220 char limit), 3-act narrative About sections, and scannable experience summaries.
 
-### 6.3 Section 3 Gap Review
+### 6.4 Section 3 Gap Review
 * **Gap 3.1 (Browser CORS with Local Ollama)**: Browser security blocks direct `fetch('http://localhost:11434')`.  
   * *Resolution*: Vite dev server / Node local runner proxies `/api/*` requests directly to Ollama, eliminating all browser CORS issues.
 * **Gap 3.2 (Virtualization on Long Diffs)**: Heavy diff calculations cause frame stutter on 3-page resumes.  
   * *Resolution*: Virtualized DOM list rendering (`@tanstack/react-virtual`) and offloading token diffing to a dedicated Web Worker (`diff.worker.ts`).
 * **Gap 3.3 (Accidental Manual Edit Metric Corruption)**: User manually edits a bullet and deletes or mistypes a metric.  
   * *Resolution*: Inline Invariant Sentinel alerts the user immediately with a warning badge if any locked metric is missing.
-* **Gap 3.4 (Window Cramping on Narrow Screens)**: 70/30 layout on screens under 1280px width.  
-  * *Resolution*: Responsive drawer design: Intelligence & Radar inspector collapses into a floating bottom sheet / toggle drawer on screens $<1280\text{px}$.
-
----
-
-## 7. Section 4: Anti-Slop Scoring Engine & Verification Gate (`@career-ops/audit`)
-
-### 7.1 Deterministic Rubric Metrics & Formulations
-The audit engine uses deterministic formulas rather than subjective LLM evaluation:
-1. **Directness (10 pts)**: Penalizes passive voice constructions (`was promoted to lead`) and hedging tokens (`helped to`, `assisted with`).
-   $$\text{Directness} = 10 - 2 \times (\text{PassiveConstructions}) - 1.5 \times (\text{HedgingPhrases})$$
-2. **Rhythm (10 pts)**: Measures burstiness (sentence length standard deviation). AI text clumps around $20 \pm 2$ words; human text has high variance ($\sigma \ge 6.5$).
-   $$\text{Rhythm} = \min\left(10, \; \text{round}\left(4 + 0.8 \times \sigma_{\text{sentence\_length}}\right)\right)$$
-3. **Trust & Factual Invariance (10 pts)**: Output must contain 100% of original numbers, metrics, currency values, and dates.
-   $$\text{Trust} = \begin{cases} 10 & \text{if all original metrics match verbatim} \\ 0 & \text{if any metric was modified or dropped} \end{cases}$$
-4. **Authenticity (10 pts)**: Scans for the 30+ banned corporate phrases from `references/anti-slop.md`.
-   $$\text{Authenticity} = \max\left(0, \; 10 - 3 \times (\text{BannedPhrasesFound})\right)$$
-5. **Density (10 pts)**: Enforces the Action Verb + Specific Context + Metric structure.
-   $$\text{Density} = \text{ActionVerb (3)} + \text{VerifiableContext (3)} + \text{QuantifiedMetric (4)}$$
-
-### 7.2 ATS Parser Sanity Scanner
-* **Single-Column Compliance**: Flags multi-column grids or sidebars that cause ATS parsers to interleave text horizontally.
-* **Date Normalization**: Standardizes non-standard dates (*"Spring 2023"*) into machine-readable `MM/YYYY – MM/YYYY`.
-* **Heading Standard**: Normalizes section titles into canonical AST headers (*Experience*, *Education*, *Skills*).
-
-### 7.3 Section 4 Gap Review
-* **Gap 4.1 (Domain-Specific Version Numbers)**: Technical versions (`Python 3.12`, `OAuth 2.0`) falsely flagged as performance metrics.  
-  * *Resolution*: Tech stack tokenization categorizes version numbers as technical entities, not performance metrics.
-* **Gap 4.2 (Banned Phrase Paraphrasing)**: Subtle paraphrasing (*"demonstrated track record"*) evading exact match.  
-  * *Resolution*: Stemmed fuzzy regex matching against the banned phrase dictionary.
-* **Gap 4.3 (Action Verb Whitelist Restriction)**: Valid uncommon verbs flagged as non-action.  
-  * *Resolution*: Expanded 250-word canonical action verb dictionary categorized by functional discipline.
-
+* **Gap 3.4 (Window Cramping on Narrow Screens)**: 3-pane layout becomes crowded under 1280px width.  
+  * *Resolution*: Responsive drawer design: Intelligence & Radar inspector collapses into a floating drawer on screens $<1280\text{px}$.
 
 
