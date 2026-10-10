@@ -164,7 +164,7 @@ git commit -m "feat(audit): implement two-class invariant normalizer and entity 
 - Consumes: `checkInvariantPreservation`, `extractInvariants` from `./normalizer.js`
 - Produces: `reconcileBullet(originalBullet: string, stage2Dense: string, stage3Humanized: string): ReconciledBulletResult`
 
-- [ ] **Step 1: Write the failing sentinel test**
+- [x] **Step 1: Write the failing sentinel test**
 
 Create `packages/audit/tests/sentinel.test.ts`:
 ```typescript
@@ -217,12 +217,12 @@ describe('Invariant Sentinel & Fallback State Machine', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/audit/tests/sentinel.test.ts`
 Expected: FAIL with "Cannot find module '../src/invariants/sentinel.js'".
 
-- [ ] **Step 3: Implement `packages/audit/src/invariants/sentinel.ts`**
+- [x] **Step 3: Implement `packages/audit/src/invariants/sentinel.ts`**
 
 ```typescript
 import { checkInvariantPreservation, extractInvariants } from './normalizer.js';
@@ -296,12 +296,12 @@ export function reconcileBullet(
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `pnpm test packages/audit/tests/sentinel.test.ts`
 Expected: PASS (4 tests passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/audit/src/invariants/sentinel.ts packages/audit/tests/sentinel.test.ts
@@ -321,7 +321,7 @@ git commit -m "feat(audit): implement invariant sentinel with 4-step fallback st
 - Produces: `evaluateAuthenticity(text: string): AuditDimensionScore`
 - Formula: $\max(0, 10 - 3 \times \text{BannedPhrasesFound})$
 
-- [ ] **Step 1: Write the failing authenticity test**
+- [x] **Step 1: Write the failing authenticity test**
 
 Create `packages/audit/tests/authenticity.test.ts`:
 ```typescript
@@ -353,12 +353,12 @@ describe('Authenticity Dimension Scorer', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/audit/tests/authenticity.test.ts`
 Expected: FAIL with "Cannot find module '../src/rubric/authenticity.js'".
 
-- [ ] **Step 3: Implement `packages/audit/src/rubric/banned-phrases.ts` and `authenticity.ts`**
+- [x] **Step 3: Implement `packages/audit/src/rubric/banned-phrases.ts` and `authenticity.ts`**
 
 Create `packages/audit/src/rubric/banned-phrases.ts`:
 ```typescript
@@ -427,12 +427,12 @@ export function evaluateAuthenticity(text: string): AuditDimensionScore {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `pnpm test packages/audit/tests/authenticity.test.ts`
 Expected: PASS (3 tests passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/audit/src/rubric/banned-phrases.ts packages/audit/src/rubric/authenticity.ts packages/audit/tests/authenticity.test.ts
@@ -455,7 +455,7 @@ git commit -m "feat(audit): implement authenticity rubric dimension and banned p
   - `evaluateRhythm(pooledSectionSentences: string[]): AuditDimensionScore`
   - `evaluateDensity(bullets: string[]): AuditDimensionScore`
 
-- [ ] **Step 1: Write the failing scorers test**
+- [x] **Step 1: Write the failing scorers test**
 
 Create `packages/audit/tests/rhythm-directness-density.test.ts`:
 ```typescript
@@ -511,12 +511,12 @@ describe('Directness, Rhythm & Density Rubric Dimensions', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/audit/tests/rhythm-directness-density.test.ts`
 Expected: FAIL with "Cannot find module '../src/rubric/directness.js'".
 
-- [ ] **Step 3: Implement Directness, Rhythm, and Density modules**
+- [x] **Step 3: Implement Directness, Rhythm, and Density modules**
 
 Create `packages/audit/src/rubric/directness.ts`:
 ```typescript
@@ -683,12 +683,12 @@ export function evaluateDensity(bullets: string[]): AuditDimensionScore {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `pnpm test packages/audit/tests/rhythm-directness-density.test.ts`
 Expected: PASS (3 tests passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/audit/src/rubric/directness.ts packages/audit/src/rubric/rhythm.ts packages/audit/src/rubric/density.ts packages/audit/tests/rhythm-directness-density.test.ts
@@ -710,7 +710,7 @@ git commit -m "feat(audit): implement directness, pooled rhythm, and density sco
   - `AntiSlopScorer.evaluate(input: EvaluateInput): AuditReport`
   - Three-Band Gate: $\ge 42$ Certified, 35–41 Warning, $< 35$ Reject.
 
-- [ ] **Step 1: Write the failing scorer test**
+- [x] **Step 1: Write the failing scorer test**
 
 Create `packages/audit/tests/scorer.test.ts`:
 ```typescript
@@ -783,12 +783,12 @@ describe('AntiSlopScorer & Three-Band Decision Gate', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/audit/tests/scorer.test.ts`
 Expected: FAIL with "Cannot find module '../src/rubric/scorer.js'".
 
-- [ ] **Step 3: Implement Trust scorer and AntiSlopScorer class**
+- [x] **Step 3: Implement Trust scorer and AntiSlopScorer class**
 
 Create `packages/audit/src/rubric/trust.ts`:
 ```typescript
@@ -895,12 +895,12 @@ export class AntiSlopScorer {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `pnpm test packages/audit/tests/scorer.test.ts`
 Expected: PASS (3 tests passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/audit/src/rubric/trust.ts packages/audit/src/rubric/scorer.ts packages/audit/tests/scorer.test.ts
@@ -918,7 +918,7 @@ git commit -m "feat(audit): implement graded trust scorer and AntiSlopScorer thr
 **Interfaces:**
 - Produces: `scanAtsLayout(markdownOrPlainText: string): AtsScanResult`
 
-- [ ] **Step 1: Write the failing layout scanner test**
+- [x] **Step 1: Write the failing layout scanner test**
 
 Create `packages/audit/tests/layout-scanner.test.ts`:
 ```typescript
@@ -973,12 +973,12 @@ Some narrative without standard headings.
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/audit/tests/layout-scanner.test.ts`
 Expected: FAIL with "Cannot find module '../src/ats/layout-scanner.js'".
 
-- [ ] **Step 3: Implement `packages/audit/src/ats/layout-scanner.ts`**
+- [x] **Step 3: Implement `packages/audit/src/ats/layout-scanner.ts`**
 
 ```typescript
 import type { AtsScanResult } from '../types.js';
@@ -1022,12 +1022,12 @@ export function scanAtsLayout(markdownOrPlainText: string): AtsScanResult {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `pnpm test packages/audit/tests/layout-scanner.test.ts`
 Expected: PASS (2 tests passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/audit/src/ats/layout-scanner.ts packages/audit/tests/layout-scanner.test.ts
@@ -1059,7 +1059,7 @@ git commit -m "feat(audit): implement single-column ATS layout scanner and headi
   export * from './ats/layout-scanner.js';
   ```
 
-- [ ] **Step 1: Write the failing integration test**
+- [x] **Step 1: Write the failing integration test**
 
 Create `packages/audit/tests/integration.test.ts`:
 ```typescript
@@ -1098,12 +1098,12 @@ describe('@career-ops/audit Integration', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm test packages/audit/tests/integration.test.ts`
 Expected: FAIL with "Cannot find module '../src/index.js'".
 
-- [ ] **Step 3: Implement `packages/audit/src/index.ts`**
+- [x] **Step 3: Implement `packages/audit/src/index.ts`**
 
 ```typescript
 export * from './types.js';
@@ -1119,17 +1119,17 @@ export * from './rubric/scorer.js';
 export * from './ats/layout-scanner.js';
 ```
 
-- [ ] **Step 4: Run all package tests and verify build**
+- [x] **Step 4: Run all package tests and verify build**
 
 Run: `pnpm test`
 Expected: All tests pass across both `@career-ops/knowledge` and `@career-ops/audit`.
 
-- [ ] **Step 5: Run package build**
+- [x] **Step 5: Run package build**
 
 Run: `pnpm --filter @career-ops/audit build`
 Expected: TypeScript compile succeeds, generating `./dist/index.js` and `./dist/index.d.ts`.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add packages/audit/src/index.ts packages/audit/tests/integration.test.ts
