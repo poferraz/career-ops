@@ -266,11 +266,19 @@ flowchart LR
    * Native Word `.docx` download.
    * Diagnostic audit card for candidate records.
 
-### 6.2 Design System Tokens (career-skill.vercel.app × Humanizer)
-* **Canvas**: Warm light zinc-50 paper canvas (`#fafafa`) with a subtle 24px blueprint graph grid (`rgba(20, 20, 184, 0.05)`).
+### 6.2 Design System Tokens & Impeccable Rules (`PRODUCT.md` & `DESIGN.md`)
+* **Durable Design Authority**: Standardized in [`PRODUCT.md`](file:///Users/poferraz/Documents/Development/active/career-ops/PRODUCT.md) and [`DESIGN.md`](file:///Users/poferraz/Documents/Development/active/career-ops/DESIGN.md).
+* **Canvas**: Warm light zinc-50 paper canvas (`#fafafa`) with a subtle 24px blueprint graph grid (`rgba(20, 20, 184, 0.04)`).
 * **Architectural Borders & Shadows**: 3px solid cobalt blue borders (`border: 3px solid #1414b8`) with 6px hard geometric drop shadows (`box-shadow: 6px 6px 0px #1414b8`).
-* **Typography**: Bold black uppercase display headings (`font-black uppercase text-black`), clean body prose, and monospace technical labels for numbers and tags.
-* **Diff Highlighting**: Bright lime pills (`#d9f99d` / `#ccff00`) for new humanized wording; coral red strikethrough (`#e11d48`) for deleted corporate filler.
+* **Typography**:
+  * Headings: `Inter` (Black 900, uppercase, tracking-tight).
+  * Body: `Inter` (Regular 400 / Medium 500, `text-[15px]`, `leading-7`).
+  * Mono Data: `JetBrains Mono` (Bold 700 / Medium 500, `11px–12px`).
+* **The Inline Highlight Rule**:
+  * Diff text highlights use pure inline styling: `background-color: #d9f99d; color: #09090b; padding: 1px 3px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; display: inline;`.
+  * **Strict Prohibition**: Never use `display: inline-block` on inline text highlights, as it treats multi-word clauses as rigid atomic boxes, causing jagged line breaks, trailing gaps, and orphan punctuation.
+* **The Left-Justified Rhythm Rule**:
+  * Both Draft and Rewrite columns share identical left-alignment (`text-left`) and vertical rhythm (`leading-7`), with bullet markers (`•`) and attached punctuation to enable instant comparative eye-tracking.
 
 ### 6.3 The Three Workspace Modules
 1. **Resume Optimizer**: Bullet-by-bullet AST transformation, keyword injection, single-column ATS verification.

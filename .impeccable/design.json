@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T13:10:00Z",
+  "title": "Design System: Career-Ops Studio",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Architect Cobalt", "canonical": "#1414b8", "tonalRamp": ["#08084a", "#0d0d7a", "#1414b8", "#2424d1", "#4f4fe0", "#8080eb", "#b3b3f5", "#e8e8fc"] },
+      "surface-canvas": { "role": "neutral", "displayName": "Paper Canvas", "canonical": "#fafafa", "tonalRamp": ["#18181b", "#27272a", "#52525b", "#a1a1aa", "#d4d4d8", "#e4e4e7", "#f4f4f5", "#fafafa"] },
+      "highlight-human": { "role": "accent", "displayName": "Human Lime Highlight", "canonical": "#d9f99d", "tonalRamp": ["#365314", "#4d7c0f", "#65a30d", "#84cc16", "#a3e635", "#bef264", "#d9f99d", "#ecfccb"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "App branding and major milestone headers." },
+      "body": { "displayName": "Body", "purpose": "Left-justified comparative resume bullets." },
+      "mono": { "displayName": "Mono", "purpose": "Locked metrics, invariant facts, scores." }
+    },
+    "shadows": [
+      { "name": "shadow-hard", "value": "6px 6px 0px #1414b8", "purpose": "Primary containers and active cards." },
+      { "name": "shadow-hard-sm", "value": "3px 3px 0px #1414b8", "purpose": "Badges, pills, and secondary controls." },
+      { "name": "shadow-capsule", "value": "2px 2px 0px #1414b8", "purpose": "Locked invariant fact capsules." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Diff Card Container",
+      "kind": "card",
+      "refersTo": "diff-container",
+      "description": "Side-by-side comparison of original draft vs rewritten bullet.",
+      "html": "<div class=\"ds-diff\"><div class=\"ds-header\">02 REWRITE</div><p class=\"ds-body\"><span class=\"ds-highlight\">Led 4-person team</span> that cut query latency 40%.</p></div>",
+      "css": ".ds-diff { background: #fff; border: 3px solid #1414b8; box-shadow: 6px 6px 0px #1414b8; padding: 24px; } .ds-header { font-weight: 900; color: #1414b8; text-transform: uppercase; font-size: 13px; margin-bottom: 8px; } .ds-body { font-size: 15px; line-height: 1.75; text-align: left; color: #09090b; } .ds-highlight { background-color: #d9f99d; color: #09090b; padding: 1px 3px; border-radius: 3px; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }"
+    },
+    {
+      "name": "Fact Capsule",
+      "kind": "chip",
+      "refersTo": "fact-capsule",
+      "description": "Locked invariant factual metric badge with padlock icon.",
+      "html": "<span class=\"ds-fact-capsule\"><span>$1.4M</span><span>🔒</span></span>",
+      "css": ".ds-fact-capsule { background: #fff; border: 2px solid #1414b8; border-radius: 9999px; padding: 2px 10px; font-family: monospace; font-size: 11px; font-weight: 700; color: #1414b8; display: inline-flex; align-items: center; gap: 4px; box-shadow: 2px 2px 0px #1414b8; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Master Architectural Blueprint",
+    "overview": "Career-Ops Studio merges the raw, structural authority of architectural blueprints with the surgical, side-by-side diffing clarity of high-performance text editors. It rejects the mushy, pastel-tinted sameness of consumer AI applications in favor of high-contrast conviction: stark white cards set against a warm zinc paper grid, bound by uncompromising 3px solid cobalt blue borders and sharp 6px hard geometric drop shadows.",
+    "keyCharacteristics": [
+      "Architectural Neo-Brutalism: Heavy 3px cobalt borders, 6px unblurred drop shadows, and subtle 24px blueprint graph grids.",
+      "Natural Inline Flow: Diff highlights wrap smoothly across prose without awkward block wrapping, orphan commas, or ragged text gaps.",
+      "High-Density Typography: Uppercase black display headings paired with readable 15px body prose and precision JetBrains Mono data labels.",
+      "Three-Act Narrative Structure: A guided, purposeful progression (Intake & Lock -> Studio Canvas -> Audit & Export)."
+    ],
+    "rules": [
+      { "name": "The Hard Shadow Rule", "body": "Drop shadows are strictly geometric offsets (box-shadow: 6px 6px 0px #1414b8), never blurred.", "section": "colors" },
+      { "name": "The Inline Highlight Rule", "body": "Highlighted wording must use pure inline styling (box-decoration-break: clone; display: inline;). Never use inline-block.", "section": "colors" },
+      { "name": "The Left-Justified Rhythm Rule", "body": "All comparative prose must be strictly left-aligned with matching leading-7 vertical rhythm across both columns.", "section": "typography" }
+    ],
+    "dos": [
+      "Do use box-decoration-break: clone; display: inline; for all text highlights.",
+      "Do attach punctuation immediately to highlighted phrases without leading spaces.",
+      "Do maintain a strict 3px solid #1414b8 border with 6px hard drop shadows on primary containers.",
+      "Do give diff cards at least 500px of horizontal breathing room."
+    ],
+    "donts": [
+      "Don't use display: inline-block on text highlights; it breaks natural sentence flow.",
+      "Don't introduce blurred or semi-transparent drop shadows; all shadows must be 100% hard geometric offsets.",
+      "Don't use dark mode or cyberpunk gradients; the canvas is strictly a warm architectural paper blueprint (#fafafa).",
+      "Don't squeeze diff columns into three equal widths; the diff is the hero and requires 70% of the viewport."
+    ]
+  }
+}
