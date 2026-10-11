@@ -24,6 +24,18 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
 
+  packages/core:
+    dependencies:
+      '@career-ops/audit':
+        specifier: workspace:*
+        version: link:../audit
+      '@career-ops/knowledge':
+        specifier: workspace:*
+        version: link:../knowledge
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
   packages/knowledge:
     dependencies:
       zod:
