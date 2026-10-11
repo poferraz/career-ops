@@ -1,0 +1,21 @@
+{
+  "name": "@career-ops/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "career-ops": "./bin/career-ops.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@career-ops/audit": "workspace:*",
+    "@career-ops/core": "workspace:*",
+    "@career-ops/knowledge": "workspace:*",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.0"
+  }
+}
