@@ -39,12 +39,12 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: CLI package linking `@career-ops/core`, `@career-ops/audit`, `@career-ops/knowledge`
 - Produces: Executable binary entry point `bin/career-ops.js`
 
-- [ ] **Step 1: Create `package.json` and `tsconfig.json` for `@career-ops/cli`**
-- [ ] **Step 2: Write failing scaffolding test in `packages/cli/tests/scaffold.test.ts`**
-- [ ] **Step 3: Run test to verify failure**
-- [ ] **Step 4: Implement executable entry point `bin/career-ops.js`**
-- [ ] **Step 5: Run test to verify pass**
-- [ ] **Step 6: Commit and push**
+- [x] **Step 1: Create `package.json` and `tsconfig.json` for `@career-ops/cli`**
+- [x] **Step 2: Write failing scaffolding test in `packages/cli/tests/scaffold.test.ts`**
+- [x] **Step 3: Run test to verify failure**
+- [x] **Step 4: Implement executable entry point `bin/career-ops.js`**
+- [x] **Step 5: Run test to verify pass**
+- [x] **Step 6: Commit and push**
 
 ---
 
@@ -59,11 +59,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: `formatDiff(original: string, rewritten: string, invariants?: string[]): string`
 - Produces: `formatBanner(): string`
 
-- [ ] **Step 1: Write failing formatter test in `packages/cli/tests/formatters.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement `formatters.ts` and `diff-view.ts`**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing formatter test in `packages/cli/tests/formatters.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement `formatters.ts` and `diff-view.ts`**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -76,11 +76,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: `runDoctorCommand(options?: DoctorOptions): Promise<DoctorReport>`
 - Checks: Node.js version, local/remote Ollama status, model tag presence (`hemmingway-1`, `humanizer`), and VRAM recommendations.
 
-- [ ] **Step 1: Write failing doctor command test in `packages/cli/tests/doctor.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement `doctor.ts`**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing doctor command test in `packages/cli/tests/doctor.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement `doctor.ts`**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -93,11 +93,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: `runAuditCommand(filePath: string, options?: AuditCommandOptions): Promise<number>`
 - Supports: `--ci` (exit code 1 on reject or ATS violation), `--json`, custom tools.
 
-- [ ] **Step 1: Write failing audit command test in `packages/cli/tests/audit-command.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement `audit.ts`**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing audit command test in `packages/cli/tests/audit-command.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement `audit.ts`**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -110,11 +110,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: `runOptimizeCommand(filePath?: string, options?: OptimizeCommandOptions): Promise<OptimizationResult>`
 - Supports: `--demo` (zero-config demo), `--mock`, `--remote <url>`, `--output <path>`, `--diff`, `--json`.
 
-- [ ] **Step 1: Write failing optimize command test in `packages/cli/tests/optimize-command.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement `optimize.ts`**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing optimize command test in `packages/cli/tests/optimize-command.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement `optimize.ts`**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -127,11 +127,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: `runInterviewCommand(filePath: string, options?: InterviewCommandOptions): Promise<string>`
 - Interactively probes Articulation Gap bullets using RISE questions and outputs enriched markdown.
 
-- [ ] **Step 1: Write failing interview command test in `packages/cli/tests/interview-command.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement `interview.ts`**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing interview command test in `packages/cli/tests/interview-command.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement `interview.ts`**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -148,11 +148,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: `LinkedInStrategist.generateProfile(candidateAst: ResumeAST, targetRole?: string): Promise<LinkedInProfile>`
 - Commands: `career-ops cover-letter <resume> --jd <job.md>` and `career-ops linkedin <resume>`
 
-- [ ] **Step 1: Write failing Track A & B test in `packages/cli/tests/track-agents.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement Cover Letter Architect, LinkedIn Strategist, and CLI commands**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing Track A & B test in `packages/cli/tests/track-agents.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement Cover Letter Architect, LinkedIn Strategist, and CLI commands**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -166,11 +166,11 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 - Produces: Local HTTP server serving interactive Three-Act Studio with API endpoints `/api/audit`, `/api/optimize`, `/api/mine`.
 - Command: `career-ops studio [--port 3000] [--open]`
 
-- [ ] **Step 1: Write failing studio server test in `packages/cli/tests/studio-command.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Implement studio server and command**
-- [ ] **Step 4: Run test to verify pass**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing studio server test in `packages/cli/tests/studio-command.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Implement studio server and command**
+- [x] **Step 4: Run test to verify pass**
+- [x] **Step 5: Commit and push**
 
 ---
 
@@ -184,8 +184,8 @@ Phase 3 builds the developer experience, terminal command center, and interactiv
 **Interfaces:**
 - Produces: Complete commander program wiring all commands with help text, options, and error handling.
 
-- [ ] **Step 1: Write failing end-to-end CLI program test in `packages/cli/tests/cli-e2e.test.ts`**
-- [ ] **Step 2: Run test to verify failure**
-- [ ] **Step 3: Wire `src/index.ts` and `bin/career-ops.js`**
-- [ ] **Step 4: Run all monorepo tests and build verification**
-- [ ] **Step 5: Commit and push**
+- [x] **Step 1: Write failing end-to-end CLI program test in `packages/cli/tests/cli-e2e.test.ts`**
+- [x] **Step 2: Run test to verify failure**
+- [x] **Step 3: Wire `src/index.ts` and `bin/career-ops.js`**
+- [x] **Step 4: Run all monorepo tests and build verification**
+- [x] **Step 5: Commit and push**
