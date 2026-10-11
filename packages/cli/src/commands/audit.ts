@@ -45,8 +45,7 @@ export async function runAuditCommand(
 
   const report = AntiSlopScorer.evaluate({
     bullets,
-    sentences,
-    customTools: options.customTools
+    sentences
   });
 
   const atsScan = scanAtsLayout(rawMarkdown);

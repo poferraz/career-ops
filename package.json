@@ -7,7 +7,8 @@
     "build": "pnpm -r run build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "pnpm -r run lint"
+    "lint": "pnpm -r run lint",
+    "career-ops": "node packages/cli/bin/career-ops.js"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

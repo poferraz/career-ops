@@ -133,8 +133,7 @@ export async function startStudioServer(
 
         const report = AntiSlopScorer.evaluate({
           bullets,
-          sentences,
-          customTools: body.customTools
+          sentences
         });
 
         const atsScan = scanAtsLayout(markdown);
