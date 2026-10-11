@@ -12,6 +12,7 @@ export interface MiningProbe {
 export interface MinedAccomplishment {
   bulletId: string;
   metric?: string;
+  metrics?: string[];
   tool?: string;
   scope?: string;
   enrichedBullet: string;
@@ -132,14 +133,14 @@ Return ONLY valid JSON matching this schema:
   /**
    * Applies the mined metrics and tools back into the ResumeAST and updates invariant capsules.
    */
-  public applyMinedAccomplishment(ast: ResumeAST, mined: MinedAccomplishment): ResumeAST {
+  public static applyMinedAccomplishment(ast: ResumeAST, mined: MinedAccomplishment): ResumeAST {
     const cloned: ResumeAST = JSON.parse(JSON.stringify(ast)) as ResumeAST;
 
     for (const role of cloned.experience) {
       for (const bullet of role.bullets) {
         if (bullet.id === mined.bulletId) {
           bullet.originalText = mined.enrichedBullet;
-          bullet.minedMetrics = mined.metric ? [mined.metric] : [];
+          bullet.minedMetrics = mined.metrics ?? (mined.metric ? [mined.metric] : []);
           bullet.status = 'mined';
 
           // Re-extract updated invariants
@@ -157,5 +158,9 @@ Return ONLY valid JSON matching this schema:
     }
 
     return cloned;
+  }
+
+  public applyMinedAccomplishment(ast: ResumeAST, mined: MinedAccomplishment): ResumeAST {
+    return MotivationalInterviewer.applyMinedAccomplishment(ast, mined);
   }
 }

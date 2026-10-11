@@ -8,7 +8,10 @@ export interface HumanizeOptions {
 export class HumanizerCadenceEngine {
   public static readonly MODEL = 'jialinyyzz/humanizer:Q4_K_M';
 
-  constructor(private provider: InferenceProvider) {}
+  constructor(
+    private provider: InferenceProvider,
+    private model: string = HumanizerCadenceEngine.MODEL
+  ) {}
 
   /**
    * Restyles a dense achievement bullet to introduce natural human sentence cadence
@@ -37,7 +40,7 @@ Immutable Facts & Tools:
 ${factLines}`;
 
     const res = await this.provider.generate(prompt, {
-      model: HumanizerCadenceEngine.MODEL,
+      model: this.model,
       temperature: 0.3
     });
 

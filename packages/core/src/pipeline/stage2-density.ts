@@ -10,7 +10,10 @@ export interface RoleContext {
 export class HemingwayDensityEngine {
   public static readonly MODEL = 'richardyoung/hemmingway-1:Q4_K_M';
 
-  constructor(private provider: InferenceProvider) {}
+  constructor(
+    private provider: InferenceProvider,
+    private model: string = HemingwayDensityEngine.MODEL
+  ) {}
 
   /**
    * Transforms a bullet point into a high-density, action-verb driven bullet
@@ -46,7 +49,7 @@ Locked invariants:
     const chatMlPrompt = `<|im_start|>system\n${systemPrompt}<|im_end|>\n<|im_start|>user\n${userPrompt}<|im_end|>\n<|im_start|>assistant\n`;
 
     const res = await this.provider.generate(chatMlPrompt, {
-      model: HemingwayDensityEngine.MODEL,
+      model: this.model,
       temperature: 0.2,
       stop: ['<|im_end|>', '\n\n']
     });

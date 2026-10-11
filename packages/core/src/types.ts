@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { AuditReport } from '@career-ops/audit';
+import type { AuditReport, AtsScanResult } from '@career-ops/audit';
 
 export const CandidateHeaderSchema = z.object({
   name: z.string(),
@@ -70,4 +70,11 @@ export interface OptimizationResult {
   markdown: string;
   auditReport: AuditReport;
   summary: string;
+  atsScan?: AtsScanResult;
+  resolutionCounts?: {
+    verbatim_match: number;
+    programmatic_re_injection: number;
+    fallback_stage2: number;
+    revert_original: number;
+  };
 }
