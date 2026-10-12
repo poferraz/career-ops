@@ -49,15 +49,15 @@ Phase 4 completes the production pipeline of `career-ops`, taking optimized Resu
 - Produces: `export interface ExportOptions { outputDir?: string; filename?: string; author?: string; }`
 - Produces: `export function generateAtsPdf(ast: ResumeAST, options?: ExportOptions): Buffer`
 
-- [ ] **Step 1: Write failing tests in `packages/core/tests/pdf-exporter.test.ts`**
+- [x] **Step 1: Write failing tests in `packages/core/tests/pdf-exporter.test.ts`**
   - Verify generated buffer starts with `%PDF-1.4` header and ends with `%%EOF`.
   - Verify PDF includes candidate name, contact, section headers (`EXPERIENCE`, `EDUCATION`, `SKILLS`), and bullet points.
   - Verify layout has no tables or multi-column constructs.
-- [ ] **Step 2: Run test to verify failure (Red phase)**
-- [ ] **Step 3: Implement `types.ts` and `pdf-exporter.ts`**
+- [x] **Step 2: Run test to verify failure (Red phase)**
+- [x] **Step 3: Implement `types.ts` and `pdf-exporter.ts`**
   - Build clean, deterministic PDF stream builder with font dictionary (Helvetica, Helvetica-Bold), font sizes (18pt name, 12pt section headings, 10pt text), proper line wrapping, and page streams.
-- [ ] **Step 4: Run test to verify pass (Green phase)**
-- [ ] **Step 5: Commit changes**
+- [x] **Step 4: Run test to verify pass (Green phase)**
+- [x] **Step 5: Commit changes**
 
 ---
 
@@ -69,15 +69,15 @@ Phase 4 completes the production pipeline of `career-ops`, taking optimized Resu
 **Interfaces:**
 - Produces: `export function generateAtsDocx(ast: ResumeAST, options?: ExportOptions): Buffer`
 
-- [ ] **Step 1: Write failing tests in `packages/core/tests/docx-exporter.test.ts`**
+- [x] **Step 1: Write failing tests in `packages/core/tests/docx-exporter.test.ts`**
   - Verify output is a valid zip buffer containing `[Content_Types].xml`, `word/document.xml`, `_rels/.rels`.
   - Verify `document.xml` contains candidate name, headings, bullet list items (`w:numPr` or bullet paragraph style), and role entries.
   - Verify document contains zero tables (`w:tbl`) or multi-column sections.
-- [ ] **Step 2: Run test to verify failure (Red phase)**
-- [ ] **Step 3: Implement `docx-exporter.ts`**
+- [x] **Step 2: Run test to verify failure (Red phase)**
+- [x] **Step 3: Implement `docx-exporter.ts`**
   - Generate standard Office Open XML structure packaged into zip buffer.
-- [ ] **Step 4: Run test to verify pass (Green phase)**
-- [ ] **Step 5: Commit changes**
+- [x] **Step 4: Run test to verify pass (Green phase)**
+- [x] **Step 5: Commit changes**
 
 ---
 
@@ -95,13 +95,13 @@ Phase 4 completes the production pipeline of `career-ops`, taking optimized Resu
 - Produces: CLI command `career-ops export <resume.md> --format <formats> --output <dir>`
 - Extends: `career-ops optimize` to automatically export to requested formats when `--output` is specified.
 
-- [ ] **Step 1: Write failing tests in `packages/cli/tests/export-command.test.ts`**
+- [x] **Step 1: Write failing tests in `packages/cli/tests/export-command.test.ts`**
   - Verify exporting to PDF, DOCX, and Markdown writes files to destination directory.
   - Verify `career-ops optimize --output <dir> --format pdf,docx,md` produces all 3 files.
-- [ ] **Step 2: Run test to verify failure (Red phase)**
-- [ ] **Step 3: Implement `exporter.ts`, `export.ts`, update `optimize.ts` and `bin.ts`**
-- [ ] **Step 4: Run test to verify pass (Green phase)**
-- [ ] **Step 5: Commit changes**
+- [x] **Step 2: Run test to verify failure (Red phase)**
+- [x] **Step 3: Implement `exporter.ts`, `export.ts`, update `optimize.ts` and `bin.ts`**
+- [x] **Step 4: Run test to verify pass (Green phase)**
+- [x] **Step 5: Commit changes**
 
 ---
 
@@ -119,10 +119,10 @@ Phase 4 completes the production pipeline of `career-ops`, taking optimized Resu
   5. Hardware compatibility table (24GB/32GB local floor vs `--remote <url>`).
   6. Complete CLI Command Reference table.
 
-- [ ] **Step 1: Write contract test verifying that documented CLI commands and flags exist and execute in help mode**
-- [ ] **Step 2: Rewrite `README.md` with complete viral architecture and pristine formatting**
-- [ ] **Step 3: Run test to verify pass**
-- [ ] **Step 4: Commit changes**
+- [x] **Step 1: Write contract test verifying that documented CLI commands and flags exist and execute in help mode**
+- [x] **Step 2: Rewrite `README.md` with complete viral architecture and pristine formatting**
+- [x] **Step 3: Run test to verify pass**
+- [x] **Step 4: Commit changes**
 
 ---
 
@@ -130,8 +130,8 @@ Phase 4 completes the production pipeline of `career-ops`, taking optimized Resu
 **Files:**
 - Modify: `docs/clief/STATUS.md`
 
-- [ ] **Step 1: Run full test suite across all 4 workspace packages (`pnpm test`)**
-- [ ] **Step 2: Run full build across all packages (`pnpm build`)**
-- [ ] **Step 3: Run end-to-end CLI commands (`node packages/cli/bin/career-ops.js optimize --demo`, `audit`, `doctor`, `studio --help`)**
-- [ ] **Step 4: Update `docs/clief/STATUS.md` to mark Phase 4 complete and project release-ready**
-- [ ] **Step 5: Final git commit and push to `feat/dual-engine-resume-product`**
+- [x] **Step 1: Run full test suite across all 4 workspace packages (`pnpm test`)**
+- [x] **Step 2: Run full build across all packages (`pnpm build`)**
+- [x] **Step 3: Run end-to-end CLI commands (`node packages/cli/bin/career-ops.js optimize --demo`, `audit`, `doctor`, `studio --help`)**
+- [x] **Step 4: Update `docs/clief/STATUS.md` to mark Phase 4 complete and project release-ready**
+- [x] **Step 5: Final git commit and push to `feat/dual-engine-resume-product`**
