@@ -1,0 +1,19 @@
+{
+  "name": "@career-ops/bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "scorecard": "node dist/scorecards.js",
+    "matrix": "node dist/run-matrix.js",
+    "tracks": "node dist/run-tracks.js",
+    "panel": "node dist/panel-kit.js"
+  },
+  "dependencies": {
+    "@career-ops/audit": "workspace:*",
+    "@career-ops/core": "workspace:*"
+  }
+}

@@ -24,6 +24,15 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
 
+  packages/bench:
+    dependencies:
+      '@career-ops/audit':
+        specifier: workspace:*
+        version: link:../audit
+      '@career-ops/core':
+        specifier: workspace:*
+        version: link:../core
+
   packages/cli:
     dependencies:
       '@career-ops/audit':

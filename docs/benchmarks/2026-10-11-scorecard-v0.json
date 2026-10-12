@@ -1,0 +1,143 @@
+{
+  "at": "2026-10-12T04:11:34.293Z",
+  "invariants": {
+    "total": 30,
+    "correct": 11,
+    "failures": [
+      {
+        "id": "i02",
+        "note": "range lower bound dropped",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i03",
+        "note": "seconds unit not extracted",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i05",
+        "note": "currency symbol swap €->$",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i06",
+        "note": "GBP magnitude equivalence",
+        "expected": true,
+        "actual": false
+      },
+      {
+        "id": "i07",
+        "note": "GBP->USD swap",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i09",
+        "note": "data size magnitude",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i12",
+        "note": "bare count",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i13",
+        "note": "bare year",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i14",
+        "note": "bare score",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i16",
+        "note": "duration changed",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i17",
+        "note": "approximation qualifier dropped (overclaim)",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i18",
+        "note": "plus qualifier dropped",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i19",
+        "note": "HALLUCINATED currency added",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i20",
+        "note": "HALLUCINATED percent added",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i23",
+        "note": "multiplier spelling",
+        "expected": true,
+        "actual": false
+      },
+      {
+        "id": "i24",
+        "note": "number word equivalence",
+        "expected": true,
+        "actual": false
+      },
+      {
+        "id": "i26",
+        "note": "percentile identifier changed",
+        "expected": false,
+        "actual": true
+      },
+      {
+        "id": "i27",
+        "note": "tool alias",
+        "expected": true,
+        "actual": false
+      },
+      {
+        "id": "i29",
+        "note": "rate period changed",
+        "expected": false,
+        "actual": true
+      }
+    ]
+  },
+  "rubric": {
+    "pairwiseAccuracy": 0.4,
+    "scores": {
+      "gold-a": 44,
+      "gold-b": 40,
+      "slop-a": 35,
+      "slop-b": 28,
+      "garbage-a": 48,
+      "attack-verb-stuff": 45,
+      "attack-period-m": 48
+    },
+    "inversions": [
+      "garbage-a (48) >= gold-a (44)",
+      "attack-verb-stuff (45) >= gold-a (44)",
+      "attack-period-m (48) >= gold-a (44)",
+      "garbage-a (48) >= gold-b (40)",
+      "attack-verb-stuff (45) >= gold-b (40)",
+      "attack-period-m (48) >= gold-b (40)"
+    ]
+  }
+}
