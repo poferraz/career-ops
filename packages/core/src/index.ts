@@ -20,3 +20,10 @@ export * from './pipeline/linkedin.js';
 
 // Test fixtures & canonical demo assets
 export * from './fixtures/demo-data.js';
+
+// Certified ATS Exporters
+export * from './exporters/types.js';
+export * from './exporters/pdf-exporter.js';
+export * from './exporters/docx-exporter.js';
+export * from './exporters/exporter.js';
+

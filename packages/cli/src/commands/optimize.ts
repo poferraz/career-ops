@@ -6,8 +6,10 @@ import {
   OllamaProvider,
   MockInferenceProvider,
   DEMO_CANDIDATE_RESUME,
+  exportResume,
   type OptimizationResult,
-  type InferenceProvider
+  type InferenceProvider,
+  type ExportFormat
 } from '@career-ops/core';
 import { formatBanner, formatScorecard } from '../ui/formatters.js';
 import { formatDiff } from '../ui/diff-view.js';
@@ -17,6 +19,7 @@ export interface OptimizeCommandOptions {
   mock?: boolean;
   remote?: string;
   output?: string;
+  format?: string;
   diff?: boolean;
   json?: boolean;
   customTools?: string[];
@@ -77,8 +80,20 @@ export async function runOptimizeCommand(
   // Write output if requested
   if (options.output) {
     const outPath = path.resolve(process.cwd(), options.output);
-    fs.mkdirSync(path.dirname(outPath), { recursive: true });
-    fs.writeFileSync(outPath, result.markdown, 'utf8');
+    if (options.format) {
+      const rawFormats = options.format.split(',').map(f => f.trim().toLowerCase()) as ExportFormat[];
+      const isFile = path.extname(outPath).length > 0;
+      const outputDir = isFile ? path.dirname(outPath) : outPath;
+      const filename = isFile ? path.basename(outPath, path.extname(outPath)) : undefined;
+
+      await exportResume(result.ast, rawFormats, {
+        outputDir,
+        filename
+      });
+    } else {
+      fs.mkdirSync(path.dirname(outPath), { recursive: true });
+      fs.writeFileSync(outPath, result.markdown, 'utf8');
+    }
   }
 
   // Build terminal output

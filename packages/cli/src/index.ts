@@ -6,6 +6,7 @@ export * from './commands/interview.js';
 export * from './commands/cover-letter.js';
 export * from './commands/linkedin.js';
 export * from './commands/studio.js';
+export * from './commands/export.js';
 
 // UI & Formatters
 export * from './ui/formatters.js';

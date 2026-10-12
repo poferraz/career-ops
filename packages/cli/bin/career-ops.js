@@ -8,7 +8,8 @@ import {
   runInterviewCommand,
   runCoverLetterCommand,
   runLinkedInCommand,
-  runStudioCommand
+  runStudioCommand,
+  exportCommand
 } from '../dist/index.js';
 
 export function createProgram() {
@@ -62,7 +63,8 @@ export function createProgram() {
     .option('--demo', 'Run viral zero-config demo with bundled candidate fixtures')
     .option('--mock', 'Use offline deterministic mock inference provider')
     .option('--remote <url>', 'Connect to remote/cloud Ollama endpoint')
-    .option('--output <path>', 'Output destination for optimized markdown')
+    .option('--output <path>', 'Output destination for optimized resume')
+    .option('--format <formats>', 'Export formats (pdf, docx, md, json) when --output is provided', 'pdf,md')
     .option('--diff', 'Display terminal colored diff')
     .option('--json', 'Output full JSON result')
     .action(async (resume, opts) => {
@@ -72,10 +74,31 @@ export function createProgram() {
           mock: opts.mock,
           remote: opts.remote,
           output: opts.output,
+          format: opts.format,
           diff: opts.diff,
           json: opts.json
         });
         console.log(result.formattedOutput);
+      } catch (err) {
+        console.error(err.message);
+        process.exit(1);
+      }
+    });
+
+  program
+    .command('export')
+    .description('Export resume into certified single-column ATS deliverables (PDF, DOCX, Markdown, JSON)')
+    .argument('<resume>', 'Path to resume markdown file')
+    .option('-f, --format <formats>', 'Comma-separated export formats (pdf, docx, md, json)', 'pdf,md')
+    .option('-o, --output <dir>', 'Output destination directory', './dist')
+    .option('-n, --name <filename>', 'Output base filename')
+    .action(async (resume, opts) => {
+      try {
+        await exportCommand(resume, {
+          format: opts.format,
+          output: opts.output,
+          name: opts.name
+        });
       } catch (err) {
         console.error(err.message);
         process.exit(1);
