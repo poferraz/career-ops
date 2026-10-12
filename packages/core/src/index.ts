@@ -8,6 +8,9 @@ export * from './parser/ast-parser.js';
 export * from './inference/types.js';
 export * from './inference/mock-provider.js';
 export * from './inference/ollama-provider.js';
+export * from './inference/mlx-provider.js';
+export * from './inference/prompt-contracts.js';
+export * from './inference/output-sanitizer.js';
 
 // Pipeline stages & orchestrator
 export * from './pipeline/stage1-interviewer.js';

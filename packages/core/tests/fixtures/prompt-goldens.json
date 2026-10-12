@@ -1,0 +1,17 @@
+{
+  "hemmingway": {
+    "system": "You rewrite resume bullets.",
+    "user": "Original bullet: Built a dashboard used by 300 agents.",
+    "rendered": "<|im_start|>system\nYou rewrite resume bullets.<|im_end|>\n<|im_start|>user\nOriginal bullet: Built a dashboard used by 300 agents.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+  },
+  "qwen3": {
+    "system": "You rewrite resume bullets.",
+    "user": "Original bullet: Built a dashboard used by 300 agents.",
+    "rendered": "<|im_start|>system\nYou rewrite resume bullets.<|im_end|>\n<|im_start|>user\nOriginal bullet: Built a dashboard used by 300 agents.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+  },
+  "humanizer": {
+    "draft": "Built a dashboard used by 300 agents.",
+    "rendered": "Rewrite the text below so it reads like a person wrote it, not a language model.\n\nReorganize it as you see fit. Vary sentence length on purpose. Cut hedging,\nthroat-clearing, and any sentence that only announces what comes next.\nPrefer the concrete word over the abstract one. It is fine to sound uneven.\n\nEvery fact, number, unit, date, name and quotation must survive unchanged.\n\nBuilt a dashboard used by 300 agents.\n\n### Rewritten:\n\n",
+    "fingerprint": "cc51d66b4c593fbe"
+  }
+}

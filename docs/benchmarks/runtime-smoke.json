@@ -1,0 +1,95 @@
+{
+  "endpoint": "http://127.0.0.1:6000",
+  "fingerprint": "cc51d66b4c593fbe",
+  "fingerprint_ok": true,
+  "solo_residency_enforced": true,
+  "stages": [
+    {
+      "stage": "stage1_qwen3",
+      "model": "Qwen3-8B-4bit",
+      "loaded_during": [
+        "Qwen3-8B-4bit"
+      ],
+      "sole_resident": true,
+      "mem_during_gb": 4.84,
+      "loaded_after_unload": [],
+      "elapsed_s": 3.65,
+      "usage": {
+        "prompt_tokens": 17,
+        "completion_tokens": 1,
+        "total_tokens": 18,
+        "input_tokens": 17,
+        "output_tokens": 1,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "model_load_duration": 2.83,
+        "time_to_first_token": 0.68,
+        "total_time": 0.81,
+        "prompt_eval_duration": 0.68,
+        "generation_duration": 0.13,
+        "prompt_tokens_per_second": 24.98,
+        "generation_tokens_per_second": 7.72
+      },
+      "sample": "OK"
+    },
+    {
+      "stage": "stage2_hemmingway",
+      "model": "Hemmingway-1-OptiQ-4bit",
+      "loaded_during": [
+        "Hemmingway-1-OptiQ-4bit"
+      ],
+      "sole_resident": true,
+      "mem_during_gb": 19.58,
+      "loaded_after_unload": [],
+      "elapsed_s": 25.08,
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 16,
+        "total_tokens": 65,
+        "input_tokens": 49,
+        "output_tokens": 16,
+        "prompt_tokens_details": {
+          "cached_tokens": 48
+        },
+        "model_load_duration": 11.24,
+        "time_to_first_token": 5.95,
+        "total_time": 13.83,
+        "prompt_eval_duration": 5.95,
+        "generation_duration": 7.89,
+        "prompt_tokens_per_second": 0.17,
+        "generation_tokens_per_second": 2.03
+      },
+      "sample": "Migrated RabbitMQ to Kafka, reaching 250k events/sec."
+    },
+    {
+      "stage": "stage3_humanizer",
+      "model": "humanizer-12b-mlx-8bit",
+      "loaded_during": [
+        "humanizer-12b-mlx-8bit"
+      ],
+      "sole_resident": true,
+      "mem_during_gb": 13.29,
+      "loaded_after_unload": [],
+      "elapsed_s": 20.2,
+      "usage": {
+        "prompt_tokens": 118,
+        "completion_tokens": 24,
+        "total_tokens": 142,
+        "input_tokens": 118,
+        "output_tokens": 24,
+        "prompt_tokens_details": {
+          "cached_tokens": 117
+        },
+        "model_load_duration": 11.23,
+        "time_to_first_token": 1.1,
+        "total_time": 8.96,
+        "prompt_eval_duration": 1.1,
+        "generation_duration": 7.86,
+        "prompt_tokens_per_second": 0.91,
+        "generation_tokens_per_second": 3.05
+      },
+      "sample": "Migrated messaging pipeline from rabbit mq to kafka. Increased event throughput up to 250k events/sec."
+    }
+  ]
+}

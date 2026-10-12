@@ -53,10 +53,17 @@ export class OllamaProvider implements InferenceProvider {
       payload.format = options.format;
     }
 
+    if (options.raw) {
+      payload.raw = true;
+    }
+
     const runtimeOptions: Record<string, unknown> = {
       num_ctx: options.numCtx ?? 8192
     };
     if (options.temperature !== undefined) runtimeOptions.temperature = options.temperature;
+    if (options.topP !== undefined) runtimeOptions.top_p = options.topP;
+    if (options.topK !== undefined) runtimeOptions.top_k = options.topK;
+    if (options.minP !== undefined) runtimeOptions.min_p = options.minP;
     if (options.maxTokens !== undefined) runtimeOptions.num_predict = options.maxTokens;
     if (options.stop !== undefined) runtimeOptions.stop = options.stop;
 
