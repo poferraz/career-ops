@@ -53,7 +53,15 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
   - Task 8: Web Studio local server (`startStudioServer`) and command `career-ops studio` serving Three-Act UI with `/api/audit`, `/api/optimize`, and `/api/mine` endpoints.
   - Task 9: Complete commander program wiring, root `pnpm run career-ops` script, and comprehensive E2E test suite.
   - 100% test pass rate (87 tests across 31 suites), clean TypeScript builds across monorepo.
-- Pushed all Phase 0, Phase 1, Phase 2, and Phase 3 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
+- **Phase 2 & Phase 3 Gap Review & Hardening Completed**:
+  - Purged remaining AI Detection Radar in `studio-prototype.html` per No-Detector Law, replaced with ATS Single-Column Layout Compliance Gate.
+  - Fixed AST parser handling for `### Subheadings` in skills and preserved parenthesized commas like `(Prometheus, Grafana)`.
+  - Added company/title inversion heuristic to correctly parse `Company | Title` headers.
+  - Secured rubric scorers against empty inputs (assigns score 0 and rejected gate instead of inflated 37/50 warning).
+  - Enforced `num_ctx: 8192` hardware safety cap in `OllamaProvider` runtime options.
+  - Added graceful per-bullet fallback in `FourStagePipeline` for remote inference network errors and timeouts.
+  - Expanded test suite to 92 passing tests across 31 suites; clean builds across monorepo.
+- Pushed all commits cleanly to GitHub (`feat/dual-engine-resume-product`).
 
 ## In Progress
 
