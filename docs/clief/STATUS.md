@@ -70,6 +70,9 @@ PRD approved (`docs/clief/PRD.md`). Architectural specifications synchronized wi
   - Task 4: High-Conversion Viral README Architecture (`README.md`) with 10-second zero-config quickstart (`npx career-ops optimize --demo`), Three-Act Web Studio walkthrough, Four-Stage Mermaid pipeline diagram, transparent hardware envelope, and empirical ATS mechanics (No-Detector Law, 11.2s/7.4s review speeds). Verified via CLI contract tests (`readme-contract.test.ts`).
   - Task 5: 100% test pass rate (101 tests across 35 test suites, 0 failures), clean TypeScript builds across all 4 monorepo packages.
 - Pushed all Phase 0, 1, 2, 3, and 4 commits cleanly to GitHub (`feat/dual-engine-resume-product`).
+- **Agent Operating Playbook & Root Documentation Alignment (`AGENTS.md`, `CLIEF.md`, `DESIGN.md`, `SKILL.md`)**:
+  - Created [`AGENTS.md`](../../AGENTS.md) with a Dual-Mode Intent Router (Candidate Mode $\rightarrow$ `SKILL.md` vs. Contributor Mode $\rightarrow$ `CLIEF.md` / `DESIGN.md`), worktree isolation, `/prototype` divergent exploration, deterministic `/loop` exit gates, live browser visual verification, micro-polish PR squashing, and the No-Auto-DM adversarial design governance routine.
+  - Aligned [`CLIEF.md`](../../CLIEF.md), [`DESIGN.md`](../../DESIGN.md), [`SKILL.md`](../../SKILL.md), [`CONTRIBUTING.md`](../../CONTRIBUTING.md), [`docs/clief/INDEX.md`](INDEX.md), [`docs/clief/AGENT-CHARTER.md`](AGENT-CHARTER.md), [`docs/clief/workspaces/web/CONTEXT.md`](workspaces/web/CONTEXT.md), and [`docs/clief/workspaces/agents/CONTEXT.md`](workspaces/agents/CONTEXT.md) with zero `markdownlint` errors and clean `scripts/convert.sh` prompt compilation.
 
 ## In Progress
 

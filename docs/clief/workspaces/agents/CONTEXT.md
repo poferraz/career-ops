@@ -1,10 +1,12 @@
 # Context — @career-ops/agents
 
-Last updated: 2026-10-10
+Last updated: 2026-10-11
 
 ## What this workspace is for
 
-This workspace develops specialized agent personas and prompt templates that operate under the Dual-Track architecture, grounded by the `@career-ops/knowledge` research harness.
+This workspace develops specialized **runtime product personas** and prompt templates (`@career-ops/agents`) that operate under the Dual-Track architecture, grounded by the `@career-ops/knowledge` research harness.
+
+> **Disambiguation**: This package (`packages/agents/`) defines the **product runtime personas** invoked during candidate resume/cover-letter/LinkedIn optimization. For the **engineering and design workflow playbook** governing AI coding agents working on this repository, see root [`AGENTS.md`](../../../../AGENTS.md).
 
 ## The process
 
@@ -47,3 +49,4 @@ packages/agents/
 
 - `docs/clief/workspaces/knowledge/CONTEXT.md`
 - `references/anti-slop.md`
+- [`AGENTS.md`](../../../../AGENTS.md)

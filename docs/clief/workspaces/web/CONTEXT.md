@@ -1,6 +1,6 @@
 # Context — @career-ops/web
 
-Last updated: 2026-10-10
+Last updated: 2026-10-11
 
 ## What this workspace is for
 
@@ -11,7 +11,7 @@ This workspace builds the desktop-grade Web Application (Career Studio) featurin
 1. **Act 01 (Intake & Lock)**: Candidate uploads resume (PDF/DOCX/MD) and inputs target JD or career path. AST parser extracts and locks invariant entities.
 2. **Act 02 (Studio Canvas)**:
    - 70% Left Stage: Side-by-side Dual-Card Diff (`01 Draft` with red strikethroughs vs `02 Rewrite` with lime-green `#d9f99d` inline highlight spans) and `✓ FACTS KEPT` capsule bar.
-   - 30% Right Stage: Architectural scorecard with bold cobalt `42/50` score, 5-dimension radar, ATS keyword coverage matrix, and AI Risk gauge.
+   - 30% Right Stage: Architectural scorecard with bold cobalt `42/50` score, 5-dimension radar, ATS keyword coverage matrix, and export CTA.
 3. **Act 03 (Audit & Export)**: ATS single-column certified PDF preview and 1-click download bundle.
 
 ## Files in here
@@ -34,7 +34,8 @@ packages/web/
 
 ## What good looks like
 
-- Strictly implements tokens from [`PRODUCT.md`](file:///Users/poferraz/Documents/Development/active/career-ops/PRODUCT.md) and [`DESIGN.md`](file:///Users/poferraz/Documents/Development/active/career-ops/DESIGN.md): Zinc-50 paper canvas, 3px solid cobalt `#1414b8` borders, 6px hard shadows.
+- Strictly implements tokens from [`PRODUCT.md`](../../../../PRODUCT.md) and [`DESIGN.md`](../../../../DESIGN.md): Zinc-50 paper canvas, 3px solid cobalt `#1414b8` borders, 6px hard shadows.
+- Follows the AI-assisted prototyping (`/prototype`), live browser self-verification, and visual screenshot/GIF PR standards in [`AGENTS.md`](../../../../AGENTS.md).
 - Text highlights MUST use pure inline styling: `background-color: #d9f99d; color: #09090b; padding: 1px 3px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; display: inline;`.
 - Identical left-justified layout (`text-left`) and vertical rhythm (`leading-7`) across Draft and Rewrite columns.
 - Runs at 60fps with virtualized rendering on long multi-page resumes.
@@ -43,11 +44,13 @@ packages/web/
 
 - Never use `display: inline-block` on diff highlight spans (breaks word wrapping and creates jagged lines).
 - Never introduce generic purples, blurred dropshadows, or soft rounded pill aesthetics.
+- Never display an "AI Risk" or "AI Detector" gauge (violates the No-Detector Law in [`AGENT-CHARTER.md`](../../AGENT-CHARTER.md)).
 - Never make direct browser requests to Ollama without going through the local Vite proxy (avoids CORS issues).
 
 ## Tools
 
-- [`PRODUCT.md`](file:///Users/poferraz/Documents/Development/active/career-ops/PRODUCT.md)
-- [`DESIGN.md`](file:///Users/poferraz/Documents/Development/active/career-ops/DESIGN.md)
-- [`.impeccable/design.json`](file:///Users/poferraz/Documents/Development/active/career-ops/.impeccable/design.json)
-- [`docs/assets/studio-prototype.html`](file:///Users/poferraz/Documents/Development/active/career-ops/docs/assets/studio-prototype.html)
+- [`PRODUCT.md`](../../../../PRODUCT.md)
+- [`DESIGN.md`](../../../../DESIGN.md)
+- [`AGENTS.md`](../../../../AGENTS.md)
+- [`.impeccable/design.json`](../../../../.impeccable/design.json)
+- [`docs/assets/studio-prototype.html`](../../../../docs/assets/studio-prototype.html)

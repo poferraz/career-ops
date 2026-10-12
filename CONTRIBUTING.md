@@ -47,6 +47,11 @@ Before building anything new:
 - Open a [Feature Request issue](.github/ISSUE_TEMPLATE/feature_request.md) describing the problem, not the solution
 - Wait for discussion — new modules require significant research investment
 - The skill must remain zero-dependency: no paid APIs, no mandatory MCP servers
+- Follow [`AGENTS.md`](AGENTS.md) and [`DESIGN.md`](DESIGN.md) when developing features:
+  - Isolate concurrent work in dedicated git worktrees (`claude --worktree` or `git worktree add`).
+  - For net-new Studio UI interactions (`packages/web/`), explore options using `/prototype` (`docs/assets/`) and verify styles against [`DESIGN.md`](DESIGN.md) tokens.
+  - Run `/simplify` and `/code-review` (`pnpm build && pnpm test && pnpm lint && npx markdownlint-cli2`) before opening a PR.
+  - Attach a live browser screenshot or recorded GIF to every frontend PR.
 
 ---
 
