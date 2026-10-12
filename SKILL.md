@@ -123,13 +123,20 @@ Rate every output on 5 dimensions, 10 points each:
 4. **Authenticity** — Does it sound like a person, not a template?
 5. **Density** — Is every sentence load-bearing?
 
-**Minimum: 35/50.** Below that, rewrite before delivering.
+**Minimum: 35/50 (Certified: 42/50).** Below 35/50, rewrite before delivering.
+
+### Divergent Exploration & Autonomous Refinement Loop
+
+When generating high-leverage career positioning (e.g., LinkedIn headlines, executive summaries, cold outreach hooks, or bullet rewrites):
+
+1. **Generate Multiple Options & Recommend First (`/prototype` pattern)**: Generate $N$ distinct strategic options (typically 3–5), **pick the single strongest option first, and explain why** before asking the user to choose.
+2. **Loop Until Certified (`/loop` pattern)**: Do not stop at a first draft. Cycle autonomously through `draft -> verify factual invariants -> score Anti-Slop -> prune/simplify` until all metrics are locked and the score clears the quality gate.
 
 ---
 
 ## Research Pre-Flight
 
-Before generating company-specific output (tailored resume, cover letter for a named company, interview prep for a specific employer), attempt to gather current information.
+Before generating company-specific output (tailored resume, cover letter for a named company, interview prep for a specific employer), attempt to gather current information from both local context (notes, transcripts, prior docs) and external sources.
 
 **If web search is available:**
 1. Search for the company's recent news, mission, products, and culture
@@ -212,3 +219,9 @@ Things this skill must NEVER do:
 8. **Never skip the interview** — if the user hasn't provided enough context, ask before generating
 9. **Never deliver without the anti-slop check** — every output gets scored before the user sees it
 10. **Never assume the user's worth** — surface it through questions, let the data speak
+
+---
+
+## Repository & Agent Engineering Workflow
+
+When modifying `career-ops` packages, building Studio UI components, or authoring new skills, follow [`agent.md`](agent.md), [`CLIEF.md`](CLIEF.md), and [`DESIGN.md`](DESIGN.md) for worktree isolation, divergent HTML prototyping (`/prototype`), live browser verification, and automated PR hygiene (`/simplify`, `/code-review`).

@@ -175,3 +175,34 @@ Surfaces use hard, structural elevation:
 - **Don't** introduce blurred or semi-transparent drop shadows; all shadows must be 100% hard geometric offsets.
 - **Don't** use dark mode or cyberpunk gradients; the canvas is strictly a warm architectural paper blueprint (`#fafafa`).
 - **Don't** squeeze diff columns into three equal widths; the diff is the hero and requires 70% of the viewport.
+
+---
+
+## AI-Assisted Design & Governance Workflow
+
+> Operationalized from [`agent.md`](agent.md). Because LLMs do not yet possess reliable design judgment, human taste remains the final authority while agents automate divergent exploration, live browser verification, and continuous design hygiene.
+
+### 1. Divergent Prototyping (`/prototype`)
+
+Before building net-new Studio components or interactions in `packages/web/`:
+
+1. Generate $N = 5$ distinct implementation options in a self-contained HTML preview using the `/prototype` workflow.
+2. Require the agent to **recommend the strongest option first and explain its rationale** against the Neo-Brutalist blueprint principles above.
+3. Keep the human designer in the loop to select or combine the winning direction before writing production React code.
+
+### 2. Live Browser Self-Verification & Visual PR Proof
+
+Static compilation is never sufficient for UI changes:
+
+- **Chrome Self-Verification**: Agents must open a live browser session to verify the rendered UI—explicitly checking `leading-7` comparative alignment, `box-decoration-break: clone` inline highlight wrapping, and the 70/30 canvas split.
+- **Screenshot / GIF PR Mandate**: Every frontend PR must include a screenshot or recorded GIF sequence demonstrating the working feature. Review happens against visual proof in the PR, not raw agent transcripts.
+
+### 3. Asynchronous Micro-Polish & PR Squashing
+
+- Dispatch small CSS, spacing, and token alignment fixes asynchronously in background cloud/web agent sessions as visual rough edges are spotted.
+- Periodically **squash micro-polish fixes into a single consolidated PR** to maintain craft quality without overwhelming engineering reviewers.
+
+### 4. Scheduled Frontend Design Governance (Adversarial Audit)
+
+- Run a scheduled routine scanning commits and PRs in `packages/web/` to detect frontend changes shipped without design review.
+- Automatically audit unreviewed UI diffs against the **Do's and Don'ts** in this document (flagging blurred shadows, `inline-block` highlights, or broken cobalt border tokens) and draft a corrective/adversarial PR for human design triage.
