@@ -224,4 +224,4 @@ Things this skill must NEVER do:
 
 ## Repository & Agent Engineering Workflow
 
-When modifying `career-ops` packages, building Studio UI components, or authoring new skills, follow [`agent.md`](agent.md), [`CLIEF.md`](CLIEF.md), and [`DESIGN.md`](DESIGN.md) for worktree isolation, divergent HTML prototyping (`/prototype`), live browser verification, and automated PR hygiene (`/simplify`, `/code-review`).
+When modifying `career-ops` packages, building Studio UI components, or authoring new skills, follow [`AGENTS.md`](AGENTS.md), [`CLIEF.md`](CLIEF.md), and [`DESIGN.md`](DESIGN.md) for worktree isolation, divergent HTML prototyping (`/prototype`), live browser verification, and automated PR hygiene (`/simplify`, `/code-review`).

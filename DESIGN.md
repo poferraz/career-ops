@@ -180,7 +180,7 @@ Surfaces use hard, structural elevation:
 
 ## AI-Assisted Design & Governance Workflow
 
-> Operationalized from [`agent.md`](agent.md). Because LLMs do not yet possess reliable design judgment, human taste remains the final authority while agents automate divergent exploration, live browser verification, and continuous design hygiene.
+> Operationalized from [`AGENTS.md`](AGENTS.md). Because LLMs do not yet possess reliable design judgment, human taste remains the final authority while agents automate divergent exploration, live browser verification, and continuous design hygiene.
 
 ### 1. Divergent Prototyping (`/prototype`)
 

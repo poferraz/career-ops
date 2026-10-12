@@ -1,4 +1,4 @@
-# Agent Operating Playbook (`agent.md`)
+# Agent Operating Playbook (`AGENTS.md`)
 
 > Distilled from *"How Claude Code's Lead Designer Builds with AI"* ([YouTube](https://www.youtube.com/watch/hKeDfupbA4U)) and adapted for the `career-ops` repository.
 

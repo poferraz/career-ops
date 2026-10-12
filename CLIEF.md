@@ -1,13 +1,13 @@
 # Clief Routing
 
-This project runs the Clief/ICM operating system. Canonical architectural context lives in `docs/clief/`, and operational agent workflows live in [`agent.md`](agent.md).
+This project runs the Clief/ICM operating system. Canonical architectural context lives in `docs/clief/`, and operational agent workflows live in [`AGENTS.md`](AGENTS.md).
 
 Read `docs/clief/INDEX.md` first on every new task. It routes you to the right workspace context.
 
 ## Root Playbooks
 
 - [`docs/clief/INDEX.md`](docs/clief/INDEX.md) — Canonical workspace map, package routing table, and 60/30/10 architecture rules.
-- [`agent.md`](agent.md) — Agent operating playbook: git worktree isolation, `/prototype` divergent exploration, browser self-verification, PR hygiene (`/simplify`, `/code-review`), and scheduled design governance.
+- [`AGENTS.md`](AGENTS.md) — Agent operating playbook: git worktree isolation, `/prototype` divergent exploration, browser self-verification, PR hygiene (`/simplify`, `/code-review`), and scheduled design governance.
 - [`DESIGN.md`](DESIGN.md) — Career-Ops Studio Neo-Brutalist design system tokens, component specs, and visual verification rules.
 - [`SKILL.md`](SKILL.md) — Domain skill protocol: Motivational Interviewing (RULE/RISE), 5-phase intake, Anti-Slop 50-point quality gate, and research pre-flight.
 
