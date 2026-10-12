@@ -25,7 +25,18 @@ const HEDGING_PHRASES = [
 ];
 
 export function evaluateDirectness(bulletsOrText: string[] | string): AuditDimensionScore {
-  const bullets = Array.isArray(bulletsOrText) ? bulletsOrText : [bulletsOrText];
+  const rawBullets = Array.isArray(bulletsOrText) ? bulletsOrText : [bulletsOrText];
+  const bullets = rawBullets.map(b => b.trim()).filter(Boolean);
+  if (bullets.length === 0) {
+    return {
+      dimension: 'directness',
+      score: 0,
+      maxScore: 10,
+      feedback: ['No bullets provided for directness evaluation.'],
+      metrics: { passiveCount: 0, hedgingCount: 0 }
+    };
+  }
+
   let passiveCount = 0;
   let hedgingCount = 0;
   const feedback: string[] = [];

@@ -2,6 +2,16 @@ import { BANNED_CORPORATE_PHRASES } from './banned-phrases.js';
 import type { AuditDimensionScore } from '../types.js';
 
 export function evaluateAuthenticity(text: string): AuditDimensionScore {
+  if (!text || text.trim().length === 0) {
+    return {
+      dimension: 'authenticity',
+      score: 0,
+      maxScore: 10,
+      feedback: ['No text provided for authenticity evaluation.'],
+      metrics: { bannedPhraseCount: 0 }
+    };
+  }
+
   const found: string[] = [];
   const lower = text.toLowerCase();
   const matchedSpans: Array<[number, number]> = [];

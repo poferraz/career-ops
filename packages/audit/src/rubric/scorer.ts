@@ -13,6 +13,33 @@ export interface EvaluateInput {
 
 export class AntiSlopScorer {
   public static evaluate(input: EvaluateInput): AuditReport {
+    const substantiveBullets = input.bullets.map(b => b.trim()).filter(Boolean);
+    if (substantiveBullets.length === 0) {
+      const zeroDim = (name: 'directness' | 'rhythm' | 'trust' | 'authenticity' | 'density') => ({
+        dimension: name,
+        score: 0,
+        maxScore: 10 as const,
+        feedback: [`No resume bullets provided for ${name} evaluation.`]
+      });
+
+      return {
+        totalScore: 0,
+        maxTotalScore: 50,
+        gateStatus: 'rejected',
+        isPassing: false,
+        dimensions: {
+          directness: zeroDim('directness'),
+          rhythm: zeroDim('rhythm'),
+          trust: zeroDim('trust'),
+          authenticity: zeroDim('authenticity'),
+          density: zeroDim('density')
+        },
+        invariantsPassed: false,
+        violations: ['No resume bullets provided for evaluation.'],
+        summary: 'Rejected Gate (0/50). No resume bullets provided for evaluation.'
+      };
+    }
+
     const pooledSentences = input.sentences ?? input.bullets;
 
     const directness = evaluateDirectness(input.bullets);

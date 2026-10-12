@@ -115,7 +115,13 @@ export class FourStagePipeline {
     const stage2Drafts = new Map<string, string>();
 
     for (const role of ast.experience) {
-      const optimizedDrafts = await hemingwayEngine.optimizeRoleBullets(role);
+      let optimizedDrafts: string[];
+      try {
+        optimizedDrafts = await hemingwayEngine.optimizeRoleBullets(role);
+      } catch {
+        // Graceful fallback to original bullet text on inference error or timeout
+        optimizedDrafts = role.bullets.map(b => b.originalText);
+      }
       role.bullets.forEach((bullet, idx) => {
         const draft = optimizedDrafts[idx] ?? bullet.originalText;
         stage2Drafts.set(bullet.id, draft);
@@ -125,7 +131,11 @@ export class FourStagePipeline {
 
     // Evict Stage 2 model from VRAM if supported
     if (shouldEvict && this.providers.stage2.evictModel) {
-      await this.providers.stage2.evictModel(stage2Model);
+      try {
+        await this.providers.stage2.evictModel(stage2Model);
+      } catch {
+        // Model eviction error is non-fatal
+      }
     }
 
     // --- Stage 3: Humanizer Cadence Engine ---
@@ -135,11 +145,16 @@ export class FourStagePipeline {
     for (const role of ast.experience) {
       for (const bullet of role.bullets) {
         const s2Draft = stage2Drafts.get(bullet.id) ?? bullet.originalText;
-
-        const humanizedDraft = await humanizerEngine.humanizeBullet(s2Draft, {
-          verbatimTools: bullet.invariants.verbatim,
-          semanticMetrics: bullet.invariants.semantic
-        });
+        let humanizedDraft: string;
+        try {
+          humanizedDraft = await humanizerEngine.humanizeBullet(s2Draft, {
+            verbatimTools: bullet.invariants.verbatim,
+            semanticMetrics: bullet.invariants.semantic
+          });
+        } catch {
+          // Graceful fallback to Stage 2 draft on inference error or timeout
+          humanizedDraft = s2Draft;
+        }
 
         stage3Drafts.set(bullet.id, humanizedDraft);
         bullet.humanizedText = humanizedDraft;
@@ -148,7 +163,11 @@ export class FourStagePipeline {
 
     // Evict Stage 3 model from VRAM if supported
     if (shouldEvict && this.providers.stage3.evictModel) {
-      await this.providers.stage3.evictModel(stage3Model);
+      try {
+        await this.providers.stage3.evictModel(stage3Model);
+      } catch {
+        // Model eviction error is non-fatal
+      }
     }
 
     // --- Stage 4: Invariant Gate & Audit Integration ---

@@ -97,5 +97,29 @@ describe('Inference Provider Abstraction', () => {
 
       vi.unstubAllGlobals();
     });
+
+    it('enforces num_ctx: 8192 hardware safety cap in runtime options', async () => {
+      const fetchSpy = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          response: 'Dense bullet text',
+          model: 'test-model'
+        })
+      });
+      vi.stubGlobal('fetch', fetchSpy);
+
+      const provider = new OllamaProvider({ baseUrl: 'http://localhost:11434' });
+      await provider.generate('Prompt', {});
+
+      const body = JSON.parse(fetchSpy.mock.calls[0]![1].body as string);
+      expect(body.options).toBeDefined();
+      expect(body.options.num_ctx).toBe(8192);
+
+      await provider.generate('Prompt', { numCtx: 4096 });
+      const body2 = JSON.parse(fetchSpy.mock.calls[1]![1].body as string);
+      expect(body2.options.num_ctx).toBe(4096);
+
+      vi.unstubAllGlobals();
+    });
   });
 });

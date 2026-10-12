@@ -8,6 +8,56 @@ import type {
   CandidateHeader
 } from '../types.js';
 
+const TITLE_KEYWORDS = /\b(engineer|architect|developer|manager|director|lead|head|vp|president|specialist|consultant|designer|scientist|analyst|officer|coordinator|principal|fellow|intern|associate|staff|senior|junior|administrator|programmer|technician|representative)\b/i;
+
+const COMPANY_SUFFIXES = /\b(inc\.?|llc|corp\.?|corporation|labs|technologies|systems|capital|solutions|ventures|co\.?|group|studio|consulting|health|bank|media|platforms|enterprises|holdings|networks|interactive|software)\b/i;
+
+const KNOWN_COMPANIES = /\b(google|meta|amazon|apple|netflix|microsoft|uber|stripe|airbnb|datadog|snowflake|salesforce|openai|anthropic|twitter|spotify|github|gitlab|adobe|cisco|oracle|ibm|intel|nvidia|palantir|bytedance)\b/i;
+
+function resolveTitleAndCompany(first: string, second: string): { title: string; company: string } {
+  const firstClean = first.trim();
+  const secondClean = second.trim();
+
+  const firstIsTitle = TITLE_KEYWORDS.test(firstClean);
+  const secondIsTitle = TITLE_KEYWORDS.test(secondClean);
+  const firstIsCompany = COMPANY_SUFFIXES.test(firstClean) || KNOWN_COMPANIES.test(firstClean);
+  const secondIsCompany = COMPANY_SUFFIXES.test(secondClean) || KNOWN_COMPANIES.test(secondClean);
+
+  if ((firstIsCompany || secondIsTitle) && !firstIsTitle) {
+    return { title: secondClean, company: firstClean };
+  }
+
+  if (firstIsTitle && !secondIsTitle) {
+    return { title: firstClean, company: secondClean };
+  }
+
+  // Default assumption: first is title, second is company
+  return { title: firstClean, company: secondClean };
+}
+
+function splitSkillsPreservingParens(text: string): string[] {
+  const items: string[] = [];
+  let depth = 0;
+  let current = '';
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (char === '(' || char === '[' || char === '{') {
+      depth++;
+      current += char;
+    } else if (char === ')' || char === ']' || char === '}') {
+      depth = Math.max(0, depth - 1);
+      current += char;
+    } else if (char === ',' && depth === 0) {
+      if (current.trim()) items.push(current.trim());
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  if (current.trim()) items.push(current.trim());
+  return items;
+}
+
 export function parseResumeMarkdown(markdown: string): ResumeAST {
   const lines = markdown.split('\n');
   const header: CandidateHeader = { name: '' };
@@ -18,6 +68,7 @@ export function parseResumeMarkdown(markdown: string): ResumeAST {
   let currentSection = '';
   let currentRole: ExperienceRole | null = null;
   let currentEdu: EducationItem | null = null;
+  let currentSkillCategory: string | null = null;
   let bulletIdCounter = 1;
   let roleIdCounter = 1;
   let eduIdCounter = 1;
@@ -45,6 +96,7 @@ export function parseResumeMarkdown(markdown: string): ResumeAST {
       currentSection = line.replace('## ', '').trim().toLowerCase();
       currentRole = null;
       currentEdu = null;
+      currentSkillCategory = null;
       continue;
     }
 
@@ -53,13 +105,14 @@ export function parseResumeMarkdown(markdown: string): ResumeAST {
       if (line.startsWith('### ')) {
         const titleCompany = line.replace('### ', '').trim();
         const parts = titleCompany.split(/\s*[-–|]\s*/);
-        const title = parts[0] ?? titleCompany;
-        const company = parts[1] ?? 'Company';
+        const resolved = parts.length > 1
+          ? resolveTitleAndCompany(parts[0]!, parts[1]!)
+          : { title: parts[0] ?? titleCompany, company: 'Company' };
 
         currentRole = {
           id: `role-${roleIdCounter++}`,
-          title,
-          company,
+          title: resolved.title,
+          company: resolved.company,
           dateRange: '',
           bullets: []
         };
@@ -142,25 +195,46 @@ export function parseResumeMarkdown(markdown: string): ResumeAST {
 
     // 3. Parsing Skills Section
     if (currentSection.includes('skills')) {
-      // E.g. "Languages: Go, TypeScript, Python"
+      if (line.startsWith('### ')) {
+        currentSkillCategory = line.replace('### ', '').trim();
+        const existing = skills.find(s => s.category.toLowerCase() === currentSkillCategory!.toLowerCase());
+        if (!existing) {
+          skills.push({ category: currentSkillCategory, skills: [] });
+        }
+        continue;
+      }
+
+      // E.g. "Languages: Go, TypeScript, Python" or "- Languages: Go, TypeScript"
       const colonIndex = line.indexOf(':');
       if (colonIndex !== -1) {
         const category = line.slice(0, colonIndex).replace(/^[-*]\s+/, '').trim();
-        const skillList = line
-          .slice(colonIndex + 1)
-          .split(',')
-          .map(s => s.trim())
-          .filter(Boolean);
+        const rawSkills = line.slice(colonIndex + 1);
+        const skillList = splitSkillsPreservingParens(rawSkills);
 
-        skills.push({
-          category,
-          skills: skillList
-        });
+        const existing = skills.find(s => s.category.toLowerCase() === category.toLowerCase());
+        if (existing) {
+          existing.skills.push(...skillList);
+        } else {
+          skills.push({
+            category,
+            skills: skillList
+          });
+        }
+        currentSkillCategory = category;
+        continue;
+      }
+
+      // Plain items (either "- item" or comma-separated list "Go, TypeScript, Python")
+      const cleanedLine = line.replace(/^[-*]\s+/, '').trim();
+      const skillList = splitSkillsPreservingParens(cleanedLine);
+      const targetCategory = currentSkillCategory ?? 'Technical Skills';
+
+      const existing = skills.find(s => s.category.toLowerCase() === targetCategory.toLowerCase());
+      if (existing) {
+        existing.skills.push(...skillList);
       } else {
-        // Plain comma list
-        const skillList = line.split(',').map(s => s.trim()).filter(Boolean);
         skills.push({
-          category: 'Technical Skills',
+          category: targetCategory,
           skills: skillList
         });
       }

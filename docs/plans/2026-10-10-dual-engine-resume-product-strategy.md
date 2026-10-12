@@ -13,7 +13,7 @@ Transform `career-ops` from a markdown-based prompt skill into a complete **end-
 1. Mines authentic, verifiable career accomplishments using structured Motivational Interviewing (Phase 1–5 intake).
 2. Generates hyper-dense, high-impact resume bullets and executive summaries using **`Altworld/Hemmingway-1`**.
 3. Naturalizes the cadence and eliminates robotic AI fingerprints using **`jialinyyzz/humanizer`**, strictly preserving all metrics and facts.
-4. Enforces the **career-ops Anti-Slop Rubric** (minimum score 42/50 across Directness, Rhythm, Trust, Authenticity, and Density) to beat both ATS keyword matching and recruiter AI detectors (GPTZero, CopyLeaks, Turnitin, Winston, internal ATS classifiers).
+4. Enforces the **career-ops Anti-Slop Rubric** (minimum score 42/50 across Directness, Rhythm, Trust, Authenticity, and Density) to satisfy both ATS semantic extraction (Workday, Ashby, Greenhouse) and recruiter cognitive scan heuristics (11.2s/7.4s scanning behavior).
 
 ---
 
@@ -61,7 +61,7 @@ flowchart TD
 2. **Web / Desktop App (The Candidate Studio)**:
    - Modern brutalist / blueprint UI (matching `career-ops` design tokens).
    - Side-by-side comparison: *Before vs. Hemmingway vs. Humanizer vs. Final*.
-   - Live AI Detection Radar (simulates detection scores across major detectors).
+   - ATS Single-Column Layout & Semantic Match Gate.
    - ATS Keyword Density heat-map.
 
 3. **CI / Pre-Submission Validation Service**:

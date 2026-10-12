@@ -8,7 +8,7 @@ import type { AuditDimensionScore } from '../types.js';
 export function evaluateRhythm(sentencesOrText: string[] | string): AuditDimensionScore {
   let pooledSentences: string[];
   if (Array.isArray(sentencesOrText)) {
-    pooledSentences = sentencesOrText;
+    pooledSentences = sentencesOrText.map(s => s.trim()).filter(Boolean);
   } else {
     pooledSentences = sentencesOrText
       .split(/(?<=[.!?])\s+/)
@@ -16,13 +16,23 @@ export function evaluateRhythm(sentencesOrText: string[] | string): AuditDimensi
       .filter(s => s.length > 0);
   }
 
-  if (pooledSentences.length <= 1) {
+  if (pooledSentences.length === 0) {
+    return {
+      dimension: 'rhythm',
+      score: 0,
+      maxScore: 10,
+      feedback: ['No sentences provided for rhythm evaluation.'],
+      metrics: { sentenceLengthStdDev: 0, sentenceCount: 0 }
+    };
+  }
+
+  if (pooledSentences.length === 1) {
     return {
       dimension: 'rhythm',
       score: 7, // Neutral baseline for single sentence pools
       maxScore: 10,
       feedback: ['Section sentence pool has only 1 sentence; standard deviation defaulted.'],
-      metrics: { sentenceLengthStdDev: 0, sentenceCount: pooledSentences.length }
+      metrics: { sentenceLengthStdDev: 0, sentenceCount: 1 }
     };
   }
 

@@ -62,4 +62,47 @@ Infrastructure: Kubernetes, Docker, AWS, Redis, Kafka
     expect(rendered).toContain('## Education');
     expect(rendered).toContain('## Skills');
   });
+
+  it('handles skills subheadings and preserves parenthesized commas', () => {
+    const md = `# Skills Test
+test@example.com
+
+## Skills
+### Languages & Frameworks
+TypeScript, Python, Go, React (Hooks, Context)
+
+### Cloud & Infrastructure
+AWS, Kubernetes, Observability (Prometheus, Grafana), Terraform
+`;
+    const ast = parseResumeMarkdown(md);
+    expect(ast.skills.length).toBe(2);
+    expect(ast.skills[0]?.category).toBe('Languages & Frameworks');
+    expect(ast.skills[0]?.skills).toEqual(['TypeScript', 'Python', 'Go', 'React (Hooks, Context)']);
+
+    expect(ast.skills[1]?.category).toBe('Cloud & Infrastructure');
+    expect(ast.skills[1]?.skills).toEqual(['AWS', 'Kubernetes', 'Observability (Prometheus, Grafana)', 'Terraform']);
+  });
+
+  it('corrects company and title inversion when company appears first', () => {
+    const md = `# Inversion Test
+dev@example.com
+
+## Experience
+### Google | Staff Infrastructure Engineer
+2022 - Present
+- Architected global routing fabric.
+
+### Acme Corp - Senior Backend Developer
+2020 - 2022
+- Maintained distributed message queues.
+`;
+    const ast = parseResumeMarkdown(md);
+    expect(ast.experience.length).toBe(2);
+
+    expect(ast.experience[0]?.company).toBe('Google');
+    expect(ast.experience[0]?.title).toBe('Staff Infrastructure Engineer');
+
+    expect(ast.experience[1]?.company).toBe('Acme Corp');
+    expect(ast.experience[1]?.title).toBe('Senior Backend Developer');
+  });
 });

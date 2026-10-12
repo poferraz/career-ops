@@ -102,4 +102,22 @@ Kubernetes, Docker, Go, TypeScript, AWS
     const secondBullet = result.ast.experience[0].bullets[1];
     expect(secondBullet.minedMetrics).toContain('50k QPS');
   });
+
+  it('gracefully falls back when inference provider throws an error or times out', async () => {
+    const failingProvider = {
+      name: 'failing-ollama',
+      generate: vi.fn().mockRejectedValue(new Error('Network timeout after 60000ms')),
+      isAvailable: vi.fn().mockResolvedValue(true)
+    };
+
+    const pipeline = new FourStagePipeline(failingProvider);
+    const result = await pipeline.optimize(sampleResumeMarkdown);
+
+    expect(result).toBeDefined();
+    expect(result.ast).toBeDefined();
+    expect(result.markdown).toContain('Alex Mercer');
+    // Bullets should have safely fallen back to original text
+    const bullets = result.ast.experience[0].bullets;
+    expect(bullets[0].finalBullet).toContain('Spearheaded');
+  });
 });

@@ -6,6 +6,7 @@ export interface InferenceOptions {
   systemPrompt?: string;
   keepAlive?: number | string;
   format?: 'json' | string;
+  numCtx?: number;
 }
 
 export interface InferenceResponse {

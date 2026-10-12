@@ -64,4 +64,17 @@ describe('AntiSlopScorer & Three-Band Decision Gate', () => {
     expect(report.gateStatus).toBe('rejected');
     expect(report.isPassing).toBe(false);
   });
+
+  it('assigns score 0 and rejected gate to empty or whitespace-only bullet input', () => {
+    const reportEmpty = AntiSlopScorer.evaluate({ bullets: [] });
+    expect(reportEmpty.totalScore).toBe(0);
+    expect(reportEmpty.gateStatus).toBe('rejected');
+    expect(reportEmpty.isPassing).toBe(false);
+    expect(reportEmpty.summary).toContain('No resume bullets provided');
+
+    const reportWhitespace = AntiSlopScorer.evaluate({ bullets: ['   ', ''] });
+    expect(reportWhitespace.totalScore).toBe(0);
+    expect(reportWhitespace.gateStatus).toBe('rejected');
+    expect(reportWhitespace.isPassing).toBe(false);
+  });
 });

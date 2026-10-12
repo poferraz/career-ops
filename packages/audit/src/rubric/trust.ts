@@ -1,7 +1,18 @@
 import type { AuditDimensionScore } from '../types.js';
 
 export function evaluateTrust(bulletsOrText: string[] | string, minedEntityCount: number = 0): AuditDimensionScore {
-  const bullets = Array.isArray(bulletsOrText) ? bulletsOrText : [bulletsOrText];
+  const rawBullets = Array.isArray(bulletsOrText) ? bulletsOrText : [bulletsOrText];
+  const bullets = rawBullets.map(b => b.trim()).filter(Boolean);
+  if (bullets.length === 0) {
+    return {
+      dimension: 'trust',
+      score: 0,
+      maxScore: 10,
+      feedback: ['No bullets provided for trust evaluation.'],
+      metrics: { unverifiedClaims: 0, minedEntityCount }
+    };
+  }
+
   let unverifiedClaims = 0;
   const feedback: string[] = [];
 
