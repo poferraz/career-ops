@@ -1,10 +1,13 @@
 # Job Search Reference
 
-Strategy and channel effectiveness data for job searching. Built on funnel analysis, diminishing returns research, and industry-specific hiring patterns. Load this file when users need help deciding where to apply, how many applications to send, or how to structure their search.
+Use this guide to choose search channels, review outcomes and set a workable pace.
+
+**Evidence note.** Figures and study findings without a primary-source link are unverified historical research notes. The tier labels record the original classification. Check the publication, date and sample before using a figure in advice. If the source cannot be verified, omit the number.
 
 ## Required Inputs
 
 Before advising on job search strategy, collect:
+
 - Target role and industry
 - Current employment status (employed, recently laid off, long-term searching)
 - How many applications they've sent so far
@@ -16,25 +19,26 @@ Before advising on job search strategy, collect:
 
 ## The Diminishing Returns Curve
 
-More applications is not better. The data is clear.
+The original notes group application outcomes by volume. They do not establish an optimal number for an individual.
 
 | Volume | Offer probability | Tier |
-|--------|-------------------|------|
+| -------- | ------------------- | ------ |
 | 1-10 applications | 27.2% | T2 |
 | 11-20 applications | 29.5% | T2 |
-| 21-80 applications | 30.9% (optimal) | T2 |
-| 81+ applications | 20% (collapse) | T2 |
+| 21-80 applications | 30.9% | T2 |
+| 81+ applications | 20% | T2 |
 
-The collapse happens because tailoring disappears at high volume. When you apply to 100+ jobs, every application becomes generic — and generic applications fail against modern semantic ATS matching and human review.
+Differences between groups may have several causes. Use the applicant’s own responses to decide whether to change tactics.
 
-### The Optimal Strategy
+### Choosing a sustainable pace
 
-Stay in the 21-80 band. This means:
+Choose a pace the applicant can sustain while checking fit and application requirements.
+
 - Research each target company before applying
 - Tailor your resume semantically to each JD (not keyword stuffing)
 - Write a cover letter with a company-specific hook
 - Track applications and results (what's converting, what isn't)
-- If you've sent 80 applications with zero interviews, stop and reassess your materials — the problem is quality, not volume
+- If suitable applications repeatedly receive no response, review targeting and materials together.
 
 ---
 
@@ -43,19 +47,19 @@ Stay in the 21-80 band. This means:
 Where you apply matters as much as how many times you apply.
 
 | Channel | % of applications | % of hires | Multiplier | Tier |
-|---------|------------------|------------|------------|------|
+| --------- | ------------------ | ------------ | ------------ | ------ |
 | Job boards | 49% | 24.6% | 0.5x (underperforms) | T2 |
 | Referrals | — | 4-8x more likely hired | — | T2 |
 | Referral with internal advocate | — | 50% interview rate | — | T2 |
 | Sourced by recruiter | — | 5x more likely hired | — | T2 |
 
-**Key insight**: Job boards account for half of all applications but only a quarter of hires. Referrals and being sourced are dramatically more effective. A job search strategy that's 100% job board applications is mathematically suboptimal.
+Compare the channels available to the applicant and track which ones lead to useful conversations or interviews.
 
 ### Recommended Channel Mix
 
-- **40% targeted applications** (job boards, company career pages) — but only to roles you've researched and tailored for
-- **40% networking and referrals** — see outreach.md for the organic networking framework
-- **20% being findable** — optimize LinkedIn profile (see linkedin.md), engage with content at target companies, attend industry events
+- Apply directly when a posting fits the user’s experience and goals.
+- Try a referral or a professional conversation where the user has a real connection.
+- Keep the information the user chooses to share publicly accurate and easy to find.
 
 ---
 
@@ -64,7 +68,7 @@ Where you apply matters as much as how many times you apply.
 Set realistic expectations. These are averages from named surveys [T2].
 
 | Role / Sector | Average search time |
-|---------------|-------------------|
+| --------------- | ------------------- |
 | AI/ML | 8 weeks |
 | Customer Service | 8 weeks |
 | Retail | 10 weeks |
@@ -77,7 +81,7 @@ Set realistic expectations. These are averages from named surveys [T2].
 | After involuntary layoff (any role) | 36 weeks |
 | Median to first offer (all roles) | 68.5 days |
 
-Use these to calibrate expectations early. A software engineer at week 10 is not failing — they're at the midpoint. A retail worker at week 20 may need to reassess strategy.
+Consult current information for the target sector. A survey average cannot determine whether an individual search is on track.
 
 ---
 
@@ -88,31 +92,32 @@ Not all industries hire the same way.
 ### Technology
 
 | Stage | Rate | Tier |
-|-------|------|------|
+| --- | --- | --- |
 | Application-to-interview | 5-15% | T2 |
 | Interview-to-offer | 7% (tech), 9% (business ops) | T2 |
 
 ### Healthcare, Education, Retail
 
 | Stage | Rate | Tier |
-|-------|------|------|
+| --- | --- | --- |
 | Application-to-interview | 13-20% | T2 |
 
 ### Skilled Trades
 
 Trades don't use traditional post-and-apply funnels [T2]:
+
 - Pipeline hiring dominates (trade school partnerships, apprenticeships)
 - Employee referrals are the primary conversion engine
-- Speed is the differentiator: respond within 24 hours, interview within 48 hours, offer within 3-5 days — any delay loses the candidate
+- Response windows vary. Check the employer’s stated deadline and contact process.
 - Cost-per-hire: $12,000+ (vs $6,200-$8,000 for tech/engineering)
 - Specific value propositions beat generic benefits: "paid license renewals" and "predictable schedules" outperform "competitive benefits"
 
-**Strategy for trades**: Focus on referrals, respond to opportunities immediately, emphasize specific certifications and licenses over resume polish.
+For a trade role, check required licenses, training and application deadlines. Consider apprenticeships, direct applications or a referral where appropriate.
 
 ### Creative / Marketing
 
 | Finding | Tier |
-|---------|------|
+| --------- | ------ |
 | Application-to-interview: ~10% experienced, ~2% entry-level | T2 |
 | Hiring teams conduct 42% more interviews per hire than 2021 (avg 20 interviews per hire) | T2 |
 | Portfolio has superseded resume as primary conversion tool | T2 |
@@ -124,45 +129,47 @@ Trades don't use traditional post-and-apply funnels [T2]:
 ### Government / Public Sector
 
 | Finding | Tier |
-|---------|------|
+| --------- | ------ |
 | Application-to-interview ratio: ~1:100 | T2 |
 | USAJobs uses unique filtering: "minimally qualified" → "best qualified" → referral list | T2 |
 | Skills-based hiring expanding: MD, PA, CO removed degree requirements for majority of positions | T2 |
 | Target time-to-hire: under 80 days (historically much longer) | T2 |
 
-**Strategy for government**: USAJobs requires specific formatting — mirror the announcement language exactly. Government ATS filtering is more rigid than private sector. Apply to fewer positions with higher-quality tailoring. Expect long timelines.
+For public-sector applications, check the current announcement for eligibility, format and supporting documents. Describe experience accurately in terms the announcement uses.
 
 ---
 
 ## Remote Work Competition
 
 | Finding | Tier |
-|---------|------|
+| --------- | ------ |
 | Only 11-13% of postings are fully remote | T2 |
 | 67% of remote postings target experienced roles | T2 |
 | Only 6% of remote postings are entry-level | T2 |
 | Remote roles attract far more applicants per posting | T2 |
 
-If targeting remote positions, the competition per posting is significantly higher. The 21-80 optimal application band likely shrinks — quality matters even more. Consider hybrid as a strategic alternative (24% of postings, much less competition).
+Use current postings to compare remote and hybrid options that meet the applicant’s needs.
 
 ---
 
 ## When to Reassess
 
 Red flags that indicate a strategy problem, not a volume problem:
-- 50+ applications with zero interviews → resume/tailoring issue
+
+- Few responses to suitable applications → review materials, timing and targeting
 - Multiple interviews but no offers → interview prep issue (see interview.md)
 - Getting offers but below target salary → negotiation issue (see interview.md)
 - Applying only through job boards → channel mix issue
-- Search exceeding industry average duration by 50%+ → reassess target, materials, and channels
+- A search that feels stalled → agree on a review point and try one change at a time
 
 ---
 
 ## Quality Checklist
 
 Before delivering job search strategy:
+
 - [ ] Channel mix includes networking, not just job boards
-- [ ] Application volume targets the 21-80 optimal band
+- [ ] Application pace fits the applicant’s time and is adjusted using their own results
 - [ ] Duration expectations are calibrated to their industry
 - [ ] Industry-specific advice matches their sector (trades ≠ tech ≠ government)
 - [ ] Remote work competition caveat included if targeting remote

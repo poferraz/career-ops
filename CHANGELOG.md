@@ -4,9 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Career Ops uses the conversation by default. Reusing or updating a saved profile takes explicit permission for the selected private file. Older profile files remain under the user's control.
+- All six exports now include the complete intake instructions and the ten public reference guides. See the [installation guide](docs/integrations.md) before updating an existing project.
+- The reference guides identify historical figures that need an original source before use.
+
 ## [1.0.2] - 2026-03-22
 
 ### Changed
+
 - **README**: Full rewrite to match companion website brand — brutalist design system, Architect Blue (`#1414b8`), `## ──` section headers, shields.io `for-the-badge` badges, and 7-section structure mirroring the site (Hero, Four-Stage Engine, Install, Anti-Slop Gate, Reference Modules, Research-Backed, Contribute).
 - **Brand images**: Replaced dark neon assets with optimized PNG images matching the website's blueprint grid aesthetic. `social-preview.png` is exactly 1280×640 (GitHub OG spec). `readme-hero.png` displays the four-stage engine and terminal install in brutalist style. Both under 250KB.
 - **CONTRIBUTING.md**: Refreshed tone to match brand voice; added `## QUALITY BAR` section enforcing trust tier and anti-slop standards for contributors.
@@ -17,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [1.0.1] - 2026-03-22
 
 ### Fixed
+
 - **Critical**: Escaped the git wildcard in `SECURITY.md` remediation command to prevent accidental deletion of tracked session templates.
 - **High**: Refactored `scripts/convert.sh` to use streaming `cat`/`printf` instead of `echo`, preventing potential Markdown text corruption during build.
 - **Medium**: Enabled `nullglob` in bash script to avoid crashes if reference directories are empty.
@@ -25,6 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [1.0.0] - 2026-03-22
 
 ### Added
+
 - SKILL.md orchestrator with interviewer mode, MI framework, 5-phase intake, routing table, anti-slop quality gate, research pre-flight, and user profile persistence
 - 10 reference modules: resume, cover-letter, linkedin, interview, outreach, job-search, career-strategy, market-data, anti-slop, research-scout
 - Session template for user profile persistence across conversations
@@ -38,7 +47,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - MIT license
 
 ### Research Base
+
 - 5 rounds of goal-blind deep research via Gemini Deep Research
 - Cross-referenced and contradiction-checked across all rounds
 - Key studies: 7,712-resume callback experiment, 4,812 LinkedIn eye-tracking reviews, 38,000+ employee meta-analysis, career coaching RCT (95% vs 83%), 16,000+ connection request analysis
-- Full audit passed: 0 hallucinations across ~230 data points
+- The original audit reported checking roughly 230 data points. The guides do not include independent source verification for every figure.

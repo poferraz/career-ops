@@ -1,0 +1,16 @@
+{
+  "name": "career-ops-doc-checks",
+  "private": true,
+  "devDependencies": {
+    "linkinator": "8.1.0",
+    "markdownlint-cli2": "0.24.2"
+  },
+  "overrides": {
+    "linkinator": {
+      "glob": "14.0.6"
+    },
+    "micromark-extension-math": {
+      "katex": "0.18.2"
+    }
+  }
+}

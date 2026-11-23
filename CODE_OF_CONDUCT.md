@@ -19,12 +19,7 @@ We expect all contributors and participants to:
 
 This project adopts the
 [Contributor Covenant v2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
-as its Code of Conduct. All instances of unacceptable behavior may be reported
-by opening a [GitHub Issue](https://github.com/poferraz/career-ops/issues) or
-contacting the maintainer directly via the details in
-[SECURITY.md](SECURITY.md).
-
-Maintainers are obligated to maintain confidentiality of the reporter.
+as its Code of Conduct. To flag conduct in a public GitHub thread, use GitHub's reporting controls on the relevant content. Keep the reporter's personal information out of public issues. Use the [security policy](SECURITY.md) for project security and privacy incidents.
 
 ## Scope
 
