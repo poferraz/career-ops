@@ -35,7 +35,7 @@ jobs:
         run: |
           git ls-files -z '*.md' | xargs -0 scripts/checks/node_modules/.bin/linkinator \
             --markdown --directory-listing --server-root "$PWD" --check-fragments \
-            --concurrency 4 --timeout 20000 --retry --retry-errors --retry-errors-count 1 --
+            --concurrency 3 --timeout 20000 --retry --retry-errors --retry-errors-count 3 --
 
   converter:
     runs-on: ubuntu-latest
