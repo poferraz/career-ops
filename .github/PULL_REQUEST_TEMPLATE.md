@@ -24,4 +24,4 @@
 
 ## TESTING
 
-<!-- How did you verify this works? Paste a sample session prompt + output if applicable. -->
+<!-- How did you verify this works? Use fictional sample inputs and sanitized output when relevant. -->

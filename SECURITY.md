@@ -9,7 +9,7 @@
 ## SUPPORTED VERSIONS
 
 | Version | Supported |
-|---|---|
+| --- | --- |
 | 1.0.x | ✓ Active |
 
 ---
@@ -19,12 +19,14 @@
 career-ops is a knowledge base skill — it has no servers, no authentication, and no databases. Security scope is narrow but real:
 
 **In scope:**
+
 - Fabricated or manipulated research data in reference files
 - Shell injection vulnerabilities in `scripts/convert.sh`
-- Session data leakage (user profile written outside `session/` directory)
+- Reading or saving career data without the user's permission, or saving a profile in a Git repository or shared folder
 - Prompt injection patterns embedded in reference content
 
 **Out of scope:**
+
 - General career advice disagreements
 - Platform-specific behavior (Claude Code, Cursor, etc.) outside this repo
 - Third-party MCP server vulnerabilities
@@ -39,6 +41,7 @@ Do **not** open a public issue for security vulnerabilities.
 [github.com/poferraz/career-ops/security/advisories/new](https://github.com/poferraz/career-ops/security/advisories/new)
 
 Include:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -50,16 +53,6 @@ Include:
 
 ## SESSION DATA PROTECTION
 
-The `session/user-profile.md` file stores personal career data. It is gitignored by default.
+Career Ops uses the current conversation by default. The AI host and its model provider may process or retain conversation and file contents according to the user's settings. Saving a profile requires an explicit request identifying a private file outside Git repositories and shared folders and the details to keep.
 
-**Verify it stays gitignored:**
-```bash
-git check-ignore -v session/user-profile.md
-```
-
-If this file has been committed accidentally, remove it from history:
-```bash
-git filter-repo --path 'session/user-profile.md' --invert-paths
-```
-
-Never commit personal session data. The template (`session/user-profile-template.md`) is safe to commit — it contains no personal information.
+Older versions used `session/user-profile.md`. The current skill leaves that file alone. The ignore rule in this checkout can protect an untracked legacy file here. An already-tracked file and past commits can remain visible. If a real profile was published, use the private reporting channel above and avoid copying the profile into the report. [Optional blank profile template](session/user-profile-template.md)

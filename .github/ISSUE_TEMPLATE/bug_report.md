@@ -24,7 +24,7 @@ assignees: ''
 
 ## WHAT ACTUALLY HAPPENED
 
-<!-- Paste the exact output. -->
+<!-- Show the unexpected output using fictional career details. -->
 
 ## ANTI-SLOP SCORE
 
@@ -34,11 +34,11 @@ assignees: ''
 ## ENVIRONMENT
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Platform | <!-- Claude Code / Codex / Gemini CLI / Cursor / Other --> |
 | Version | <!-- career-ops version (see CHANGELOG.md) --> |
 | Web search available | <!-- Yes / No --> |
 
 ## ADDITIONAL CONTEXT
 
-<!-- Anything else? Paste relevant parts of your session/user-profile.md if safe to share. -->
+<!-- Use fictional examples. Keep resumes, profiles, employer-sensitive details and contact information out of this public report. -->

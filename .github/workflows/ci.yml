@@ -10,27 +10,38 @@ permissions:
   contents: read
 
 jobs:
-  markdown-lint:
-    name: markdown-lint
+  docs:
+    name: ${{ matrix.check }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        check: [markdown-lint, link-check]
     steps:
-      - uses: actions/checkout@v6
-      - uses: DavidAnson/markdownlint-cli2-action@v16
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
-          globs: "**/*.md"
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci --prefix scripts/checks --ignore-scripts --no-audit --no-fund
+      - name: Lint tracked Markdown
+        if: matrix.check == 'markdown-lint'
+        run: git ls-files -z '*.md' | xargs -0 scripts/checks/node_modules/.bin/markdownlint-cli2
+      - name: Check documentation links and heading anchors
+        if: matrix.check == 'link-check'
+        run: |
+          git ls-files -z '*.md' | xargs -0 scripts/checks/node_modules/.bin/linkinator \
+            --markdown --directory-listing --server-root "$PWD" --check-fragments \
+            --concurrency 4 --timeout 20000 --retry --retry-errors --retry-errors-count 1 --
 
-  link-check:
-    name: link-check
+  converter:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v6
-      - uses: lycheeverse/lychee-action@v2
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
-          args: >
-            --verbose
-            --no-progress
-            --exclude-loopback
-            --exclude "https://img.shields.io"
-            ./**/*.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
+      - run: python3 scripts/test_convert.py
