@@ -18,7 +18,7 @@ assignees: ''
 ## SOURCE METADATA
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Source title | |
 | Authors / organization | |
 | Publication date | |
@@ -36,10 +36,9 @@ assignees: ''
 <!-- Does this contradict any existing claim in the knowledge base? -->
 <!-- If yes: which claim, and why should this supersede it? -->
 
-## RAW DATA
+## SOURCE FINDING
 
-<!-- Paste the key quote, statistic, or finding directly from the source. -->
-<!-- Do not paraphrase — paraphrasing introduces slop. -->
+<!-- Identify the relevant table, page or section in the linked source. Summarize its finding and limits. Use only public, shareable material. -->
 
 ---
 

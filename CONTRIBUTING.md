@@ -1,73 +1,15 @@
-<div align="center">
+# Contributing to Career Ops
 
-![Contributing](https://img.shields.io/badge/CONTRIBUTING-GUIDE-1414b8?style=for-the-badge)
+## Research updates
 
-</div>
+Identify the claim and its reference module. Link the original source and point to the relevant page, table or finding. Explain what the source measured, the limits of the sample and any conflict with existing advice. Use publicly shareable material. [Research update template](.github/ISSUE_TEMPLATE/research_update.md) · [Evidence tiers](docs/trust-tiers.md)
 
-# CONTRIBUTING TO CAREER-OPS
+## Skill changes
 
-career-ops runs on evidence, not vibes. Every contribution must clear the same anti-slop bar as the skill itself. If you're submitting research, it needs a source. If you're submitting a feature, it needs a rationale.
+For a new module, use the feature request template to explain the job seeker's need and discuss the evidence before implementation. For a focused correction, open a pull request with the reason for the change. Keep installation usable without a separate paid API or database. [Feature request template](.github/ISSUE_TEMPLATE/feature_request.md)
 
-## QUALITY BAR
+Check sample career materials against the editing rubric. It asks the host to revise drafts scoring below 35 out of 50 on directness, rhythm, trust, authenticity and density. [Writing rubric](references/anti-slop.md)
 
-All contributions must meet:
+## Reporting bugs
 
-- **Trust tier tagged** — Every claim uses T1–T3 evidence. No invented statistics.
-- **No slop** — Writing must score 35/50 minimum on the anti-slop rubric (see [`anti-slop.md`](references/anti-slop.md))
-- **No T4 submissions** — Claims contradicted by evidence or of unknown origin will not be merged
-
----
-
-## RESEARCH UPDATES
-
-The knowledge base grows through new evidence. To submit a research update:
-
-- Open a [Research Update issue](.github/ISSUE_TEMPLATE/research_update.md) with source metadata and trust tier
-- Include raw data or direct quotes — paraphrasing introduces slop
-- Cross-reference against existing claims in the relevant reference file
-
-**Target files:** Any file in [`references/`](references/)
-
----
-
-## REFERENCE IMPROVEMENTS
-
-Found a framing that's more accurate, direct, or better supported?
-
-- Open a PR with the specific change and the evidence behind it
-- Do not rewrite sections wholesale — make surgical, justified edits
-- Update the trust tier tag if the evidence level changes
-
----
-
-## NEW FEATURES
-
-Before building anything new:
-
-- Open a [Feature Request issue](.github/ISSUE_TEMPLATE/feature_request.md) describing the problem, not the solution
-- Wait for discussion — new modules require significant research investment
-- The skill must remain zero-dependency: no paid APIs, no mandatory MCP servers
-
----
-
-## BUG REPORTS
-
-If the skill gives advice that contradicts its own reference data, or routes incorrectly:
-
-- Open a [Bug Report issue](.github/ISSUE_TEMPLATE/bug_report.md)
-- Include the exact prompt, the output received, and what the correct behavior should be
-- Anti-slop gate failures (output scored below 35) are treated as bugs
-
----
-
-## CONDUCT
-
-Be direct. Disagree on evidence, not personality. This is a career tools repo for workers — keep it useful and keep it honest.
-
----
-
-<div align="center">
-
-[![Open an Issue](https://img.shields.io/badge/OPEN_AN_ISSUE-1414b8?style=for-the-badge&logo=github&logoColor=white)](https://github.com/poferraz/career-ops/issues/new/choose)
-
-</div>
+Describe your host, what you expected and what happened. Use fictional examples and remove private application materials, names and contact details from screenshots or output. Report privacy or security issues privately. [Bug template](.github/ISSUE_TEMPLATE/bug_report.md) · [Security policy](SECURITY.md)

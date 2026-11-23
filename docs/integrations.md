@@ -1,53 +1,33 @@
-# Integrations Guide
+# Installation and integrations
 
-career-ops works fully without any external dependencies. No API keys, MCP servers, or paid tools are required. Everything below is optional — these integrations enhance the skill when available.
+Career Ops supplies Markdown instructions and reference guides. The AI host runs them. You can use the skill without a separate Career Ops account, API key or database. The host may have its own costs, processing and retention settings.
 
-## Web Search
+## Generate a host export
 
-**What it enables:** Research pre-flight — the skill searches for current information about target companies before generating tailored materials (cover letters, interview prep, outreach messages).
+From a shell with Git and Bash, clone this repository and generate an export for one host.
 
-**Without it:** The skill asks the user what they know about the company and works with what's provided. All core functionality remains intact.
+```sh
+git clone https://github.com/poferraz/career-ops.git
+cd career-ops
+bash scripts/convert.sh codex
+```
 
-**How to check:** The skill detects web search availability at runtime. No configuration needed.
+Replace `codex` with your host from the table. The converter writes to `dist/<host>/` and prints the installation instructions. Inspect the output, then copy it into a dedicated project. If the project already has instructions under the same name, review how they should fit together before installing the export.
 
-## LinkedIn MCP Server
+| Host argument | Files to install in the target project |
+| --- | --- |
+| `codex`, `opencode` | Copy `AGENTS.md` and its companion `career-ops/` directory into the project root. |
+| `gemini` | Copy `GEMINI.md` and its companion `career-ops/` directory into the project root. |
+| `cursor` | Copy the generated `career-ops/` skill directory into `.cursor/skills/`. |
+| `antigravity` | Copy the generated `career-ops/` skill directory into `.agents/skills/`. |
+| `windsurf` | Copy the generated `career-ops/` skill directory into `.windsurf/skills/`. |
 
-**What it enables:** Direct access to LinkedIn profile data, job search results, and company information.
+The README gives the direct Claude Code install. Start a new session in the target project and ask to use Career Ops. [Quick start](../README.md#try-it)
 
-**Recommended:** [stickerdaniel/linkedin-mcp-server](https://github.com/stickerdaniel/linkedin-mcp-server)
-- Profile scraping and analysis
-- Job search within LinkedIn
-- Company data retrieval
-- Requires manual LinkedIn login and session management
+## Web research and career profiles
 
-**Alternative options:**
+With web search enabled in your host, use general role, industry or public company information. Searches are sent to the host's search service. If search is unavailable, the skill can work with a job description and details supplied in the conversation.
 
-| Tool | Type | Access |
-|------|------|--------|
-| Composio Tool Router | MCP-based, 500+ app integrations | API key + OAuth |
-| Official LinkedIn API | Limited to own-profile data and content sharing | App approval |
+LinkedIn advice can use a short excerpt you choose to share. A separate LinkedIn account integration introduces its own access permissions and data handling. Career Ops does not need one.
 
-**Without it:** The skill generates all LinkedIn optimization advice from its reference data. Users paste their current profile text for analysis instead of the skill pulling it directly.
-
-**Privacy note:** LinkedIn scraping tools operate in a ToS gray area. The skill never requires them — they're a convenience, not a dependency.
-
-## Supporting Skills
-
-career-ops pairs well with other Claude Code skills for specific workflows:
-
-### Anti-Slop / De-Slop Skills
-If you use a general-purpose anti-slop skill (like `hardikpandya/stop-slop`), career-ops has its own built-in quality gate adapted specifically for career materials. The two won't conflict — career-ops applies its check internally before delivering output.
-
-### Research Skills
-Skills that provide web search, Exa search, or other research capabilities enhance the research pre-flight phase. career-ops will use whatever search capability is available.
-
-## What Will Never Be Required
-
-These are design commitments, not current limitations:
-
-- **No paid API keys** — the skill must work for job seekers who are often financially constrained
-- **No mandatory MCP servers** — MCP adds setup friction that kills adoption
-- **No external databases** — all reference data lives in the repo
-- **No cloud services** — everything runs locally in your agent's context
-
-The skill is built for workers, not for people selling to workers. The barrier to entry is one install command.
+Conversation-only use is the default. Reading or writing a profile requires an explicit choice of a private location and permission for that operation. [Privacy and reporting](../SECURITY.md)

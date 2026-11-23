@@ -20,3 +20,6 @@ Thumbs.db
 # IDE configs
 .idea/
 .vscode/
+
+# Documentation CI dependencies
+scripts/checks/node_modules/

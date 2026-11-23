@@ -1,165 +1,76 @@
 #!/usr/bin/env bash
-# convert.sh — Convert career-ops for use with other AI coding agents
-# Usage: bash scripts/convert.sh <platform>
-# Supported: codex, gemini, cursor, antigravity, windsurf, opencode
-
+# Export Career Ops without installing anything in the user's project.
 set -euo pipefail
-shopt -s nullglob
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-OUTPUT_DIR="$PROJECT_DIR/dist"
-
-usage() {
-    cat <<'USAGE'
-Usage: bash scripts/convert.sh <platform>
-
-Supported platforms:
-  codex        — OpenAI Codex (AGENTS.md format)
-  gemini       — Google Gemini CLI (GEMINI.md format)
-  cursor       — Cursor IDE (.cursor/rules/ format)
-  antigravity  — Antigravity (prompts/ directory format)
-  windsurf     — Windsurf (.windsurfrules format)
-  opencode     — OpenCode (AGENTS.md format)
-
-Output is written to dist/<platform>/
-USAGE
+project_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+platform="${1:-}"
+if [[ $# -ne 1 ]]; then
+    echo "Usage: bash scripts/convert.sh {codex|gemini|cursor|antigravity|windsurf|opencode}" >&2
     exit 1
-}
-
-if [[ $# -lt 1 ]]; then
-    usage
 fi
 
-PLATFORM="$1"
-
-# Stream all reference content directly to stdout
-stream_references() {
-    for ref in "$PROJECT_DIR"/references/*.md; do
-        [[ "$(basename "$ref")" == ".gitkeep" ]] && continue
-        cat "$ref"
-        printf "\n\n---\n\n"
-    done
-}
-
-# Stream SKILL.md body (stripping YAML frontmatter) to stdout
-stream_skill_body() {
-    local skill_file="$PROJECT_DIR/SKILL.md"
-    # Check if file starts with frontmatter
-    if head -n 1 "$skill_file" | grep -q "^---$"; then
-        # Skip everything between the first and second '---'
-        sed '1,/^---$/d' "$skill_file" | sed '1,/^---$/d'
-    else
-        cat "$skill_file"
-    fi
-}
-
-# Consolidate SKILL.md body and all references
-build_consolidated() {
-    stream_skill_body
-    printf "\n---\n\n# Reference Files\n\nThe following reference modules are loaded on demand based on the routing table above.\n\n"
-    stream_references
-}
-
-convert_codex() {
-    local out="$OUTPUT_DIR/codex"
-    mkdir -p "$out"
-    echo "Converting for Codex..."
-
-    {
-        printf "# career-ops\n\n"
-        build_consolidated
-    } > "$out/AGENTS.md"
-
-    echo "Output: $out/AGENTS.md"
-    echo "Install: Copy AGENTS.md to your project root"
-}
-
-convert_gemini() {
-    local out="$OUTPUT_DIR/gemini"
-    mkdir -p "$out"
-    echo "Converting for Gemini CLI..."
-
-    {
-        printf "# career-ops\n\n"
-        build_consolidated
-    } > "$out/GEMINI.md"
-
-    echo "Output: $out/GEMINI.md"
-    echo "Install: Copy GEMINI.md to your project root or pass with --context flag"
-}
-
-convert_cursor() {
-    local out="$OUTPUT_DIR/cursor/rules"
-    mkdir -p "$out"
-    echo "Converting for Cursor..."
-
-    stream_skill_body > "$out/career-ops.md"
-
-    for ref in "$PROJECT_DIR"/references/*.md; do
-        [[ "$(basename "$ref")" == ".gitkeep" ]] && continue
-        cp "$ref" "$out/career-ops-$(basename "$ref")"
-    done
-
-    echo "Output: $out/"
-    echo "Install: Copy contents of $out/ into your .cursor/rules/ directory"
-}
-
-convert_antigravity() {
-    local out="$OUTPUT_DIR/antigravity"
-    mkdir -p "$out"
-    echo "Converting for Antigravity..."
-
-    {
-        printf "# career-ops\n\n"
-        build_consolidated
-    } > "$out/career-ops.md"
-
-    echo "Output: $out/career-ops.md"
-    echo "Install: Copy career-ops.md to your Antigravity prompts directory"
-}
-
-convert_windsurf() {
-    local out="$OUTPUT_DIR/windsurf"
-    mkdir -p "$out"
-    echo "Converting for Windsurf..."
-
-    {
-        printf "# career-ops\n\n"
-        build_consolidated
-    } > "$out/.windsurfrules"
-
-    echo "Output: $out/.windsurfrules"
-    echo "Install: Copy .windsurfrules to your project root"
-}
-
-convert_opencode() {
-    local out="$OUTPUT_DIR/opencode"
-    mkdir -p "$out"
-    echo "Converting for OpenCode..."
-
-    {
-        printf "# career-ops\n\n"
-        build_consolidated
-    } > "$out/AGENTS.md"
-
-    echo "Output: $out/AGENTS.md"
-    echo "Install: Copy AGENTS.md to your project root"
-}
-
-case "$PLATFORM" in
-    codex)        convert_codex ;;
-    gemini)       convert_gemini ;;
-    cursor)       convert_cursor ;;
-    antigravity)  convert_antigravity ;;
-    windsurf)     convert_windsurf ;;
-    opencode)     convert_opencode ;;
-    *)
-        echo "Error: Unknown platform '$PLATFORM'"
-        echo ""
-        usage
-        ;;
+case "$platform" in
+    codex|opencode) entry=AGENTS.md ;;
+    gemini) entry=GEMINI.md ;;
+    cursor) skill_root=.cursor/skills ;;
+    antigravity) skill_root=.agents/skills ;;
+    windsurf) skill_root=.windsurf/skills ;;
+    *) echo "Unknown platform: $platform" >&2; exit 1 ;;
 esac
 
-echo ""
-echo "Done. Review the output before installing."
+out="$project_dir/dist/$platform"
+mkdir -p "$project_dir/dist"
+staging="$project_dir/dist/.$platform-build"
+if ! mkdir "$staging"; then
+    echo "An export is already in progress at $staging. Inspect it before retrying." >&2
+    exit 1
+fi
+
+finish() {
+    # If publishing was interrupted, restore the previous complete export.
+    if [[ -d "$staging/previous" && ! -e "$out" ]]; then
+        mv "$staging/previous" "$out" || return 1
+    fi
+    rm -rf "$staging"
+}
+trap finish EXIT
+trap 'exit 1' HUP INT TERM
+bundle="$staging/new/career-ops"
+mkdir -p "$bundle/references"
+
+# Copy only the modules the public routing table names. A local profile or a
+# personal note alongside the reference files must never enter the export.
+routes="$(sed -n 's/^|.*`\(references\/[^`/]*\.md\)` *|$/\1/p' "$project_dir/SKILL.md")"
+if [[ -z "$routes" ]]; then
+    echo "The skill routing table did not name any reference modules." >&2
+    exit 1
+fi
+while IFS= read -r route; do
+    cp "$project_dir/$route" "$bundle/$route"
+done <<< "$routes"
+
+if [[ -n "${entry:-}" ]]; then
+    # Root instruction files use project-relative paths. Remove only the
+    # opening YAML block; the remaining horizontal rules belong to the skill.
+    awk '
+        NR == 1 && $0 == "---" { frontmatter = 1; next }
+        frontmatter && $0 == "---" { frontmatter = 0; next }
+        !frontmatter { gsub(/references\//, "career-ops/references/"); print }
+        END { if (frontmatter) exit 1 }
+    ' "$project_dir/SKILL.md" > "$staging/new/$entry"
+else
+    cp "$project_dir/SKILL.md" "$bundle/SKILL.md"
+fi
+
+# Replace this platform's generated output together, so stale rules or notes
+# from an older export cannot be copied during installation.
+if [[ -e "$out" ]]; then
+    mv "$out" "$staging/previous"
+fi
+mv "$staging/new" "$out"
+if [[ -n "${entry:-}" ]]; then
+    echo "Install $out/$entry and $out/career-ops/ together in your career project root."
+    echo "If the project already has $entry, merge the instructions into that file."
+else
+    echo "Install the complete $out/career-ops/ directory at $skill_root/career-ops/ in your project."
+fi

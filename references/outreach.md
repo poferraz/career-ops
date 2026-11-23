@@ -1,10 +1,13 @@
 # Outreach Reference
 
-Connection request data, cold message strategy, and organic networking frameworks. Load this file when users need help with networking messages, cold outreach, follow-ups, or connection requests.
+Use this guide to write connection requests, introductory messages and follow-ups.
+
+**Evidence note.** Figures and study findings without a primary-source link are unverified historical research notes. The tier labels record the original classification. Check the publication, date and sample before using a figure in advice. If the source cannot be verified, omit the number.
 
 ## Required Inputs
 
 Before generating outreach messages, collect:
+
 - Who they're reaching out to (recruiter, hiring manager, peer, executive)
 - How they found this person (LinkedIn, event, referral, cold)
 - What they want (informational interview, referral, job lead, mentorship)
@@ -20,7 +23,7 @@ From an analysis of 16,000+ LinkedIn connection requests:
 ### Acceptance Rates by Message Type
 
 | Message type | Acceptance rate | Tier |
-|-------------|----------------|------|
+| ------------- | ---------------- | ------ |
 | Shared event/experience reference | 65% | T2 |
 | Mutual connection reference | 58% | T2 |
 | Specific content reference ("Your post about X...") | 48% | T2 |
@@ -28,39 +31,41 @@ From an analysis of 16,000+ LinkedIn connection requests:
 | Blank (no message) | 31% | T2 |
 | Sales language ("help," "solution," "provide") | 18% | T2 |
 
-**Key insight**: A personalized message referencing shared context doubles acceptance versus a blank request. Sales language cuts it below half of blank. Generic templates perform almost identically to sending nothing at all.
+A specific reference can help a recipient understand why you contacted them.
 
 ### Timing
 
 | Window | Acceptance probability | Tier |
-|--------|----------------------|------|
+| -------- | ---------------------- | ------ |
 | First hour | 21% of all acceptances happen here | T2 |
 | First week | 88% of all acceptances | T2 |
 | After 30 days | <1% chance | T2 |
 
-If your request hasn't been accepted within a week, move on. Don't send a follow-up to an unanswered connection request.
+Respect an unanswered invitation and avoid repeated unsolicited messages.
 
-### Banned Trigger Words
+### Wording to review
 
-These words cut acceptance rates in half. Never use them in connection requests.
+Review generic or sales-oriented wording in context. The historical notes do not establish that an individual word determines acceptance.
 
-**Tier 2 — Measured** (directly tested in the 16,000-request dataset):
+The following words appeared in the original survey notes.
+
 - "help"
 - "solution"
 - "provide"
 
 **Tier 3 — Conventional wisdom** (widely cited as harmful, not directly measured in that dataset):
+
 - "opportunity"
 - "synergy"
 - "leverage"
 
-The first three are measured; the rest are conventional wisdom. All six signal that you want something from them, not that you have something in common with them.
+Replace a vague pitch with a clear reason for contacting this person.
 
 ---
 
 ## Cold Message Templates
 
-All messages should be under 80 words. The recipient decides within 7 seconds whether to read or skip.
+Make the request brief enough for the recipient to understand and answer.
 
 ### Connection Request (to someone you don't know)
 
@@ -69,7 +74,7 @@ All messages should be under 80 words. The recipient decides within 7 seconds wh
 Example:
 > I saw your talk at [Event] on [Topic] — your point about [specific detail] changed how I think about [thing]. I'm moving into [industry] from [background] and would value your perspective. Would a 15-minute call work sometime this month?
 
-Why it works: shared context (65% acceptance), specific reference to their work (48%), low-effort ask (15 minutes, flexible timing).
+The example gives a reason for reaching out and makes one small request.
 
 ### Informational Interview Request (via email or InMail)
 
@@ -105,58 +110,66 @@ Always give them an out. Forced introductions damage the relationship.
 A 7-step process for building genuine professional relationships before you need them [T2].
 
 ### Step 1 — Build the Outreach List
+
 Identify 15-20 people at target companies or in target roles. Mix: 5 peers (same level), 5 senior (one level up), 5 adjacent (related roles), and 5 wildcards (interesting people in the industry).
 
 ### Step 2 — Engage Before Requesting
-Comment on their content. Share their posts with your own take. Build familiarity before asking for anything. A comment on someone's post creates an 80% chance their next post appears in your feed [T2].
+
+Comment or share when there is something useful you can add to the discussion.
 
 ### Step 3 — Connect with Context
-Use the shared context approach (65% acceptance rate). Reference the content you've engaged with.
+
+Reference the work or conversation that prompted your message.
 
 ### Step 4 — Request an Informational Interview
+
 Ask to learn about their industry challenges — not to pitch yourself. Frame it as research.
 
 ### Step 5 — Listen for Problems
+
 During the conversation, listen for problems they or their team faces. Don't try to solve them in the moment.
 
 ### Step 6 — Follow Up with Value
+
 After the conversation, send something useful: an article related to their challenge, a connection to someone who could help, or a summary of what you learned from them.
 
 ### Step 7 — Propose Yourself as a Solution
+
 After 2-3 touchpoints, you've earned the right to mention that you're looking. By now they know your background, have seen your engagement, and have a relationship — not just a cold request.
 
-This process takes 4-6 weeks per relationship. It's slower than mass-applying, but referral candidates are 4-8x more likely to be hired [T2].
+Let the relationship develop at a pace that respects the other person’s time.
 
 ---
 
 ## InMail vs Cold Email
 
 | Channel | Response rate | Best for | Tier |
-|---------|--------------|----------|------|
+| --------- | -------------- | ---------- | ------ |
 | InMail | 18-25% | Reaching professionals you have no connection to | T2 |
 | Cold email | 1-5% | When you have their email but no LinkedIn connection | T2 |
 
-InMail is 5-15x more effective. Worth LinkedIn Premium for active job seekers targeting specific people or companies.
+Choose a channel that fits the relationship and the user’s budget. A paid account is optional.
 
 ---
 
 ## What Not to Do
 
-- **Don't send mass identical messages** — generic templates perform the same as blank requests (32% vs 31%)
-- **Don't follow up on unanswered connection requests** — after a week, 88% of acceptances have already happened
+- Avoid identical messages that give the recipient no reason to respond.
+- Respect an unanswered connection request.
 - **Don't use "I'd love to pick your brain"** — it devalues their expertise
 - **Don't use "Can I buy you a coffee?"** — it's a cliche that signals generic networking
 - **Don't ask for a job in the first message** — build the relationship first
-- **Don't send messages over 80 words** — they won't be read
+- Keep the first message brief and easy to answer.
 
 ---
 
 ## Quality Checklist
 
 Before delivering outreach messages:
+
 - [ ] Under 80 words
 - [ ] References something specific about the recipient
-- [ ] No banned trigger words (help, solution, provide, opportunity, synergy, leverage)
+- [ ] Gives a specific, genuine reason for making contact
 - [ ] Ends with a specific, low-effort ask
 - [ ] Could not be sent to anyone else without rewriting
 - [ ] Matches the relationship stage (cold vs warm vs referral)
