@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Architectural blueprint README visual suite in `docs/assets/`: `readme-hero.png`, `workflow-blueprint.png`, `before-after-slop.png`, and `cta-banner.png`.
 - `.github/ISSUE_TEMPLATE/config.yml` routing blank issues to private security reporting, installation docs, and support.
 - Expanded `CONTRIBUTING.md` quality bar, `SKILL.md` routing-table registration requirement, and local verification commands.
 - Pre-issue troubleshooting and PII-redaction checklist in `SUPPORT.md`.
@@ -17,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Rebuilt `README.md` with the centered hero banner, `flat-square` badges, generic-AI vs. Career Ops comparison table, 15-second install commands, copyable starter prompts with a smoke test, full file inventory, and proactive evidence-tier framing.
+- Rebuilt `README.md` with bespoke architectural blueprint hero, workflow diagram, before/after anti-slop proof graphic, closing CTA banner, `for-the-badge` CTA button bars, `flat-square` status badges, 15-second install commands, copyable starter prompts with a smoke test, full file inventory, and proactive evidence-tier framing.
 - Standardized issue and pull request templates with clean headings, all 7+ supported AI hosts, explicit advice-vs-tooling proposal guidance, and mandatory PII-redaction checks.
 - Updated `CODE_OF_CONDUCT.md` naming (`Career Ops`) and clarified private maintainer reporting channels.
 - Switched default sessions to conversation-only operation; reading or writing a saved profile now requires explicit permission for a user-selected private file outside Git repositories and shared folders.
