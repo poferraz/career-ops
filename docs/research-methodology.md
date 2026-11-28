@@ -1,14 +1,14 @@
 # Research methodology
 
-The original project records five rounds of Gemini Deep Research. They covered résumé review and screening, labour-market data, interview preparation, LinkedIn and outreach, and gaps in the earlier research such as trades and public-sector hiring. The questions were framed to seek evidence for competing interpretations. The project also compared findings across rounds and assigned evidence tiers. [Original methodology](https://github.com/poferraz/career-ops/blob/1881b199a6aa9369c335222d8765bf6b85d02e77/docs/research-methodology.md)
+The original project documented five rounds of Gemini Deep Research covering resume review and screening, labor-market data, interview preparation, LinkedIn and outreach, and under-covered areas such as skilled trades and public-sector hiring. Queries were framed to surface competing interpretations, compare findings across rounds, and assign evidence tiers. [Original methodology](https://github.com/poferraz/career-ops/blob/1881b199a6aa9369c335222d8765bf6b85d02e77/docs/research-methodology.md)
 
-The reference modules are a starting point for coaching and research. They include figures attributed to surveys, experiments and practitioners. The modules do not contain a complete source bibliography. Repeated results in AI-assisted research can come from the same original source.
+The reference modules are a starting point for coaching and research rather than a complete bibliography. They contain figures attributed to surveys, experiments, and practitioners, and repeated numbers in AI-assisted research often trace back to a single original source.
 
 ## Using a finding
 
-1. Locate the original publication or dataset and check its date, location, sample, comparison and outcome.
-2. Report what the study measured. A screening study for one occupation or one company may have little bearing on a different applicant.
-3. For time-sensitive information such as salaries or local labour-market conditions, seek current evidence for the user's target market.
-4. When the underlying source cannot be verified, omit the number or say what remains uncertain.
+1. Locate the original publication or dataset and check its date, geography, sample, comparison group, and measured outcome.
+2. Report what the study actually measured. A screening study for one occupation or employer may not transfer to a different applicant or market.
+3. For time-sensitive claims such as compensation ranges or local hiring conditions, verify current primary evidence for the user's target market.
+4. When the underlying source cannot be verified, omit the figure or state clearly what remains uncertain (`T4 — Excluded` claims are omitted from advice).
 
-The project uses evidence tiers to describe the kind of support a claim has. Corrections should identify the exact claim, link its source and explain what should change. [Evidence tiers](trust-tiers.md) · [Submit a research correction](../.github/ISSUE_TEMPLATE/research_update.md)
+Career Ops uses evidence tiers (`T1` through `T4`) to describe the support behind each claim. Corrections should identify the exact claim, link its primary source, and explain what should change. [Evidence tiers](trust-tiers.md) · [Research guide](../references/research-scout.md) · [Submit a research correction](../.github/ISSUE_TEMPLATE/research_update.md)
