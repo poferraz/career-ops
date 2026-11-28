@@ -1,21 +1,21 @@
 ---
 name: Research Update
-about: Submit new evidence to update the knowledge base.
+about: Submit primary T1–T3 evidence to update or verify the knowledge base.
 title: '[RESEARCH] '
 labels: research
 assignees: ''
 ---
 
-<!-- Must clear T1–T3 tier standards. T4 submissions will not be merged. -->
+<!-- Submissions should meet T1–T3 standards. Claims without a verifiable primary source (T4) cannot be merged. -->
 
-## WHAT THIS UPDATES
+## What This Updates
 
-<!-- Which claim in which reference file does this affect? -->
+<!-- Identify the file and claim this evidence verifies, updates, or replaces. -->
 <!-- File: references/________.md -->
 <!-- Current claim: "..." -->
 <!-- Proposed update: "..." -->
 
-## SOURCE METADATA
+## Source Metadata
 
 | Field | Value |
 | --- | --- |
@@ -23,23 +23,23 @@ assignees: ''
 | Authors / organization | |
 | Publication date | |
 | URL or DOI | |
-| Study type | <!-- RCT / Survey / Platform study / Expert consensus / Other --> |
+| Study type | <!-- RCT / Meta-analysis / Survey / Platform study / Expert consensus / Other --> |
 
-## TRUST TIER
+## Trust Tier
 
-- [ ] **T1 — Verified:** Peer-reviewed, RCT, or meta-analysis
-- [ ] **T2 — Reported:** Controlled experiment, platform-reported study
-- [ ] **T3 — Expert:** Practitioner consensus, widely cited framework
+- [ ] **T1 — Verified:** Peer-reviewed study, RCT, meta-analysis, or public primary data
+- [ ] **T2 — Reported:** Controlled experiment, survey, or platform-reported study
+- [ ] **T3 — Conventional:** Practitioner consensus or widely used coaching framework
 
-## CONTRADICTION CHECK
+## Contradiction Check
 
-<!-- Does this contradict any existing claim in the knowledge base? -->
-<!-- If yes: which claim, and why should this supersede it? -->
+<!-- Does this contradict any existing claim in Career Ops? -->
+<!-- If yes, identify the claim and explain why this source should supersede or qualify it. -->
 
-## SOURCE FINDING
+## Source Finding
 
-<!-- Identify the relevant table, page or section in the linked source. Summarize its finding and limits. Use only public, shareable material. -->
+<!-- Point to the relevant table, page, or section in the linked source. Summarize the finding, sample, and limits using only public, shareable material. -->
 
 ---
 
-*See [trust-tiers.md](../../docs/trust-tiers.md) for full tier definitions.*
+*See [trust-tiers.md](https://github.com/poferraz/career-ops/blob/main/docs/trust-tiers.md) for full tier definitions.*

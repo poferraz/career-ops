@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or Privacy Issue (Private Report)
+    url: https://github.com/poferraz/career-ops/blob/main/SECURITY.md
+    about: Report vulnerabilities, accidental profile leaks, or prompt-injection concerns privately.
+  - name: Setup & Multi-Agent Installation Guide
+    url: https://github.com/poferraz/career-ops/blob/main/docs/integrations.md
+    about: Install Career Ops in Claude Code, Codex, Gemini CLI, Cursor, Antigravity, Windsurf, or OpenCode.
+  - name: Support & Troubleshooting
+    url: https://github.com/poferraz/career-ops/blob/main/SUPPORT.md
+    about: Check quick fixes and privacy guidelines before opening a public issue.
