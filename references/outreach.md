@@ -1,29 +1,29 @@
 # Outreach Reference
 
-Use this guide to write connection requests, introductory messages and follow-ups.
+Use this guide to write connection requests, introductory messages, and follow-ups. This file is the single source of truth for LinkedIn connection-request benchmarks, InMail vs. cold-email comparisons, and networking templates.
 
-**Evidence note.** Figures and study findings without a primary-source link are unverified historical research notes. The tier labels record the original classification. Check the publication, date and sample before using a figure in advice. If the source cannot be verified, omit the number.
+**Evidence note.** Figures and study findings without a primary-source link are unverified historical research notes. The tier labels record the original classification. Check the publication, date, and sample before using a figure in advice. If the source cannot be verified, omit the number.
 
 ## Required Inputs
 
 Before generating outreach messages, collect:
 
-- Who they're reaching out to (recruiter, hiring manager, peer, executive)
+- Who the user is reaching out to (recruiter, hiring manager, peer, executive)
 - How they found this person (LinkedIn, event, referral, cold)
-- What they want (informational interview, referral, job lead, mentorship)
-- Any shared context (same school, same company, mutual connection, their content)
+- What they want (informational chat, referral, job lead, stay-warm note)
+- Any shared context (same school, past company, mutual connection, specific talk or post)
 - Target role and industry
 
 ---
 
 ## Connection Request Data
 
-From an analysis of 16,000+ LinkedIn connection requests:
+From a historical analysis of 16,000+ LinkedIn connection requests:
 
 ### Acceptance Rates by Message Type
 
 | Message type | Acceptance rate | Tier |
-| ------------- | ---------------- | ------ |
+| --- | --- | --- |
 | Shared event/experience reference | 65% | T2 |
 | Mutual connection reference | 58% | T2 |
 | Specific content reference ("Your post about X...") | 48% | T2 |
@@ -31,135 +31,148 @@ From an analysis of 16,000+ LinkedIn connection requests:
 | Blank (no message) | 31% | T2 |
 | Sales language ("help," "solution," "provide") | 18% | T2 |
 
-A specific reference can help a recipient understand why you contacted them.
+A specific, genuine reference helps a recipient understand why you contacted them.
 
-### Timing
+### Acceptance Timing
 
 | Window | Acceptance probability | Tier |
-| -------- | ---------------------- | ------ |
+| --- | --- | --- |
 | First hour | 21% of all acceptances happen here | T2 |
 | First week | 88% of all acceptances | T2 |
 | After 30 days | <1% chance | T2 |
 
 Respect an unanswered invitation and avoid repeated unsolicited messages.
 
-### Wording to review
+### Wording to Avoid
 
-Review generic or sales-oriented wording in context. The historical notes do not establish that an individual word determines acceptance.
+Review generic or sales-oriented phrasing in context. Replace vague pitches with a clear reason for contacting this specific person.
 
-The following words appeared in the original survey notes.
-
-- "help"
-- "solution"
-- "provide"
-
-**Tier 3 — Conventional wisdom** (widely cited as harmful, not directly measured in that dataset):
-
-- "opportunity"
-- "synergy"
-- "leverage"
-
-Replace a vague pitch with a clear reason for contacting this person.
+- **Flagged in survey notes [T2]:** `"help"`, `"solution"`, `"provide"`
+- **Conventional wisdom to avoid [T3]:** `"opportunity"`, `"synergy"`, `"leverage"`, `"pick your brain"`, `"buy you a coffee"`
 
 ---
 
-## Cold Message Templates
+## Message Templates and Length Rules
 
-Make the request brief enough for the recipient to understand and answer.
+Apply strict length ceilings to every outreach draft:
 
-### Connection Request (to someone you don't know)
+- **LinkedIn connection note:** Under **300 characters** (platform hard limit). Do **not** ask a stranger for a call or referral in message #1; earn the connection first, then ask after they accept.
+- **Email or InMail:** Under **80 words** (3-4 short sentences, scannable on mobile).
+- **Tone:** Natural and direct; avoid em dashes and stiff phrasing in casual messages.
 
-**Structure**: [Specific shared context] + [Why you noticed them] + [Low-effort ask]
+### Connection Request (Cold, Under 300 Characters)
 
-Example:
-> I saw your talk at [Event] on [Topic] — your point about [specific detail] changed how I think about [thing]. I'm moving into [industry] from [background] and would value your perspective. Would a 15-minute call work sometime this month?
+**Structure:** `[Specific shared context]` + `[Why you noticed them]` + `[Simple connect ask — no call pitch yet]`
 
-The example gives a reason for reaching out and makes one small request.
+`[Fictional example]` (195 characters):
 
-### Informational Interview Request (via email or InMail)
+> Hi Maya, I saw your talk at DataCon on dbt testing. Your point about staging alerts matched a migration issue I ran into last fall. I work in analytics engineering and would love to connect here.
 
-**Structure**: [How you found them] + [One specific question you want answered] + [Respect for their time]
+### Informational Interview Request (Email, InMail, or Post-Acceptance DM, Under 80 Words)
 
-Example:
-> [Name], I found your profile while researching [Company]'s [team/department]. I'm transitioning from [industry] and trying to understand [one specific thing]. Would you be open to a 15-minute conversation? Happy to work around your schedule.
+**Structure:** `[How you found them]` + `[One specific question]` + `[Low-friction ask]`
+
+`[Fictional example]` (50 words):
+
+> Hi David, I came across your profile while researching Northstar's logistics systems team. I am moving from warehouse operations into supply-chain product roles and am trying to understand how your team prioritizes field feedback. Would you be open to a 15-minute chat next week? Happy to work around your schedule.
 
 Keep it to one question, not a list. Lists feel like homework.
 
-### Follow-Up After Informational Interview
+### Follow-Up After Informational Interview (Under 80 Words)
 
-**Structure**: [Thank you + specific thing you learned] + [What you did with it] + [Offer to return value]
+**Structure:** `[Thank you + specific takeaway]` + `[Action you took]` + `[Concrete offer to reciprocate]`
 
-Example:
-> Thanks for the conversation last week. Your suggestion to [specific advice] led me to [specific action you took]. If I can ever return the favor — happy to [specific thing you can offer based on your skills].
+`[Fictional example]` (47 words):
 
-The "what you did with it" part is what separates a memorable follow-up from a forgettable one. It shows you actually listened.
+> Thanks again for making time last Tuesday, David. Your tip to study cold-chain compliance metrics led me to rework my portfolio case study around spoilage tracking. If I can ever return the favor with warehouse floor benchmarks or an intro in retail ops, just say the word.
 
-### Warm Introduction Request (to a mutual connection)
+Showing what you actually did with their advice separates a memorable follow-up from a forgettable one.
 
-**Structure**: [Context of your relationship] + [Who you want to meet and why] + [Permission to use their name]
+### Warm Introduction Request (to a Mutual Connection, Under 80 Words)
 
-Example:
-> [Name], I noticed you're connected with [Target Person] at [Company]. I'm exploring [role type] roles there and think my background in [relevant experience] could be a fit. Would you be comfortable making an introduction, or would you prefer I mention your name when reaching out directly?
+**Structure:** `[Relationship context]` + `[Who and why]` + `[Clear easy out]`
 
-Always give them an out. Forced introductions damage the relationship.
+`[Fictional example]` (56 words):
+
+> Hi Elena, hope your quarter is going well. I noticed you are connected with Priya Nair at Meridian Health. I am exploring senior data analyst roles there and have five years in clinical reporting. Would you feel comfortable making an intro, or would you prefer I just reach out directly without putting you on the spot?
+
+Always give the mutual connection an easy out. Forced introductions damage trust.
+
+### Silver-Medal / Post-Rejection Stay-Warm Note (Under 80 Words)
+
+Use this when you reached late-stage interviews and received a polite rejection, to stay top of mind for future openings without sounding pushy.
+
+**Structure:** `[Gracious acknowledgment]` + `[Specific positive detail from interviews]` + `[Low-pressure door open]`
+
+`[Fictional example]` (59 words):
+
+> Hi Jordan, thanks for sharing the update and for running such a clear interview process. Talking with Sam about the billing platform overhaul made me even more impressed by the team. I would be glad to stay connected for future backend openings if the timing lines up later this year. Wishing you and the new hire a smooth ramp.
+
+---
+
+## Polite Follow-Up Cadence and Guardrails
+
+- **Follow-up cap:** Send at most **one** brief follow-up **5-7 business days** after an unanswered email or post-acceptance message, then stop. Repeated nudges become spam and burn bridges.
+- **No unapproved promises:** Never schedule, send, or promise follow-ups the user has not explicitly approved.
+- **Honest expectations:** Never promise that a follow-up message guarantees a reply or changes a hiring outcome. Draft a concise note when it serves the user's goal, and move on if there is no response.
 
 ---
 
 ## Organic Networking Framework
 
-A 7-step process for building genuine professional relationships before you need them [T2].
+A 7-step process for building genuine professional relationships before you need them [T2]:
 
 ### Step 1 — Build the Outreach List
 
-Identify 15-20 people at target companies or in target roles. Mix: 5 peers (same level), 5 senior (one level up), 5 adjacent (related roles), and 5 wildcards (interesting people in the industry).
+Identify 15-20 people at target companies or in target roles: 5 peers (same level), 5 senior (one level up), 5 adjacent (related roles), and 5 interesting operators in the broader field.
 
 ### Step 2 — Engage Before Requesting
 
-Comment or share when there is something useful you can add to the discussion.
+Comment or share when you have something specific and useful to add to their discussion.
 
 ### Step 3 — Connect with Context
 
-Reference the work or conversation that prompted your message.
+Send a short connection note (<300 characters) referencing the specific talk, post, or shared background that prompted you to reach out.
 
 ### Step 4 — Request an Informational Interview
 
-Ask to learn about their industry challenges — not to pitch yourself. Frame it as research.
+After connecting, ask to learn about one specific challenge in their role or industry. Frame it as research, not a pitch.
 
-### Step 5 — Listen for Problems
+### Step 5 — Listen for Real Problems
 
-During the conversation, listen for problems they or their team faces. Don't try to solve them in the moment.
+During the conversation, listen carefully to what slows their team down. Do not try to pitch yourself in the moment.
 
 ### Step 6 — Follow Up with Value
 
-After the conversation, send something useful: an article related to their challenge, a connection to someone who could help, or a summary of what you learned from them.
+After the call, send a brief thank-you noting what you applied from their advice, plus a genuinely useful resource or relevant connection if appropriate.
 
-### Step 7 — Propose Yourself as a Solution
+### Step 7 — Share Your Availability and Ask for Advice
 
-After 2-3 touchpoints, you've earned the right to mention that you're looking. By now they know your background, have seen your engagement, and have a relationship — not just a cold request.
+After 2-3 genuine touchpoints, let them know naturally that you are exploring your next role and ask whether they know teams or hiring managers worth talking to. By this point, they know your background and communication style rather than seeing a cold pitch.
 
-Let the relationship develop at a pace that respects the other person’s time.
+Let every relationship develop at a pace that respects the other person's time.
 
 ---
 
-## InMail vs Cold Email
+## InMail vs. Cold Email
 
-| Channel | Response rate | Best for | Tier |
-| --------- | -------------- | ---------- | ------ |
-| InMail | 18-25% | Reaching professionals you have no connection to | T2 |
-| Cold email | 1-5% | When you have their email but no LinkedIn connection | T2 |
+| Channel | Historical response rate | Best for | Tier |
+| --- | --- | --- | --- |
+| InMail | 18-25% | Reaching professionals when you have no direct email or connection | T2 |
+| Cold email | 1-5% | Reaching hiring managers or peers when you have a verified work email | T2 |
 
-Choose a channel that fits the relationship and the user’s budget. A paid account is optional.
+Choose a channel that fits the relationship and the user's budget. A paid LinkedIn subscription is optional; historical response rates alone do not prove a paid plan is worthwhile for every user.
 
 ---
 
 ## What Not to Do
 
-- Avoid identical messages that give the recipient no reason to respond.
-- Respect an unanswered connection request.
-- **Don't use "I'd love to pick your brain"** — it devalues their expertise
-- **Don't use "Can I buy you a coffee?"** — it's a cliche that signals generic networking
-- **Don't ask for a job in the first message** — build the relationship first
-- Keep the first message brief and easy to answer.
+- Do not blast identical copy-paste messages with no recipient-specific context.
+- Do not ask a stranger for a 15-minute call or referral inside a cold LinkedIn connection request.
+- Do not follow up more than once on an unanswered cold message, and never spam across multiple channels.
+- Do not use `"I'd love to pick your brain"` or `"Can I buy you a coffee?"`.
+- Do not ask for a job in the first message.
+- Do not promise or automate follow-ups without explicit user approval.
 
 ---
 
@@ -167,10 +180,11 @@ Choose a channel that fits the relationship and the user’s budget. A paid acco
 
 Before delivering outreach messages:
 
-- [ ] Under 80 words
-- [ ] References something specific about the recipient
-- [ ] Gives a specific, genuine reason for making contact
-- [ ] Ends with a specific, low-effort ask
-- [ ] Could not be sent to anyone else without rewriting
-- [ ] Matches the relationship stage (cold vs warm vs referral)
-- [ ] Passes anti-slop scoring rubric (35/50 minimum)
+- [ ] Email/InMail is under 80 words; LinkedIn connection note is under 300 characters
+- [ ] Cold connection notes do not ask for a call or referral in message #1
+- [ ] References something specific about the recipient and cannot be sent to anyone else unchanged
+- [ ] Avoids sales trigger words (`"help"`, `"solution"`, `"provide"`) and networking cliches
+- [ ] Casual templates avoid em dashes and sound natural
+- [ ] Follow-up guidance caps at 1 follow-up after 5-7 business days and makes no unapproved promises
+- [ ] Matches the relationship stage (cold, warm, referral, or post-rejection stay-warm)
+- [ ] Passes anti-slop scoring rubric (35/50 minimum; see `references/anti-slop.md`)

@@ -1,166 +1,131 @@
 # Job Search Reference
 
-Use this guide to choose search channels, review outcomes and set a workable pace.
+Use this guide to choose search channels, run a disciplined pipeline, audit proof-of-work, and avoid scams or ghost jobs. For hiring-funnel conversion benchmarks, diminishing-returns volume data, referral multipliers, sector search durations, and remote-work market numbers, see `references/market-data.md` (single source of truth).
 
-**Evidence note.** Figures and study findings without a primary-source link are unverified historical research notes. The tier labels record the original classification. Check the publication, date and sample before using a figure in advice. If the source cannot be verified, omit the number.
+**Evidence note.** Figures and study findings without a primary-source link are unverified historical research notes. The tier labels record the original classification. Check the publication, date, and sample before using a figure in advice. If the source cannot be verified, omit the number.
 
 ## Required Inputs
 
 Before advising on job search strategy, collect:
 
-- Target role and industry
-- Current employment status (employed, recently laid off, long-term searching)
-- How many applications they've sent so far
-- Which channels they've been using (boards, referrals, direct, recruiters)
-- Geographic constraints and remote preference
-- Seniority level
+- Target role, seniority level, and industry
+- Current status (employed, recently laid off, career switcher, or long-term search)
+- Applications sent so far and conversion results by stage
+- Channels currently used (job boards, referrals, direct outreach, recruiters)
+- Geography, work authorization, and remote/hybrid/on-site constraints
 
 ---
 
-## The Diminishing Returns Curve
+## Sustainable Application Pace and Channel Mix
 
-The original notes group application outcomes by volume. They do not establish an optimal number for an individual.
+See `references/market-data.md` for funnel benchmarks, diminishing-returns volume comparisons, and referral/sourcing multipliers.
 
-| Volume | Offer probability | Tier |
-| -------- | ------------------- | ------ |
-| 1-10 applications | 27.2% | T2 |
-| 11-20 applications | 29.5% | T2 |
-| 21-80 applications | 30.9% | T2 |
-| 81+ applications | 20% | T2 |
+### Choosing a Sustainable Pace
 
-Differences between groups may have several causes. Use the applicant’s own responses to decide whether to change tactics.
+Prioritize role fit and material quality over raw spray-and-pray volume:
 
-### Choosing a sustainable pace
-
-Choose a pace the applicant can sustain while checking fit and application requirements.
-
-- Research each target company before applying
-- Tailor your resume semantically to each JD (not keyword stuffing)
-- Write a cover letter with a company-specific hook
-- Track applications and results (what's converting, what isn't)
-- If suitable applications repeatedly receive no response, review targeting and materials together.
-
----
-
-## Channel Effectiveness
-
-Where you apply matters as much as how many times you apply.
-
-| Channel | % of applications | % of hires | Multiplier | Tier |
-| --------- | ------------------ | ------------ | ------------ | ------ |
-| Job boards | 49% | 24.6% | 0.5x (underperforms) | T2 |
-| Referrals | — | 4-8x more likely hired | — | T2 |
-| Referral with internal advocate | — | 50% interview rate | — | T2 |
-| Sourced by recruiter | — | 5x more likely hired | — | T2 |
-
-Compare the channels available to the applicant and track which ones lead to useful conversations or interviews.
+- Run the JD fit check (`references/resume.md`) before investing time in an application.
+- Research each target company before applying (use `references/research-scout.md` when web search is available).
+- Tailor the resume truthfully to the JD and write a company-specific cover letter where requested.
+- Track every application and adjust tactics based on your own conversion numbers.
 
 ### Recommended Channel Mix
 
-- Apply directly when a posting fits the user’s experience and goals.
-- Try a referral or a professional conversation where the user has a real connection.
-- Keep the information the user chooses to share publicly accurate and easy to find.
+Do not rely 100% on cold job boards, which historically account for a disproportionate share of applications relative to hires (`references/market-data.md`):
+
+- **Direct targeted applications:** Apply directly on the employer's career site when fit is strong (>=75% of must-haves).
+- **Warm referrals and networking:** Pair high-priority applications with genuine outreach to peers or hiring managers (see `references/outreach.md`).
+- **Inbound visibility:** Keep LinkedIn, portfolio, and GitHub accurate and aligned with target titles so sourcing recruiters can find you (`references/linkedin.md`).
 
 ---
 
-## Search Duration by Industry
+## Application Pipeline Tracker and Diagnostic Thresholds
 
-Set realistic expectations. These are averages from named surveys [T2].
+Use a lightweight tracker (spreadsheet or plain Markdown table) with 7 columns:
 
-| Role / Sector | Average search time |
-| --------------- | ------------------- |
-| AI/ML | 8 weeks |
-| Customer Service | 8 weeks |
-| Retail | 10 weeks |
-| Nursing | 11 weeks |
-| UX/UI Design | 13 weeks |
-| DevOps | 14 weeks |
-| IT General | 17 weeks |
-| Software Engineering | 20 weeks |
-| Director+ / Senior | 24 weeks |
-| After involuntary layoff (any role) | 36 weeks |
-| Median to first offer (all roles) | 68.5 days |
+`Company | Role | Channel (Board / Direct / Referral / Recruiter) | Fit (Strong / Stretch) | Date Applied | Furthest Stage | Next Action`
 
-Consult current information for the target sector. A survey average cannot determine whether an individual search is on track.
+### Diagnostic Thresholds (After 15-20 Targeted Applications)
+
+Diagnose where the funnel actually breaks before changing everything at once:
+
+| Observed Pattern | Likely Bottleneck | Targeted Fix |
+| --- | --- | --- |
+| <5% recruiter screen rate on targeted roles | Targeting, resume positioning, or cold-board reliance | Tighten JD fit gate, rebuild top third of resume (`references/resume.md`), shift 30-50% of effort to referrals/direct outreach |
+| Screens convert, but failing hiring-manager / technical / panel rounds | Story clarity, depth, or technical/case readiness | Run mock interviews and build top 5 STAR + case/technical prep (`references/interview.md`) |
+| Reaching final rounds repeatedly without offers | Leveling mismatch, executive presence, or closing/reference signal | Audit leveling alignment, sharpen candidate questions, prep references, and ask for constructive feedback |
+| Receiving offers consistently below target comp | Role leveling or negotiation framing | Re-benchmark target band (`references/market-data.md`) and apply negotiation scripts (`references/interview.md`) |
+| Search feeling stalled or exhausting | Pacing and burnout | Set a review checkpoint, narrow to 1-2 focus roles, and change one variable per two-week sprint |
 
 ---
 
-## Industry-Specific Conversion Rates
+## Sector-Specific Search Playbooks
 
-Not all industries hire the same way.
+Check `references/market-data.md` for baseline search durations and remote-work competition data before setting timelines.
 
-### Technology
+### Technology and Product
 
-| Stage | Rate | Tier |
-| --- | --- | --- |
-| Application-to-interview | 5-15% | T2 |
-| Interview-to-offer | 7% (tech), 9% (business ops) | T2 |
+- Combine targeted direct applications with referrals and clean proof-of-work (GitHub, architecture write-ups, or case studies).
+- Expect multi-stage loops (recruiter screen, hiring manager, technical/case, cross-functional/bar-raiser); distinguish recruiter-screen conversion from final-round offer conversion (`references/market-data.md`).
 
-### Healthcare, Education, Retail
+### Healthcare, Education, and Retail
 
-| Stage | Rate | Tier |
-| --- | --- | --- |
-| Application-to-interview | 13-20% | T2 |
+- Verify required licenses, credentials, and shift/location terms up front; many roles screen first on eligibility knockout questions.
 
 ### Skilled Trades
 
-Trades don't use traditional post-and-apply funnels [T2]:
+Trades rely far less on generic online job boards [T2]:
 
-- Pipeline hiring dominates (trade school partnerships, apprenticeships)
-- Employee referrals are the primary conversion engine
-- Response windows vary. Check the employer’s stated deadline and contact process.
-- Cost-per-hire: $12,000+ (vs $6,200-$8,000 for tech/engineering)
-- Specific value propositions beat generic benefits: "paid license renewals" and "predictable schedules" outperform "competitive benefits"
+- Pipeline hiring dominates (apprenticeships, union halls, trade-school partnerships, and direct shop visits).
+- Employee referrals and local reputation drive conversions; check required licenses, safety tickets, and application windows directly.
 
-For a trade role, check required licenses, training and application deadlines. Consider apprenticeships, direct applications or a referral where appropriate.
+### Creative and Marketing
 
-### Creative / Marketing
+- Portfolio quality often outweighs the resume [T2].
+- Structure 3-4 case studies cleanly: **problem -> objective -> strategy -> execution -> measurable outcome** (including for performance marketers, SEO, and content strategists).
 
-| Finding | Tier |
-| --------- | ------ |
-| Application-to-interview: ~10% experienced, ~2% entry-level | T2 |
-| Hiring teams conduct 42% more interviews per hire than 2021 (avg 20 interviews per hire) | T2 |
-| Portfolio has superseded resume as primary conversion tool | T2 |
-| Standard portfolio: 16-20 images across 3-4 projects | T2 |
-| Structured scoring: Strategy 25%, Execution 25%, Analytics/ROI 25%, Creativity 15%, Collaboration 10% | T2 |
+### Government and Public Sector (US and International)
 
-**Strategy for creative**: Build a portfolio with case studies showing problem → objective → strategy → results. Even performance marketers and SEO specialists need this format now.
-
-### Government / Public Sector
-
-| Finding | Tier |
-| --------- | ------ |
-| Application-to-interview ratio: ~1:100 | T2 |
-| USAJobs uses unique filtering: "minimally qualified" → "best qualified" → referral list | T2 |
-| Skills-based hiring expanding: MD, PA, CO removed degree requirements for majority of positions | T2 |
-| Target time-to-hire: under 80 days (historically much longer) | T2 |
-
-For public-sector applications, check the current announcement for eligibility, format and supporting documents. Describe experience accurately in terms the announcement uses.
+- **US Federal (USAJobs):** Uses strict eligibility/qualification screening and enforces a 2-page federal resume cap under the 2025 OPM update; mirror announcement terms truthfully and include all required supporting documents.
+- **US State/Local:** Many states (including MD, PA, CO, and others) have expanded skills-based hiring that removes degree barriers for eligible roles [T2]; verify current postings directly.
+- **Non-US Public Sector and Regional Platforms:**
+  - **UK:** Civil Service Jobs (structured Success Profiles / behavior statements), Reed, Totaljobs.
+  - **EU Institutions:** EPSO competitions (formal eligibility and exam stages).
+  - **DACH (Germany, Austria, Switzerland):** XING, Stepstone, Interamt (German public sector).
+  - **Australia / New Zealand:** Seek, APSJobs (Australian Public Service).
+  - **India:** Naukri, Instahyre, Hirist, and official UPSC/state portals for civil service.
+  - **Spain / LATAM:** InfoJobs, Computrabajo, Bumeran, and national civil-service portals (*oposiciones*).
 
 ---
 
-## Remote Work Competition
+## Portfolio, GitHub, and Proof-of-Work Audit Checklist
 
-| Finding | Tier |
-| --------- | ------ |
-| Only 11-13% of postings are fully remote | T2 |
-| 67% of remote postings target experienced roles | T2 |
-| Only 6% of remote postings are entry-level | T2 |
-| Remote roles attract far more applicants per posting | T2 |
+Use this audit before linking a portfolio or code repository on a resume or LinkedIn profile:
 
-Use current postings to compare remote and hybrid options that meet the applicant’s needs.
+- [ ] **Curated top 2-3 projects pinned/featured:** Put strongest, most role-relevant work first; archive or unpin half-finished tutorial clones.
+- [ ] **Problem-constraints-outcome framing:** Every project README or case study opens with the problem solved, key trade-offs, architecture/approach, and verifiable results.
+- [ ] **Fast visual proof:** Include screenshots, short GIF/demo link, or clean sample outputs so a busy hiring manager sees value in 30 seconds.
+- [ ] **Clean engineering / craft hygiene:** Working setup instructions, readable structure, tests where appropriate, and no broken links.
+- [ ] **Zero confidential leaks:** Confirm no past employer source code, internal metrics, client names, API keys, or private datasets appear anywhere in public repos or case studies.
 
 ---
 
-## When to Reassess
+## Job-Search Scam and Ghost-Job Red Flags
 
-Red flags that indicate a strategy problem, not a volume problem:
+Protect the user's time, identity, and finances by flagging these warning signs immediately:
 
-- Few responses to suitable applications → review materials, timing and targeting
-- Multiple interviews but no offers → interview prep issue (see interview.md)
-- Getting offers but below target salary → negotiation issue (see interview.md)
-- Applying only through job boards → channel mix issue
-- A search that feels stalled → agree on a review point and try one change at a time
+### Scam Red Flags (Stop and Disengage)
+
+- **Upfront fees or "equipment check" schemes:** Any request to pay for training/background checks, buy office gear from a "designated vendor," or deposit a check and wire back excess funds.
+- **Chat-app-only interviews:** "Interviews" conducted exclusively via Telegram, WhatsApp, or Signal text messages with an instant high-pay offer.
+- **Early sensitive PII requests:** Asking for Social Security / national ID numbers, bank routing numbers, passport scans, or credit card details before a verified, legitimate offer and official HR onboarding.
+- **Domain and identity mismatches:** Recruiter emails from free webmail (`@gmail.com`) or lookalike domains (`company-careers-hr.com`) that do not match the company's real website.
+
+### Ghost-Job Red Flags (Verify Before Investing Heavy Time)
+
+- Requisitions reposted continuously for 45-60+ days with identical wording and no visible hiring team or recruiter activity.
+- Vague, overly broad role descriptions with shifting scope or no clear reporting line.
+- **Verification habit:** Cross-check the opening on the company's official careers page (not just third-party aggregators), check posting age, and look for an active hiring manager or team member on LinkedIn before spending hours on a custom application.
 
 ---
 
@@ -168,10 +133,10 @@ Red flags that indicate a strategy problem, not a volume problem:
 
 Before delivering job search strategy:
 
-- [ ] Channel mix includes networking, not just job boards
-- [ ] Application pace fits the applicant’s time and is adjusted using their own results
-- [ ] Duration expectations are calibrated to their industry
-- [ ] Industry-specific advice matches their sector (trades ≠ tech ≠ government)
-- [ ] Remote work competition caveat included if targeting remote
-- [ ] Reassessment triggers are shared so they know when to pivot
-- [ ] Passes anti-slop scoring rubric (35/50 minimum)
+- [ ] Channel mix combines networking/referrals and direct applications, not only job boards
+- [ ] Funnel, duration, and remote-competition benchmarks cross-reference `references/market-data.md` without duplicating tables
+- [ ] Pipeline tracker and diagnostic thresholds are included so the user knows when and how to pivot
+- [ ] Sector and regional platform advice matches the user's industry and geography
+- [ ] Portfolio/GitHub audit included when relevant to the role
+- [ ] Scam and ghost-job red flags surfaced if any posting looks suspicious
+- [ ] Passes anti-slop scoring rubric (35/50 minimum; see `references/anti-slop.md`)
