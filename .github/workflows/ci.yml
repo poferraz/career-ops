@@ -5,6 +5,13 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -29,19 +36,53 @@ jobs:
       - run: npm ci --prefix scripts/checks --ignore-scripts --no-audit --no-fund
       - name: Lint tracked Markdown
         if: matrix.check == 'markdown-lint'
-        run: git ls-files -z '*.md' | xargs -0 scripts/checks/node_modules/.bin/markdownlint-cli2
-      - name: Check documentation links and heading anchors
+        run: git ls-files -z '*.md' | xargs -0 -r scripts/checks/node_modules/.bin/markdownlint-cli2 --
+      - name: Check internal documentation links and heading anchors
         if: matrix.check == 'link-check'
         run: |
-          git ls-files -z '*.md' | xargs -0 scripts/checks/node_modules/.bin/linkinator \
-            --markdown --directory-listing --server-root "$PWD" --check-fragments \
+          git ls-files -z '*.md' | xargs -0 -r scripts/checks/node_modules/.bin/linkinator \
+            --markdown --server-root "$PWD" --check-fragments --skip '^(https://|http://(?!127\.0\.0\.1:[0-9]+/))' \
             --concurrency 3 --timeout 20000 --retry --retry-errors --retry-errors-count 3 --
 
-  converter:
+  external-links:
+    name: external-link-check
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
-      - run: python3 scripts/test_convert.py
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci --prefix scripts/checks --ignore-scripts --no-audit --no-fund
+      - name: Check external documentation links
+        run: |
+          git ls-files -z '*.md' | xargs -0 -r scripts/checks/node_modules/.bin/linkinator \
+            --markdown --server-root "$PWD" --check-fragments \
+            --skip '^(https://127\.|https?://(10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|192\.168\.|169\.254\.|localhost|\[::1\]|127\.(?!0\.0\.1:[0-9]+/)))' \
+            --concurrency 3 --timeout 20000 --retry --retry-errors --retry-errors-count 3 --
+
+  converter:
+    name: converter (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Verify converter script is executable
+        run: test -x scripts/convert.sh
+      - name: Lint converter script with shellcheck
+        if: runner.os == 'Linux'
+        run: shellcheck scripts/convert.sh
+      - name: Run converter test suite
+        run: python3 scripts/test_convert.py -v
+      - name: Smoke-test exporting all platforms
+        run: scripts/convert.sh all
