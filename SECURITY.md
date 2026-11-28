@@ -11,6 +11,7 @@
 | Version | Supported |
 | --- | --- |
 | 1.0.x | ✓ Active |
+| < 1.0 | ✗ Unsupported |
 
 ---
 
@@ -21,9 +22,11 @@ career-ops is a knowledge base skill — it has no servers, no authentication, a
 **In scope:**
 
 - Fabricated or manipulated research data in reference files
-- Shell injection vulnerabilities in `scripts/convert.sh`
+- Shell injection, symlink, path-traversal, or file-handling vulnerabilities in `scripts/convert.sh`
+- CI/CD workflow security issues (such as unsafe triggers, excessive permissions, or untrusted input handling)
+- Supply-chain vulnerabilities in `scripts/checks` dependencies or lockfile integrity
 - Reading or saving career data without the user's permission, or saving a profile in a Git repository or shared folder
-- Prompt injection patterns embedded in reference content
+- Prompt injection patterns embedded in reference content, or missing prompt-injection guardrails for untrusted external content
 
 **Out of scope:**
 
@@ -49,10 +52,19 @@ Include:
 
 **Response time:** Acknowledgment within 72 hours. Fix or mitigation plan within 14 days for confirmed issues.
 
+**Coordinated disclosure and safe harbor:** We follow a 90-day coordinated disclosure window from initial acknowledgment before public details are released, unless an earlier joint release is agreed upon. Good-faith security research conducted in accordance with this policy—without accessing other users' personal data, disrupting services, or degrading repository availability—is welcomed and will not be met with legal action from the maintainers.
+
 ---
 
 ## SESSION DATA PROTECTION
 
 Career Ops uses the current conversation by default. The AI host and its model provider may process or retain conversation and file contents according to the user's settings. Saving a profile requires an explicit request identifying a private file outside Git repositories and shared folders and the details to keep.
 
-Older versions used `session/user-profile.md`. The current skill leaves that file alone. The ignore rule in this checkout can protect an untracked legacy file here. An already-tracked file and past commits can remain visible. If a real profile was published, use the private reporting channel above and avoid copying the profile into the report. [Optional blank profile template](session/user-profile-template.md)
+Older versions used `session/user-profile.md`. The current skill leaves that file alone. This repository's `.gitignore` blocks untracked files under `session/*` (except the blank template), local notes (`references/personal-notes*.md`, `references/*.local.md`), generated `exports/` and `dist/` artifacts, and common personal document and log formats (`*.pdf`, `*.docx`, `*.doc`, `*.rtf`, `*.odt`, `*.log`). However, `.gitignore` cannot protect files that were already staged, committed, or pushed. [Optional blank profile template](session/user-profile-template.md)
+
+**If you accidentally pushed personal data to your own fork:**
+
+1. Remove the file from your local Git history using [`git filter-repo`](https://github.com/newren/git-filter-repo) (for example, `git filter-repo --invert-paths --path <path/to/file>`).
+2. Force-push all rewritten branches and tags (`git push --force --all` and `git push --force --tags`) and close or delete any pull requests that referenced the exposed commit.
+3. Contact GitHub Support to request a purge of cached commits and views, and rotate any credentials or sensitive identifiers that were exposed.
+4. If personal data was ever submitted to this upstream repository, report it through the private advisory channel above without pasting the personal data into the report.

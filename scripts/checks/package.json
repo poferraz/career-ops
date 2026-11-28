@@ -1,6 +1,14 @@
 {
   "name": "career-ops-doc-checks",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "lint:md": "cd ../.. && git ls-files -z '*.md' | xargs -0 -r scripts/checks/node_modules/.bin/markdownlint-cli2 --",
+    "lint:links": "cd ../.. && git ls-files -z '*.md' | xargs -0 -r scripts/checks/node_modules/.bin/linkinator --markdown --server-root \"$PWD\" --check-fragments --skip '^(https://|http://(?!127\\.0\\.0\\.1:[0-9]+/))' --concurrency 3 --timeout 20000 --retry --retry-errors --retry-errors-count 3 --",
+    "lint:links:external": "cd ../.. && git ls-files -z '*.md' | xargs -0 -r scripts/checks/node_modules/.bin/linkinator --markdown --server-root \"$PWD\" --check-fragments --skip '^(https://127\\.|https?://(10\\.|172\\.(1[6-9]|2[0-9]|3[0-1])\\.|192\\.168\\.|169\\.254\\.|localhost|\\[::1\\]|127\\.(?!0\\.0\\.1:[0-9]+/)))' --concurrency 3 --timeout 20000 --retry --retry-errors --retry-errors-count 3 --"
+  },
   "devDependencies": {
     "linkinator": "8.1.0",
     "markdownlint-cli2": "0.24.2"

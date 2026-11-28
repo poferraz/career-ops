@@ -1,44 +1,48 @@
 ---
 name: Bug Report
-about: Found something broken? Tell us exactly what happened.
+about: Report a broken export, routing issue, or unexpected skill behavior.
 title: '[BUG] '
 labels: bug
 assignees: ''
 ---
 
-<!-- Found something broken? Tell us exactly what happened. No vague reports. -->
+<!-- Help us reproduce this quickly by sharing the exact host, prompt, and output using fictional details. -->
 
-## DESCRIPTION
+## Description
 
-<!-- What went wrong? Be specific. -->
+<!-- Summarize what went wrong and which part of Career Ops was affected. -->
 
-## STEPS TO REPRODUCE
+## Steps to Reproduce
 
-1.
-2.
-3.
+1. <!-- Host setup and command or prompt used -->
+2. <!-- Follow-up interaction, if any -->
+3. <!-- Where the unexpected behavior appeared -->
 
-## WHAT YOU EXPECTED
+## Expected Behavior
 
-<!-- What should have happened? -->
+<!-- Describe what should have happened instead. -->
 
-## WHAT ACTUALLY HAPPENED
+## Actual Behavior
 
-<!-- Show the unexpected output using fictional career details. -->
+<!-- Paste the unexpected output or error using fictional career details. -->
 
-## ANTI-SLOP SCORE
+## Anti-Slop Score (Optional)
 
-<!-- If the output scored low on the quality gate, paste the score here. -->
+<!-- If the output missed the writing quality gate, include the rubric breakdown here. -->
 <!-- Format: Directness X/10, Rhythm X/10, Trust X/10, Authenticity X/10, Density X/10, Total XX/50 -->
 
-## ENVIRONMENT
+## Environment
 
 | Field | Value |
 | --- | --- |
-| Platform | <!-- Claude Code / Codex / Gemini CLI / Cursor / Other --> |
-| Version | <!-- career-ops version (see CHANGELOG.md) --> |
+| Platform | <!-- Claude Code / Codex / Gemini CLI / Cursor / Antigravity / Windsurf / OpenCode / Other --> |
+| Version | <!-- career-ops version or commit (see CHANGELOG.md) --> |
 | Web search available | <!-- Yes / No --> |
 
-## ADDITIONAL CONTEXT
+## Privacy Check
 
-<!-- Use fictional examples. Keep resumes, profiles, employer-sensitive details and contact information out of this public report. -->
+- [ ] I removed all real names, contact details, resumes, profiles, and confidential employer details, and used fictional examples instead.
+
+## Additional Context
+
+<!-- Add any extra context, screenshots (redacted), or export logs that help diagnose the issue. -->

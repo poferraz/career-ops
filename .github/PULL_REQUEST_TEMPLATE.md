@@ -1,27 +1,33 @@
-<!-- CAREER-OPS PULL REQUEST — NO SLOP. JUST STRATEGY. -->
+<!-- Career Ops Pull Request — No slop. Just strategy. -->
 
-## WHAT CHANGED AND WHY
+## What Changed and Why
 
-<!-- One sentence: what changed. One sentence: why it matters. -->
+<!-- Summarize what changed and why it matters. -->
 
-## TYPE
+Closes #
 
-- [ ] Research update (new data, updated trust tier)
-- [ ] Reference improvement (better framing, more accurate claim)
-- [ ] New feature (new module, new capability)
-- [ ] Bug fix (routing error, anti-slop gate failure)
-- [ ] Tooling / scripts
+## Type
 
-## QUALITY GATE
+- [ ] Research update (new primary data or updated trust tier)
+- [ ] Reference improvement (clearer framing or verified claim)
+- [ ] New feature (new module or capability)
+- [ ] Bug fix (routing error, export issue, or anti-slop gate failure)
+- [ ] Tooling, scripts, or docs
 
-- [ ] All new claims have a trust tier tag (T1–T3)
+## Quality Gate
+
+- [ ] All new advice claims have a valid trust tier (T1–T3) and primary source check
 - [ ] No invented statistics or unverified numbers
-- [ ] Anti-slop rubric: writing scores 35/50 minimum
-- [ ] No banned phrases (see [`references/anti-slop.md`](../references/anti-slop.md))
-- [ ] File sizes within limits (reference files max 800 lines)
-- [ ] `scripts/convert.sh` still works if SKILL.md changed
-- [ ] README or docs updated if behavior changed
+- [ ] Writing samples score 35/50 minimum on the anti-slop rubric
+- [ ] No banned phrases (see [`references/anti-slop.md`](https://github.com/poferraz/career-ops/blob/main/references/anti-slop.md))
+- [ ] Reference files remain under the 800-line cap (and any new module is registered in `SKILL.md`'s `## Routing Table`)
+- [ ] No real personal resumes, profiles, or sensitive work history are included
+- [ ] `README.md` or `docs/` updated if user-facing behavior changed
 
-## TESTING
+## Testing
 
-<!-- How did you verify this works? Use fictional sample inputs and sanitized output when relevant. -->
+<!-- Note which local checks passed and include fictional, sanitized sample inputs when relevant: -->
+<!-- - `python3 scripts/test_convert.py -v` -->
+<!-- - `./scripts/convert.sh all` -->
+<!-- - `npm --prefix scripts/checks run lint:md` -->
+<!-- - `npm --prefix scripts/checks run lint:links` -->
